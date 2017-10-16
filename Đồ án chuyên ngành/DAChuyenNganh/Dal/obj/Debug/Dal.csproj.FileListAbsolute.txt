@@ -9,3 +9,14 @@ D:\Collection\Tai Lieu\Tự Học\ASP.NET\ASP.NET MVC\DAChuyenNganh\Dal\obj\Debu
 D:\Collection\Tai Lieu\Tự Học\ASP.NET\ASP.NET MVC\DAChuyenNganh\Dal\obj\Debug\Dal.pdb
 D:\Collection\Tai Lieu\Tự Học\ASP.NET\ASP.NET MVC\DAChuyenNganh\Dal\bin\Debug\EntityFramework.SqlServer.dll
 D:\Collection\Tai Lieu\Tự Học\ASP.NET\ASP.NET MVC\DAChuyenNganh\Dal\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\HOAI\Desktop\DAChuyenNganh\Đồ án chuyên ngành\DAChuyenNganh\Dal\bin\Debug\Dal.dll
+C:\Users\HOAI\Desktop\DAChuyenNganh\Đồ án chuyên ngành\DAChuyenNganh\Dal\bin\Debug\Dal.pdb
+C:\Users\HOAI\Desktop\DAChuyenNganh\Đồ án chuyên ngành\DAChuyenNganh\Dal\bin\Debug\Common.dll
+C:\Users\HOAI\Desktop\DAChuyenNganh\Đồ án chuyên ngành\DAChuyenNganh\Dal\bin\Debug\EntityFramework.dll
+C:\Users\HOAI\Desktop\DAChuyenNganh\Đồ án chuyên ngành\DAChuyenNganh\Dal\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\HOAI\Desktop\DAChuyenNganh\Đồ án chuyên ngành\DAChuyenNganh\Dal\bin\Debug\Common.pdb
+C:\Users\HOAI\Desktop\DAChuyenNganh\Đồ án chuyên ngành\DAChuyenNganh\Dal\bin\Debug\EntityFramework.xml
+C:\Users\HOAI\Desktop\DAChuyenNganh\Đồ án chuyên ngành\DAChuyenNganh\Dal\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\HOAI\Desktop\DAChuyenNganh\Đồ án chuyên ngành\DAChuyenNganh\Dal\obj\Debug\Dal.csprojResolveAssemblyReference.cache
+C:\Users\HOAI\Desktop\DAChuyenNganh\Đồ án chuyên ngành\DAChuyenNganh\Dal\obj\Debug\Dal.dll
+C:\Users\HOAI\Desktop\DAChuyenNganh\Đồ án chuyên ngành\DAChuyenNganh\Dal\obj\Debug\Dal.pdb
