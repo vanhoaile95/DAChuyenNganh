@@ -6,11 +6,14 @@ using Common;
 using Bus;
 using System.Collections.Generic;
 
+
 namespace MainForm
 {
-   
+    
     public partial class MainForm : Form
     {
+
+        #region SplashScreen
         public void ShowSplashScreen(bool option)
         {
             //Splash screen
@@ -43,69 +46,104 @@ namespace MainForm
             frm.Text = "Soạn thảo câu hỏi trắc nghiệm";
             Application.Run(frm);
         }
+        #endregion
+
         public MainForm()
         {
             ShowSplashScreen(false);
             InitializeComponent();
-
+        
+            #region Icon
             //Set icon
-            Bitmap b = (Bitmap)Properties.Resources.SplashImage;
+            Bitmap b =  Properties.Resources.SplashImage;
             IntPtr pIcon = b.GetHicon();
             Icon Ic = Icon.FromHandle(pIcon);
             this.Icon = Ic;
             Ic.Dispose();
+            #endregion
         }
-       
 
-        private void MainForm_Load(object sender, EventArgs e)
+
+
+        private  void MainForm_Load(object sender, EventArgs e)
         {
+
             //MessageBox.Show(new LoginBus().Test());
 
-
-           
-
-
         }
 
-        private void bunifuFlatButton3_Click(object sender, EventArgs e)
+        #region   Controlbox
+        private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        private void btnMaximum_Click(object sender, EventArgs e)
         {
-            
-        }
-        
+           
 
-        private void bunifuFlatButton1_Click(object sender, EventArgs e)
-        {
-            
+            if (WindowState != FormWindowState.Maximized)
+
+                WindowState = FormWindowState.Maximized;
+
+            else
+                WindowState = FormWindowState.Normal;
         }
 
-        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        private void btnMinimum_Click(object sender, EventArgs e)
         {
-            if (bunifuGradientPanel1.Width == 50)
+            WindowState = FormWindowState.Minimized;
+        }
+        #endregion
+
+        private void ImageBtnMenu_Click(object sender, EventArgs e)
+        {
+           
+            if (bunifuGradientPanelMenu.Size.Width == 50)
             {
-                bunifuGradientPanel1.Visible = false;
-                bunifuGradientPanel1.Width = 180;
-                bunifuImageButton1.Location = new Point(140, 0);
-
-                bunifuTransition1.ShowSync(bunifuGradientPanel1);
-                
-
-
+                bunifuGradientPanelMenu.Size = new Size(180, bunifuGradientPanelMenu.Size.Height);
+                ImageBtnMenu.Location = new Point(140, 0);
+               
             }
             else
             {
-                bunifuGradientPanel1.Visible = false;
-                bunifuGradientPanel1.Width = 50;
-                bunifuImageButton1.Location = new Point(5, 0);
-
-                bunifuTransition1.ShowSync(bunifuGradientPanel1);
-               
-
+                bunifuGradientPanelMenu.Size = new Size(50, bunifuGradientPanelMenu.Size.Height);
+                ImageBtnMenu.Location = new Point(5, 0);
             }
+           
+          
+            
+        }
+      
+
+        
+
+        //Menu Soạn Câu Hỏi
+        private void btnSoanCauHoi_Click(object sender, EventArgs e)
+        {
+           
+            SoanCauHoi _panel = new SoanCauHoi();
+            _panel.Dock = DockStyle.Fill;
+            MainPanel.Controls.Clear();
+            MainPanel.Controls.Add(_panel);
+        }
+
+        //Menu Soạn đề thi
+        private void btnSoanDeThi_Click(object sender, EventArgs e)
+        {
+            MainPanel.Controls.Clear();
+        }
+
+        //Menu Thư viện đề thi
+        private void btnThuVienDeThi_Click(object sender, EventArgs e)
+        {
+            MainPanel.Controls.Clear();
+        }
+
+        //Menu Thư viện câu hỏi
+        private void btnThuVienCauHoi_Click(object sender, EventArgs e)
+        {
+            MainPanel.Controls.Clear();
         }
     }
 }

@@ -1,9 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +17,7 @@ namespace MainForm
         List<Color> colors = new List<Color>();
         public SplashScreenForm()
         {
+           
             //Change icon
             Bitmap b = (Bitmap)Properties.Resources.SplashImage;
             IntPtr pIcon = b.GetHicon();
