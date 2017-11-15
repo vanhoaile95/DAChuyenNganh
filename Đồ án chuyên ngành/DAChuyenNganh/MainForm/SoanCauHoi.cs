@@ -12,6 +12,7 @@ namespace MainForm
 {
     public partial class SoanCauHoi : UserControl
     {
+
         public SoanCauHoi()
         {
             InitializeComponent();
@@ -21,6 +22,7 @@ namespace MainForm
         private void btnAddCauHoi_Click(object sender, EventArgs e)
         {
             CauHoi temp = new CauHoi(listCauHoi.Count + 1);
+            temp.XoaCauHoi = XoaCauHoi;//gán delegate
             panelSoanCauHoi.Controls.Add(temp);
             temp.Dock = DockStyle.Top;
             temp.BringToFront();
@@ -29,6 +31,30 @@ namespace MainForm
 
 
             listCauHoi.Add(temp);
+        }
+
+
+        public void XoaCauHoi(String CauHoi)
+        {
+            for(int i=0;i<listCauHoi.Count;i++)
+            {
+                if(listCauHoi.ElementAt(i).btnTitle.ButtonText== CauHoi)
+                {
+                    listCauHoi.RemoveAt(i);
+                    
+                    break;
+                }
+            }
+
+
+            panelSoanCauHoi.Controls.Clear();
+            panelSoanCauHoi.Controls.Add(btnAddCauHoi);
+            panelSoanCauHoi.ScrollControlIntoView(btnAddCauHoi);
+            for (int i = listCauHoi.Count-1; i >=0; i--)
+            {
+                listCauHoi.ElementAt(i).btnTitle.ButtonText = "Câu hỏi " + (i + 1).ToString();
+                panelSoanCauHoi.Controls.Add(listCauHoi.ElementAt(i));
+            }
         }
     }
 }

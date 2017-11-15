@@ -126,12 +126,16 @@ namespace MainForm
             _panel.Dock = DockStyle.Fill;
             MainPanel.Controls.Clear();
             MainPanel.Controls.Add(_panel);
+
         }
 
         //Menu Soạn đề thi
         private void btnSoanDeThi_Click(object sender, EventArgs e)
         {
+            SoanCauHoi _panel = new SoanCauHoi();
+            _panel.Dock = DockStyle.Fill;
             MainPanel.Controls.Clear();
+            MainPanel.Controls.Add(_panel);
         }
 
         //Menu Thư viện đề thi

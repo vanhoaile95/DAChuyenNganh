@@ -19,7 +19,7 @@ namespace MainForm.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,6 +57,27 @@ namespace MainForm.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1258\deff0\nouicompat\deflang1066{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+        ///{\*\generator Riched20 10.0.15063}\viewkind4\uc1 
+        ///\pard\sa200\sl276\slmult1\f0\fs22\lang9{\object\objemb{\*\objclass Equation.3}\objw1060\objh279{\*\objdata 
+        ///01050000
+        ///02000000
+        ///0b000000
+        ///4571756174696f6e2e3300
+        ///00000000
+        ///00000000
+        ///000e0000
+        ///d0cf11e0a1b11ae1000000000000000000000000000000003e000300feff090006000000000000
+        ///0000000000010000000100000000000000001000000200000001000000feffffff000000000000
+        ///0000fffffffffff [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Document {
+            get {
+                return ResourceManager.GetString("Document", resourceCulture);
             }
         }
         
@@ -106,6 +127,16 @@ namespace MainForm.Properties {
         internal static System.Drawing.Bitmap SplashImage {
             get {
                 object obj = ResourceManager.GetObject("SplashImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap symbol {
+            get {
+                object obj = ResourceManager.GetObject("symbol", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
