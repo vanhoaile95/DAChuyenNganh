@@ -30,32 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.bunifuElipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuDragControl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.header = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.btnMinimum = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnMaximum = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnExit = new Bunifu.Framework.UI.BunifuImageButton();
+            this.buttonMinimize = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.buttonMaximize = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.buttonExit = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnTitle = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.MainPanel = new System.Windows.Forms.Panel();
             this.bunifuGradientPanelMenu = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.btnThuVienCauHoi = new Bunifu.Framework.UI.BunifuFlatButton();
             this.ImageBtnMenu = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnThuVienDeThi = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnSoanDeThi = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnSoanCauHoi = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.MainPanel = new System.Windows.Forms.Panel();
             this.header.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
             this.bunifuGradientPanelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageBtnMenu)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bunifuElipse
-            // 
-            this.bunifuElipse.ElipseRadius = 15;
-            this.bunifuElipse.TargetControl = this;
             // 
             // bunifuDragControl
             // 
@@ -68,9 +59,9 @@
             // 
             this.header.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("header.BackgroundImage")));
             this.header.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.header.Controls.Add(this.btnMinimum);
-            this.header.Controls.Add(this.btnMaximum);
-            this.header.Controls.Add(this.btnExit);
+            this.header.Controls.Add(this.buttonMinimize);
+            this.header.Controls.Add(this.buttonMaximize);
+            this.header.Controls.Add(this.buttonExit);
             this.header.Controls.Add(this.btnTitle);
             this.header.Dock = System.Windows.Forms.DockStyle.Top;
             this.header.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(177)))), ((int)(((byte)(231)))));
@@ -83,53 +74,113 @@
             this.header.Size = new System.Drawing.Size(756, 35);
             this.header.TabIndex = 1;
             // 
-            // btnMinimum
+            // buttonMinimize
             // 
-            this.btnMinimum.BackColor = System.Drawing.Color.Transparent;
-            this.btnMinimum.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimum.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnMinimum.Image = global::MainForm.Properties.Resources.min;
-            this.btnMinimum.ImageActive = null;
-            this.btnMinimum.Location = new System.Drawing.Point(663, 0);
-            this.btnMinimum.Name = "btnMinimum";
-            this.btnMinimum.Size = new System.Drawing.Size(31, 35);
-            this.btnMinimum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimum.TabIndex = 3;
-            this.btnMinimum.TabStop = false;
-            this.btnMinimum.Zoom = 10;
-            this.btnMinimum.Click += new System.EventHandler(this.btnMinimum_Click);
+            this.buttonMinimize.Activecolor = System.Drawing.Color.Transparent;
+            this.buttonMinimize.BackColor = System.Drawing.Color.Transparent;
+            this.buttonMinimize.BackgroundImage = global::MainForm.Properties.Resources.min;
+            this.buttonMinimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonMinimize.BorderRadius = 0;
+            this.buttonMinimize.ButtonText = "";
+            this.buttonMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonMinimize.DisabledColor = System.Drawing.Color.Gray;
+            this.buttonMinimize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonMinimize.Iconcolor = System.Drawing.Color.Transparent;
+            this.buttonMinimize.Iconimage = ((System.Drawing.Image)(resources.GetObject("buttonMinimize.Iconimage")));
+            this.buttonMinimize.Iconimage_right = null;
+            this.buttonMinimize.Iconimage_right_Selected = null;
+            this.buttonMinimize.Iconimage_Selected = null;
+            this.buttonMinimize.IconMarginLeft = 0;
+            this.buttonMinimize.IconMarginRight = 0;
+            this.buttonMinimize.IconRightVisible = true;
+            this.buttonMinimize.IconRightZoom = 0D;
+            this.buttonMinimize.IconVisible = false;
+            this.buttonMinimize.IconZoom = 90D;
+            this.buttonMinimize.IsTab = false;
+            this.buttonMinimize.Location = new System.Drawing.Point(663, 0);
+            this.buttonMinimize.Name = "buttonMinimize";
+            this.buttonMinimize.Normalcolor = System.Drawing.Color.Transparent;
+            this.buttonMinimize.OnHovercolor = System.Drawing.Color.WhiteSmoke;
+            this.buttonMinimize.OnHoverTextColor = System.Drawing.Color.White;
+            this.buttonMinimize.selected = false;
+            this.buttonMinimize.Size = new System.Drawing.Size(31, 35);
+            this.buttonMinimize.TabIndex = 5;
+            this.buttonMinimize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonMinimize.Textcolor = System.Drawing.Color.White;
+            this.buttonMinimize.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMinimize.Click += new System.EventHandler(this.btnMinimum_Click);
             // 
-            // btnMaximum
+            // buttonMaximize
             // 
-            this.btnMaximum.BackColor = System.Drawing.Color.Transparent;
-            this.btnMaximum.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximum.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnMaximum.Image = global::MainForm.Properties.Resources.max;
-            this.btnMaximum.ImageActive = null;
-            this.btnMaximum.Location = new System.Drawing.Point(694, 0);
-            this.btnMaximum.Name = "btnMaximum";
-            this.btnMaximum.Size = new System.Drawing.Size(31, 35);
-            this.btnMaximum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMaximum.TabIndex = 3;
-            this.btnMaximum.TabStop = false;
-            this.btnMaximum.Zoom = 10;
-            this.btnMaximum.Click += new System.EventHandler(this.btnMaximum_Click);
+            this.buttonMaximize.Activecolor = System.Drawing.Color.Transparent;
+            this.buttonMaximize.BackColor = System.Drawing.Color.Transparent;
+            this.buttonMaximize.BackgroundImage = global::MainForm.Properties.Resources.max;
+            this.buttonMaximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonMaximize.BorderRadius = 0;
+            this.buttonMaximize.ButtonText = "";
+            this.buttonMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonMaximize.DisabledColor = System.Drawing.Color.Gray;
+            this.buttonMaximize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonMaximize.Iconcolor = System.Drawing.Color.Transparent;
+            this.buttonMaximize.Iconimage = ((System.Drawing.Image)(resources.GetObject("buttonMaximize.Iconimage")));
+            this.buttonMaximize.Iconimage_right = null;
+            this.buttonMaximize.Iconimage_right_Selected = null;
+            this.buttonMaximize.Iconimage_Selected = null;
+            this.buttonMaximize.IconMarginLeft = 0;
+            this.buttonMaximize.IconMarginRight = 0;
+            this.buttonMaximize.IconRightVisible = true;
+            this.buttonMaximize.IconRightZoom = 0D;
+            this.buttonMaximize.IconVisible = false;
+            this.buttonMaximize.IconZoom = 90D;
+            this.buttonMaximize.IsTab = false;
+            this.buttonMaximize.Location = new System.Drawing.Point(694, 0);
+            this.buttonMaximize.Name = "buttonMaximize";
+            this.buttonMaximize.Normalcolor = System.Drawing.Color.Transparent;
+            this.buttonMaximize.OnHovercolor = System.Drawing.Color.WhiteSmoke;
+            this.buttonMaximize.OnHoverTextColor = System.Drawing.Color.White;
+            this.buttonMaximize.selected = false;
+            this.buttonMaximize.Size = new System.Drawing.Size(31, 35);
+            this.buttonMaximize.TabIndex = 4;
+            this.buttonMaximize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonMaximize.Textcolor = System.Drawing.Color.White;
+            this.buttonMaximize.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMaximize.Click += new System.EventHandler(this.btnMaximum_Click);
             // 
-            // btnExit
+            // buttonExit
             // 
-            this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.ImageActive = null;
-            this.btnExit.Location = new System.Drawing.Point(725, 0);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(31, 35);
-            this.btnExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnExit.TabIndex = 1;
-            this.btnExit.TabStop = false;
-            this.btnExit.Zoom = 10;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.buttonExit.Activecolor = System.Drawing.Color.Transparent;
+            this.buttonExit.BackColor = System.Drawing.Color.Transparent;
+            this.buttonExit.BackgroundImage = global::MainForm.Properties.Resources.exit;
+            this.buttonExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonExit.BorderRadius = 0;
+            this.buttonExit.ButtonText = "";
+            this.buttonExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonExit.DisabledColor = System.Drawing.Color.Gray;
+            this.buttonExit.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonExit.Iconcolor = System.Drawing.Color.Transparent;
+            this.buttonExit.Iconimage = ((System.Drawing.Image)(resources.GetObject("buttonExit.Iconimage")));
+            this.buttonExit.Iconimage_right = null;
+            this.buttonExit.Iconimage_right_Selected = null;
+            this.buttonExit.Iconimage_Selected = null;
+            this.buttonExit.IconMarginLeft = 0;
+            this.buttonExit.IconMarginRight = 0;
+            this.buttonExit.IconRightVisible = true;
+            this.buttonExit.IconRightZoom = 0D;
+            this.buttonExit.IconVisible = false;
+            this.buttonExit.IconZoom = 90D;
+            this.buttonExit.IsTab = false;
+            this.buttonExit.Location = new System.Drawing.Point(725, 0);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Normalcolor = System.Drawing.Color.Transparent;
+            this.buttonExit.OnHovercolor = System.Drawing.Color.WhiteSmoke;
+            this.buttonExit.OnHoverTextColor = System.Drawing.Color.White;
+            this.buttonExit.selected = false;
+            this.buttonExit.Size = new System.Drawing.Size(31, 35);
+            this.buttonExit.TabIndex = 0;
+            this.buttonExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonExit.Textcolor = System.Drawing.Color.White;
+            this.buttonExit.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnTitle
             // 
@@ -164,6 +215,16 @@
             this.btnTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTitle.Textcolor = System.Drawing.Color.White;
             this.btnTitle.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // MainPanel
+            // 
+            this.MainPanel.AutoScroll = true;
+            this.MainPanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.Location = new System.Drawing.Point(180, 35);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(576, 450);
+            this.MainPanel.TabIndex = 2;
             // 
             // bunifuGradientPanelMenu
             // 
@@ -341,16 +402,6 @@
             this.btnSoanCauHoi.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSoanCauHoi.Click += new System.EventHandler(this.btnSoanCauHoi_Click);
             // 
-            // MainPanel
-            // 
-            this.MainPanel.AutoScroll = true;
-            this.MainPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(180, 35);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(576, 450);
-            this.MainPanel.TabIndex = 2;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,10 +417,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.ClientSizeChanged += new System.EventHandler(this.MainForm_ClientSizeChanged);
             this.header.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnExit)).EndInit();
             this.bunifuGradientPanelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ImageBtnMenu)).EndInit();
             this.ResumeLayout(false);
@@ -378,7 +427,6 @@
 
         #endregion
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanelMenu;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse;
         private Bunifu.Framework.UI.BunifuFlatButton btnThuVienDeThi;
         private Bunifu.Framework.UI.BunifuFlatButton btnSoanDeThi;
         private Bunifu.Framework.UI.BunifuFlatButton btnSoanCauHoi;
@@ -386,11 +434,11 @@
         private Bunifu.Framework.UI.BunifuGradientPanel header;
         private Bunifu.Framework.UI.BunifuFlatButton btnTitle;
         private Bunifu.Framework.UI.BunifuImageButton ImageBtnMenu;
-        private Bunifu.Framework.UI.BunifuImageButton btnExit;
-        private Bunifu.Framework.UI.BunifuImageButton btnMinimum;
-        private Bunifu.Framework.UI.BunifuImageButton btnMaximum;
         private Bunifu.Framework.UI.BunifuFlatButton btnThuVienCauHoi;
         private System.Windows.Forms.Panel MainPanel;
+        private Bunifu.Framework.UI.BunifuFlatButton buttonExit;
+        private Bunifu.Framework.UI.BunifuFlatButton buttonMinimize;
+        private Bunifu.Framework.UI.BunifuFlatButton buttonMaximize;
     }
 }
 

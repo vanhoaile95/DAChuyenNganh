@@ -92,7 +92,19 @@ namespace MainForm
 
         private void btnMinimum_Click(object sender, EventArgs e)
         {
+
+            //Khi click minimize mà ko ẩn MainPanel thì bị exception , chả hiểu
+            MainPanel.Visible = false;
             WindowState = FormWindowState.Minimized;
+           
+        }
+        private void MainForm_ClientSizeChanged(object sender, EventArgs e)
+        {
+            if (WindowState != FormWindowState.Minimized)
+            {
+                //Khi show lại Form thì  hiện lại MainPanel
+                MainPanel.Visible = true;
+            }
         }
         #endregion
 
@@ -111,31 +123,35 @@ namespace MainForm
                 ImageBtnMenu.Location = new Point(5, 0);
             }
            
-          
             
         }
-      
 
-        
+
+
 
         //Menu Soạn Câu Hỏi
+        SoanCauHoi _panel = new SoanCauHoi();
         private void btnSoanCauHoi_Click(object sender, EventArgs e)
         {
-           
-            SoanCauHoi _panel = new SoanCauHoi();
-            _panel.Dock = DockStyle.Fill;
-            MainPanel.Controls.Clear();
-            MainPanel.Controls.Add(_panel);
 
+            if (!MainPanel.Controls.Contains(_panel))
+            {
+                MainPanel.Controls.Clear();
+                MainPanel.Controls.Add(_panel);
+            }
+            
         }
 
         //Menu Soạn đề thi
         private void btnSoanDeThi_Click(object sender, EventArgs e)
         {
-            SoanCauHoi _panel = new SoanCauHoi();
-            _panel.Dock = DockStyle.Fill;
             MainPanel.Controls.Clear();
-            MainPanel.Controls.Add(_panel);
+           
+           
+
+            
+
+
         }
 
         //Menu Thư viện đề thi
@@ -148,6 +164,11 @@ namespace MainForm
         private void btnThuVienCauHoi_Click(object sender, EventArgs e)
         {
             MainPanel.Controls.Clear();
+            Form1 f = new Form1();
+                f.Show();
+           
         }
+
+      
     }
 }

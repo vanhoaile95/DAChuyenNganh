@@ -29,164 +29,202 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CauHoi));
-            this.bunifuElipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.bntSymbol = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnRemove = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnTitle = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.richNoiDung = new System.Windows.Forms.RichTextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.xóaĐápÁnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelDapAn = new System.Windows.Forms.Panel();
-            this.bntThemDapAn = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.bntSymbol)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRemove)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
-            this.panelDapAn.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.MenuCon = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chènSymbolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtCauHoi = new System.Windows.Forms.RichTextBox();
+            this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.richTextBox5 = new System.Windows.Forms.RichTextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.MenuCon.SuspendLayout();
+            this.groupPanel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // bunifuElipse
+            // MenuCon
             // 
-            this.bunifuElipse.ElipseRadius = 10;
-            this.bunifuElipse.TargetControl = this;
+            this.MenuCon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fontToolStripMenuItem,
+            this.chènSymbolToolStripMenuItem});
+            this.MenuCon.Name = "MenuCon";
+            this.MenuCon.Size = new System.Drawing.Size(145, 48);
             // 
-            // bntSymbol
+            // fontToolStripMenuItem
             // 
-            this.bntSymbol.BackColor = System.Drawing.Color.Transparent;
-            this.bntSymbol.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bntSymbol.Dock = System.Windows.Forms.DockStyle.Left;
-            this.bntSymbol.Image = ((System.Drawing.Image)(resources.GetObject("bntSymbol.Image")));
-            this.bntSymbol.ImageActive = null;
-            this.bntSymbol.Location = new System.Drawing.Point(0, 0);
-            this.bntSymbol.Name = "bntSymbol";
-            this.bntSymbol.Size = new System.Drawing.Size(31, 38);
-            this.bntSymbol.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bntSymbol.TabIndex = 10;
-            this.bntSymbol.TabStop = false;
-            this.toolTip2.SetToolTip(this.bntSymbol, "Chèn Symbol");
-            this.bntSymbol.Zoom = 10;
-            this.bntSymbol.Click += new System.EventHandler(this.bntSymbol_Click);
+            this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.fontToolStripMenuItem.Text = "Font";
+            this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
             // 
-            // btnRemove
+            // chènSymbolToolStripMenuItem
             // 
-            this.btnRemove.BackColor = System.Drawing.Color.Transparent;
-            this.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRemove.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnRemove.Image = ((System.Drawing.Image)(resources.GetObject("btnRemove.Image")));
-            this.btnRemove.ImageActive = null;
-            this.btnRemove.Location = new System.Drawing.Point(532, 0);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(31, 38);
-            this.btnRemove.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnRemove.TabIndex = 9;
-            this.btnRemove.TabStop = false;
-            this.toolTip1.SetToolTip(this.btnRemove, "Xóa Câu Hỏi");
-            this.btnRemove.Zoom = 10;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            this.chènSymbolToolStripMenuItem.Name = "chènSymbolToolStripMenuItem";
+            this.chènSymbolToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.chènSymbolToolStripMenuItem.Text = "Chèn symbol";
+            this.chènSymbolToolStripMenuItem.Click += new System.EventHandler(this.chènSymbolToolStripMenuItem_Click);
             // 
-            // btnTitle
+            // txtCauHoi
             // 
-            this.btnTitle.ActiveBorderThickness = 1;
-            this.btnTitle.ActiveCornerRadius = 20;
-            this.btnTitle.ActiveFillColor = System.Drawing.Color.SeaGreen;
-            this.btnTitle.ActiveForecolor = System.Drawing.Color.White;
-            this.btnTitle.ActiveLineColor = System.Drawing.Color.SeaGreen;
-            this.btnTitle.BackColor = System.Drawing.Color.Transparent;
-            this.btnTitle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTitle.BackgroundImage")));
-            this.btnTitle.ButtonText = "Câu hỏi ";
-            this.btnTitle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTitle.ForeColor = System.Drawing.Color.SeaGreen;
-            this.btnTitle.IdleBorderThickness = 1;
-            this.btnTitle.IdleCornerRadius = 20;
-            this.btnTitle.IdleFillColor = System.Drawing.Color.White;
-            this.btnTitle.IdleForecolor = System.Drawing.Color.SeaGreen;
-            this.btnTitle.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.btnTitle.Location = new System.Drawing.Point(0, 0);
-            this.btnTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnTitle.Name = "btnTitle";
-            this.btnTitle.Size = new System.Drawing.Size(563, 30);
-            this.btnTitle.TabIndex = 7;
-            this.btnTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtCauHoi.ContextMenuStrip = this.MenuCon;
+            this.txtCauHoi.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtCauHoi.Location = new System.Drawing.Point(0, 0);
+            this.txtCauHoi.Name = "txtCauHoi";
+            this.txtCauHoi.Size = new System.Drawing.Size(560, 95);
+            this.txtCauHoi.TabIndex = 9;
+            this.txtCauHoi.Text = "";
             // 
-            // richNoiDung
+            // groupPanel1
             // 
-            this.richNoiDung.BackColor = System.Drawing.SystemColors.Control;
-            this.richNoiDung.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richNoiDung.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.richNoiDung.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.richNoiDung.Location = new System.Drawing.Point(0, 128);
-            this.richNoiDung.Name = "richNoiDung";
-            this.richNoiDung.Size = new System.Drawing.Size(563, 100);
-            this.richNoiDung.TabIndex = 0;
-            this.richNoiDung.Text = "";
-            this.richNoiDung.Enter += new System.EventHandler(this.richNoiDung_Enter);
+            this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.tableLayoutPanel1);
+            this.groupPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupPanel1.Location = new System.Drawing.Point(0, 95);
+            this.groupPanel1.Name = "groupPanel1";
+            this.groupPanel1.Size = new System.Drawing.Size(560, 182);
             // 
-            // contextMenuStrip1
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xóaĐápÁnToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 26);
             // 
-            // xóaĐápÁnToolStripMenuItem
+            this.groupPanel1.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.groupPanel1.Style.BackColorGradientAngle = 90;
+            this.groupPanel1.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.groupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderBottomWidth = 1;
+            this.groupPanel1.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderLeftWidth = 1;
+            this.groupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderRightWidth = 1;
+            this.groupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderTopWidth = 1;
+            this.groupPanel1.Style.CornerDiameter = 4;
+            this.groupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanel1.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.groupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanel1.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
             // 
-            this.xóaĐápÁnToolStripMenuItem.Name = "xóaĐápÁnToolStripMenuItem";
-            this.xóaĐápÁnToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.xóaĐápÁnToolStripMenuItem.Text = "Xóa Đáp Án";
-            this.xóaĐápÁnToolStripMenuItem.Click += new System.EventHandler(this.xóaĐápÁnToolStripMenuItem_Click);
             // 
-            // panelDapAn
             // 
-            this.panelDapAn.AutoSize = true;
-            this.panelDapAn.Controls.Add(this.bntThemDapAn);
-            this.panelDapAn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelDapAn.Location = new System.Drawing.Point(0, 228);
-            this.panelDapAn.Name = "panelDapAn";
-            this.panelDapAn.Size = new System.Drawing.Size(563, 30);
-            this.panelDapAn.TabIndex = 12;
+            this.groupPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // bntThemDapAn
             // 
-            this.bntThemDapAn.ActiveBorderThickness = 1;
-            this.bntThemDapAn.ActiveCornerRadius = 20;
-            this.bntThemDapAn.ActiveFillColor = System.Drawing.Color.SeaGreen;
-            this.bntThemDapAn.ActiveForecolor = System.Drawing.Color.White;
-            this.bntThemDapAn.ActiveLineColor = System.Drawing.Color.SeaGreen;
-            this.bntThemDapAn.BackColor = System.Drawing.Color.Transparent;
-            this.bntThemDapAn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntThemDapAn.BackgroundImage")));
-            this.bntThemDapAn.ButtonText = "Thêm Đáp Án";
-            this.bntThemDapAn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bntThemDapAn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bntThemDapAn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntThemDapAn.ForeColor = System.Drawing.Color.SeaGreen;
-            this.bntThemDapAn.IdleBorderThickness = 1;
-            this.bntThemDapAn.IdleCornerRadius = 20;
-            this.bntThemDapAn.IdleFillColor = System.Drawing.Color.White;
-            this.bntThemDapAn.IdleForecolor = System.Drawing.Color.SeaGreen;
-            this.bntThemDapAn.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.bntThemDapAn.Location = new System.Drawing.Point(0, 0);
-            this.bntThemDapAn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bntThemDapAn.Name = "bntThemDapAn";
-            this.bntThemDapAn.Size = new System.Drawing.Size(563, 30);
-            this.bntThemDapAn.TabIndex = 8;
-            this.bntThemDapAn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bntThemDapAn.Click += new System.EventHandler(this.bntThemDapAn_Click);
             // 
-            // panel1
+            this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanel1.TabIndex = 10;
+            this.groupPanel1.Text = "Đáp án";
             // 
-            this.panel1.Controls.Add(this.btnRemove);
-            this.panel1.Controls.Add(this.bntSymbol);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 90);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(563, 38);
-            this.panel1.TabIndex = 13;
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.groupBox4, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(554, 161);
+            this.tableLayoutPanel1.TabIndex = 9;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.richTextBox5);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(280, 83);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(271, 75);
+            this.groupBox4.TabIndex = 14;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "D";
+            // 
+            // richTextBox5
+            // 
+            this.richTextBox5.ContextMenuStrip = this.MenuCon;
+            this.richTextBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox5.Location = new System.Drawing.Point(3, 16);
+            this.richTextBox5.Name = "richTextBox5";
+            this.richTextBox5.Size = new System.Drawing.Size(265, 56);
+            this.richTextBox5.TabIndex = 11;
+            this.richTextBox5.Text = "";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.richTextBox4);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(3, 83);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(271, 75);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "C";
+            // 
+            // richTextBox4
+            // 
+            this.richTextBox4.ContextMenuStrip = this.MenuCon;
+            this.richTextBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox4.Location = new System.Drawing.Point(3, 16);
+            this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.Size = new System.Drawing.Size(265, 56);
+            this.richTextBox4.TabIndex = 11;
+            this.richTextBox4.Text = "";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.richTextBox2);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(271, 74);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "A";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.ContextMenuStrip = this.MenuCon;
+            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox2.Location = new System.Drawing.Point(3, 16);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(265, 55);
+            this.richTextBox2.TabIndex = 10;
+            this.richTextBox2.Text = "";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.richTextBox3);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(280, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(271, 74);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "B";
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.ContextMenuStrip = this.MenuCon;
+            this.richTextBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox3.Location = new System.Drawing.Point(3, 16);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(265, 55);
+            this.richTextBox3.TabIndex = 11;
+            this.richTextBox3.Text = "";
             // 
             // CauHoi
             // 
@@ -194,35 +232,35 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.richNoiDung);
-            this.Controls.Add(this.panelDapAn);
-            this.Controls.Add(this.btnTitle);
+            this.Controls.Add(this.groupPanel1);
+            this.Controls.Add(this.txtCauHoi);
             this.Name = "CauHoi";
-            this.Size = new System.Drawing.Size(563, 258);
-            this.Load += new System.EventHandler(this.CauHoi_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bntSymbol)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRemove)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
-            this.panelDapAn.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.Size = new System.Drawing.Size(560, 282);
+            this.MenuCon.ResumeLayout(false);
+            this.groupPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse;
-        private Bunifu.Framework.UI.BunifuImageButton btnRemove;
-        private Bunifu.Framework.UI.BunifuImageButton bntSymbol;
-        private System.Windows.Forms.RichTextBox richNoiDung;
-        private System.Windows.Forms.Panel panelDapAn;
-        private Bunifu.Framework.UI.BunifuThinButton2 bntThemDapAn;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.ToolTip toolTip2;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem xóaĐápÁnToolStripMenuItem;
-        public Bunifu.Framework.UI.BunifuThinButton2 btnTitle;
+        private System.Windows.Forms.RichTextBox txtCauHoi;
+        private System.Windows.Forms.ContextMenuStrip MenuCon;
+        private System.Windows.Forms.ToolStripMenuItem fontToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem chènSymbolToolStripMenuItem;
+        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RichTextBox richTextBox5;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RichTextBox richTextBox3;
     }
 }

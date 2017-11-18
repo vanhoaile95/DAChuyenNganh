@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="6e9b5a46-ae24-4148-ab79-0d92db07d51a" name="UMLUseCaseDiagram1" linkedPackageId="9c270f1d-39a8-4b59-af98-4e8a1c6ec78f" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="3f978492-1d0a-4f54-ae24-003e3aa6affe">
+      <profileInstance Id="b5f82176-6191-481a-a655-d42d8653eb17" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="f2c7b910-4f6b-44cb-856a-96cc01194b37">
+      <profileInstance Id="3320fdd4-914e-4cf5-ab9f-ef0aad0dcaed" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="641cb3c3-b0be-4ae1-8cf2-91f34dd88c3a" name="User" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="aaa42e32-9cfa-4910-a6f2-f0347bfe785a" />
+        <targetEnds>
+          <association Id="aeadb32d-cd28-4725-9650-3dae5c310994" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Soạn thảo câu hỏi" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="aafd6887-68a5-4fb0-87c0-85514f21b677" LastKnownName="Soạn thảo câu hỏi" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4325ad7d-ece9-4fc0-ae6d-ddbce3726da4" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8ad9649b-a22d-4448-bfe0-7f7aca08f935" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d7e5b5bf-2d10-4dc7-a864-00ab4f5bd5ab" name="Soạn thảo câu hỏi" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="357b2b5e-0119-457b-ad34-8f548f8534fb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7d70e805-d457-4368-946a-4c76cdd49433" />
+          </association>
+          <association Id="e5597eb0-9dee-4dd6-be7b-5e77cf57e78a" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Trộm tham số câu hỏi" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b89b645d-b42d-4c80-92c9-98db34be0b14" LastKnownName="Trộm tham số câu hỏi" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b9be4c91-1d15-40b2-9d67-5e3e8c36cc8b" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3a408d65-fec1-4eb5-826a-49d8f114801a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b07778f5-4e03-4510-bd1f-2d6663ee5c5e" name="Trộm tham số câu hỏi" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="3ff42204-aec1-446b-bdcb-f07c26cf5d38" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c7fab9a5-484e-483f-9f49-010170a159ad" />
+          </association>
+          <association Id="74678498-f904-4894-a761-fe19b630adce" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Xuất file PDF" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="e8615b78-24c8-415a-90df-236f9fe00877" LastKnownName="Xuất file PDF đề thi" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8e81e124-2c4e-417d-b7dd-a3fa8030c64b" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d2d59ba7-641c-409c-b0ec-8b6ff4c549e9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c5f81295-fda7-48ac-8547-ae61a1bbad24" name="Xuất file PDF" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="30ec0dee-827a-4553-80d7-2542801593b9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c4067b7d-c719-48cf-a876-da678c99b1ba" />
+          </association>
+          <association Id="20528e5f-e21f-4145-b08f-f41b2003251d" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Trộn đề thi" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="735c8d12-a4f2-4541-9b54-5f1b533c8024" LastKnownName="Trộn đề thi" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c823109d-7f0e-4a9d-9cdb-ab8fb1acd789" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f6af09c4-02e4-4473-a306-764ab096b7cc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a6299d67-3c4e-4e7f-96e1-f63a946dffc3" name="Trộn đề thi" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="aab067fb-ee29-40e9-95fc-a323d4ad2bae" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d30c0dfe-2565-4a08-91a9-625fb062dfd1" />
+          </association>
+          <association Id="6b29c2de-15fd-459b-b8ee-637ef0600e4c" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Lựa chọn dạng câu hỏi trắc nghiệm" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="d4ad4c81-af97-4749-8365-86e781d605ec" LastKnownName="Lựa chọn dạng câu hỏi trắc nghiệm" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9a6adff3-5f01-4e28-ba32-9d270de666cb" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c913b178-77c9-4f6e-a1e8-6e39402d110d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7ede8fc6-ff42-4294-b4b1-53be1d84a1cc" name="Lựa chọn dạng câu hỏi trắc nghiệm" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d24d0edb-0e77-4238-b4c0-52134a6c87b9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="5c7616b4-ad65-46ed-a752-7907825e64c7" />
+          </association>
+          <association Id="7639a44b-ba2d-45b6-8aca-fc2618650a48" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Xem đáp an câu hỏi" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="af03db11-6204-4d3d-942c-ccbd6d78848a" LastKnownName="Xem đáp án câu hỏi" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e141eb85-4480-4c1e-988a-9510f681128d" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="713d69df-d67c-4505-8212-96439c8fe95e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="924508d0-dda0-4dcc-877a-f5911a018e9c" name="Xem đáp an câu hỏi" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="37713595-1cda-45f0-9743-52eb5bd1e24d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="bbcf3cfb-1fcc-4f67-9477-17ce315b8400" />
+          </association>
+          <association Id="64c5ed2c-93d9-496f-9967-3404d2bc8ebc" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Tìm kiếm câu hỏi trắc nghiệm" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="fb83c1f2-31f2-46a6-b299-d68014a2d118" LastKnownName="Tìm kiếm câu hỏi trắc nghiệm" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6ab66958-fe1f-488f-98ab-f9a734a9ca32" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8f2331ca-8ff1-4e95-a2b9-5e1a70cdafc1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0cb12a1d-7ee6-420f-937c-0cde900b03a1" name="Tìm kiếm câu hỏi trắc nghiệm" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1b2e01fa-7514-4a93-91a5-5a398d1fb709" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3bad41ea-c4eb-496d-889e-4d7dbf39ee3f" />
+          </association>
+          <association Id="de39c254-2b7c-4531-8f87-115b18b0a4a2" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Xem danh sách câu hỏi trắc nghiệm theo môn học" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="cb7a320b-eae4-45bb-89bb-10350ed5dcf8" LastKnownName="Xem danh sách câu hỏi trắc nghiệm theo môn học" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4ff0f89d-cfb3-48fd-bb8a-707987c025f5" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="355d4dff-0d06-46b5-9af1-34d29631ff71" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e7c46ead-ce29-4c59-8aaa-66f880e88a93" name="Xem danh sách câu hỏi trắc nghiệm theo môn học" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="09e676f1-f8d8-4b1a-9e19-6e4fb786a816" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c8212e29-c2d1-42e5-849f-8095f3dbb0c2" />
+          </association>
+          <association Id="a233188b-6c8e-4d9d-8c51-e82a1dd9db07" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Tạo đề thi trắc nghiệm" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="fd8b05ad-75bb-4b03-8e64-526aba6c8297" LastKnownName="Tạo đề thi trắc nghiệm" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="284308fe-7e32-4188-a48c-558862a554e5" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6100d4a5-48e7-44c7-8895-3e8d7900ca35" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c49448ae-be03-4f2d-985e-4ab83292b610" name="Tạo đề thi trắc nghiệm" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f6129d47-bfbf-4149-ab04-710730662648" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="972e0c45-7158-4f95-9589-9acb132a95a7" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="aafd6887-68a5-4fb0-87c0-85514f21b677" name="Soạn thảo câu hỏi" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f76291be-a7d4-489c-96b5-cad302cf4c52" />
+        <additions>
+          <include Id="429e6902-35bd-4225-95df-01351d57528a">
+            <useCaseMoniker Id="f80afada-be1d-4679-aca2-a399e77fd38e" LastKnownName="Xử lý văn bản" />
+            <elementDefinition Id="ea043e6d-7dab-426c-8787-416d37ad5836" />
+          </include>
+          <include Id="aad09ff2-7aba-4898-a1b5-dcf022f7beeb">
+            <useCaseMoniker Id="56842460-8915-40e2-8372-0646e697f013" LastKnownName="Xử lý hình ảnh" />
+            <elementDefinition Id="9bd91e6c-d74a-4f51-a669-7555b9a5c65f" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f80afada-be1d-4679-aca2-a399e77fd38e" name="Xử lý văn bản" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0dd89585-71d6-4a92-b429-fef8cdb3a1ff" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="56842460-8915-40e2-8372-0646e697f013" name="Xử lý hình ảnh" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d4c2e339-c561-4bca-ad74-9b18ff6b50fe" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="735c8d12-a4f2-4541-9b54-5f1b533c8024" name="Trộn đề thi" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7d95f7e3-bc67-4a27-b4c5-e91815369d79" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b89b645d-b42d-4c80-92c9-98db34be0b14" name="Trộm tham số câu hỏi" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="57a67d18-a86c-4f2b-a564-8c5145fe3195" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e8615b78-24c8-415a-90df-236f9fe00877" name="Xuất file PDF đề thi" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9063542d-6118-43ee-a7c9-e59de19bd7fb" />
+        <extendedCases>
+          <extend Id="1be44353-7f31-4d48-91fd-0c20f5290a1c">
+            <useCaseMoniker Id="fd8b05ad-75bb-4b03-8e64-526aba6c8297" LastKnownName="Tạo đề thi trắc nghiệm" />
+            <elementDefinition Id="7cf11cb0-a740-4560-861f-6065b80d0616" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d4ad4c81-af97-4749-8365-86e781d605ec" name="Lựa chọn dạng câu hỏi trắc nghiệm" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7c4a9979-84d8-45ed-b34f-386551c16686" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="af03db11-6204-4d3d-942c-ccbd6d78848a" name="Xem đáp án câu hỏi" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3d2741e8-7a11-4c54-b93a-748ed4279d0e" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="fb83c1f2-31f2-46a6-b299-d68014a2d118" name="Tìm kiếm câu hỏi trắc nghiệm" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b9cd4154-15a5-4bc9-9380-2668d91aa13d" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="fd8b05ad-75bb-4b03-8e64-526aba6c8297" name="Tạo đề thi trắc nghiệm" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="88f73bde-07e3-4144-ab3c-f549d15cd2d0" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="cb7a320b-eae4-45bb-89bb-10350ed5dcf8" name="Xem danh sách câu hỏi trắc nghiệm theo môn học" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b77cd2f7-99d5-4c92-b90c-3cc61ce16604" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="9c270f1d-39a8-4b59-af98-4e8a1c6ec78f" name="DAChuyenNganh">
+    <elementDefinition Id="f01dbb7d-9db5-4bbb-b8b4-5bc4f01cc5ab" />
+  </package>
+</useCaseModelRoot>

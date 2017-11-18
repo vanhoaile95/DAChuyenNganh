@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace MainForm
 {
-    public partial class Form1 : Form
+    public partial class Form1 : DevComponents.DotNetBar.RibbonForm
     {
         public Form1()
         {
             InitializeComponent();
+            buttonX1.Command = commandBold;
+            
+        }
+
+        private void commandBold_Executed(object sender, EventArgs e)
+        {
+            MessageBox.Show("dsd");
         }
     }
 }

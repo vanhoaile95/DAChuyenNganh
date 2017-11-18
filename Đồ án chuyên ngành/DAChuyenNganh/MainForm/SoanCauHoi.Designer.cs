@@ -28,49 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoanCauHoi));
             this.panelSoanCauHoi = new System.Windows.Forms.Panel();
-            this.btnAddCauHoi = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem2 = new DevComponents.DotNetBar.ButtonItem();
             this.panelSoanCauHoi.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelSoanCauHoi
             // 
             this.panelSoanCauHoi.AutoScroll = true;
-            this.panelSoanCauHoi.BackColor = System.Drawing.Color.White;
-            this.panelSoanCauHoi.Controls.Add(this.btnAddCauHoi);
+            this.panelSoanCauHoi.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panelSoanCauHoi.Controls.Add(this.buttonX2);
             this.panelSoanCauHoi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSoanCauHoi.Location = new System.Drawing.Point(0, 0);
             this.panelSoanCauHoi.Name = "panelSoanCauHoi";
             this.panelSoanCauHoi.Size = new System.Drawing.Size(613, 417);
             this.panelSoanCauHoi.TabIndex = 3;
             // 
-            // btnAddCauHoi
+            // buttonX2
             // 
-            this.btnAddCauHoi.ActiveBorderThickness = 1;
-            this.btnAddCauHoi.ActiveCornerRadius = 20;
-            this.btnAddCauHoi.ActiveFillColor = System.Drawing.Color.SeaGreen;
-            this.btnAddCauHoi.ActiveForecolor = System.Drawing.Color.White;
-            this.btnAddCauHoi.ActiveLineColor = System.Drawing.Color.SeaGreen;
-            this.btnAddCauHoi.BackColor = System.Drawing.Color.White;
-            this.btnAddCauHoi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddCauHoi.BackgroundImage")));
-            this.btnAddCauHoi.ButtonText = "Thêm câu hỏi";
-            this.btnAddCauHoi.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddCauHoi.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAddCauHoi.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCauHoi.ForeColor = System.Drawing.Color.SeaGreen;
-            this.btnAddCauHoi.IdleBorderThickness = 1;
-            this.btnAddCauHoi.IdleCornerRadius = 20;
-            this.btnAddCauHoi.IdleFillColor = System.Drawing.Color.White;
-            this.btnAddCauHoi.IdleForecolor = System.Drawing.Color.SeaGreen;
-            this.btnAddCauHoi.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.btnAddCauHoi.Location = new System.Drawing.Point(0, 0);
-            this.btnAddCauHoi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnAddCauHoi.Name = "btnAddCauHoi";
-            this.btnAddCauHoi.Size = new System.Drawing.Size(613, 41);
-            this.btnAddCauHoi.TabIndex = 0;
-            this.btnAddCauHoi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnAddCauHoi.Click += new System.EventHandler(this.btnAddCauHoi_Click);
+            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX2.AutoExpandOnClick = true;
+            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonX2.Location = new System.Drawing.Point(0, 0);
+            this.buttonX2.Name = "buttonX2";
+            this.buttonX2.Size = new System.Drawing.Size(613, 30);
+            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX2.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.buttonItem1,
+            this.buttonItem2});
+            this.buttonX2.TabIndex = 3;
+            this.buttonX2.Text = "Thêm câu hỏi";
+            // 
+            // buttonItem1
+            // 
+            this.buttonItem1.GlobalItem = false;
+            this.buttonItem1.Name = "buttonItem1";
+            this.buttonItem1.Text = "Câu hỏi 1 đáp án đúng";
+            this.buttonItem1.Click += new System.EventHandler(this.CauHoiDang1_Click);
+            // 
+            // buttonItem2
+            // 
+            this.buttonItem2.GlobalItem = false;
+            this.buttonItem2.Name = "buttonItem2";
+            this.buttonItem2.Text = "Câu hỏi điền chỗ trống";
             // 
             // SoanCauHoi
             // 
@@ -87,6 +90,8 @@
         #endregion
 
         private System.Windows.Forms.Panel panelSoanCauHoi;
-        private Bunifu.Framework.UI.BunifuThinButton2 btnAddCauHoi;
+        private DevComponents.DotNetBar.ButtonX buttonX2;
+        private DevComponents.DotNetBar.ButtonItem buttonItem1;
+        private DevComponents.DotNetBar.ButtonItem buttonItem2;
     }
 }

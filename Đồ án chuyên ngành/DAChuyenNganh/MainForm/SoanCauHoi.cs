@@ -12,49 +12,112 @@ namespace MainForm
 {
     public partial class SoanCauHoi : UserControl
     {
-
         public SoanCauHoi()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
+           
         }
 
-        public List<CauHoi> listCauHoi = new List<CauHoi>();
-        private void btnAddCauHoi_Click(object sender, EventArgs e)
+        public List<Object> listCauHoi = new List<Object>();
+
+        //Câu hỏi dạng 1
+        private void CauHoiDang1_Click(object sender, EventArgs e)
         {
-            CauHoi temp = new CauHoi(listCauHoi.Count + 1);
-            temp.XoaCauHoi = XoaCauHoi;//gán delegate
-            panelSoanCauHoi.Controls.Add(temp);
-            temp.Dock = DockStyle.Top;
-            temp.BringToFront();
-            btnAddCauHoi.BringToFront();
-            panelSoanCauHoi.ScrollControlIntoView(btnAddCauHoi);
+            //Tạo expandable panel câu hỏi
+            DevComponents.DotNetBar.ExpandablePanel TitleCauHoi = new DevComponents.DotNetBar.ExpandablePanel();
+
+            TitleCauHoi.CanvasColor = System.Drawing.SystemColors.Control;
+            TitleCauHoi.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            TitleCauHoi.HideControlsWhenCollapsed = true;
+            TitleCauHoi.ExpandButtonAlignment = DevComponents.DotNetBar.eTitleButtonAlignment.Left;
+            TitleCauHoi.ExpandOnTitleClick = true;
+            TitleCauHoi.AnimationTime = 0;
+
+            TitleCauHoi.TitleStyle.Alignment = System.Drawing.StringAlignment.Center;
+            TitleCauHoi.TitleStyle.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            TitleCauHoi.TitleStyle.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            TitleCauHoi.TitleStyle.Border = DevComponents.DotNetBar.eBorderType.RaisedInner;
+            TitleCauHoi.TitleStyle.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            TitleCauHoi.TitleStyle.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            TitleCauHoi.TitleStyle.GradientAngle = 90;
+            TitleCauHoi.TitleText = "Câu hỏi " + (listCauHoi.Count + 1);
+            TitleCauHoi.Name = "CH" + (listCauHoi.Count + 1);
+
+          
+
+            //Nút xóa câu hỏi
+            DevComponents.DotNetBar.ButtonX xoa = new DevComponents.DotNetBar.ButtonX();
+            xoa.BackColor = Color.Transparent;
+            xoa.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            xoa.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            xoa.Dock = DockStyle.Right;
+            xoa.Image = Properties.Resources.buttonExit_Image;
+
+            xoa.Size = new System.Drawing.Size(20, 20);
+            xoa.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            xoa.Click += Xoa_Click;
+            TitleCauHoi.TitlePanel.Controls.Add(xoa);
+
+           
 
 
-            listCauHoi.Add(temp);
+
+
+            //Tạo câu hỏi & thêm vào expandable panel câu hỏi
+            CauHoi temp = new CauHoi();
+            temp.Location = new Point(0, TitleCauHoi.TitleHeight);
+            temp.Dock = DockStyle.Bottom;
+            TitleCauHoi.AutoSize = true;
+            TitleCauHoi.Controls.Add(temp);
+
+
+
+
+            //Add expandable câu hỏi vào panel SoanCauHoi
+            panelSoanCauHoi.Controls.Add(TitleCauHoi);
+
+            TitleCauHoi.Dock = DockStyle.Top;
+            TitleCauHoi.BringToFront();
+            buttonX2.BringToFront();
+            panelSoanCauHoi.ScrollControlIntoView(buttonX2);
+
+            //Thêm câu hỏi vào list để dễ quản lý
+            listCauHoi.Add(TitleCauHoi);
         }
 
-
-        public void XoaCauHoi(String CauHoi)
+        //Chèn symbol
+        private void Symbol_Click(object sender, EventArgs e)
         {
-            for(int i=0;i<listCauHoi.Count;i++)
+            Control panel = ((Control)sender).Parent.Parent;
+            foreach (Control item in panel.Controls)
             {
-                if(listCauHoi.ElementAt(i).btnTitle.ButtonText== CauHoi)
+                foreach (Control _item in item.Controls)
                 {
-                    listCauHoi.RemoveAt(i);
-                    
-                    break;
+                    MessageBox.Show(_item.Name);
                 }
             }
-
-
-            panelSoanCauHoi.Controls.Clear();
-            panelSoanCauHoi.Controls.Add(btnAddCauHoi);
-            panelSoanCauHoi.ScrollControlIntoView(btnAddCauHoi);
-            for (int i = listCauHoi.Count-1; i >=0; i--)
-            {
-                listCauHoi.ElementAt(i).btnTitle.ButtonText = "Câu hỏi " + (i + 1).ToString();
-                panelSoanCauHoi.Controls.Add(listCauHoi.ElementAt(i));
-            }
+           
+            //richTextBoxEx1.SelectedRtf = Properties.Resources.Document;
         }
+
+        //Định dạng font
+        private void Font_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        //Xóa câu hỏi
+        private void Xoa_Click(object sender, EventArgs e)
+        {
+           //Xóa câu hỏi khỏi listCauHoi
+            listCauHoi.Remove(((DevComponents.DotNetBar.ButtonX)sender).Parent.Parent);
+            //Xóa giao diện câu hỏi
+            panelSoanCauHoi.Controls.Remove(((DevComponents.DotNetBar.ButtonX)sender).Parent.Parent);
+        }
+       
+       
+
+
     }
 }
