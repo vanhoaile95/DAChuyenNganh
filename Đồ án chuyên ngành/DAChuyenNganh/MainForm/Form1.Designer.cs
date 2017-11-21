@@ -147,7 +147,7 @@
             this.metroStatusBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.buttonItem1,
             this.controlContainerItem1});
-            this.metroStatusBar1.Location = new System.Drawing.Point(5, 349);
+            this.metroStatusBar1.Location = new System.Drawing.Point(5, 347);
             this.metroStatusBar1.Name = "metroStatusBar1";
             this.metroStatusBar1.Size = new System.Drawing.Size(588, 22);
             this.metroStatusBar1.TabIndex = 1;
@@ -647,7 +647,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 373);
+            this.ClientSize = new System.Drawing.Size(598, 371);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.metroStatusBar1);
             this.Controls.Add(this.expandablePanel1);

@@ -56,24 +56,17 @@
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(613, 30);
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX2.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem1,
-            this.buttonItem2});
             this.buttonX2.TabIndex = 3;
             this.buttonX2.Text = "Thêm câu hỏi";
+            this.buttonX2.Click += new System.EventHandler(this.buttonX2_Click);
             // 
             // buttonItem1
             // 
-            this.buttonItem1.GlobalItem = false;
             this.buttonItem1.Name = "buttonItem1";
-            this.buttonItem1.Text = "Câu hỏi 1 đáp án đúng";
-            this.buttonItem1.Click += new System.EventHandler(this.CauHoiDang1_Click);
             // 
             // buttonItem2
             // 
-            this.buttonItem2.GlobalItem = false;
             this.buttonItem2.Name = "buttonItem2";
-            this.buttonItem2.Text = "Câu hỏi điền chỗ trống";
             // 
             // SoanCauHoi
             // 

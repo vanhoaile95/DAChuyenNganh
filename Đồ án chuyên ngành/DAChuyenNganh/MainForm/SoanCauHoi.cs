@@ -22,7 +22,7 @@ namespace MainForm
         public List<Object> listCauHoi = new List<Object>();
 
         //Câu hỏi dạng 1
-        private void CauHoiDang1_Click(object sender, EventArgs e)
+        private void buttonX2_Click(object sender, EventArgs e)
         {
             //Tạo expandable panel câu hỏi
             DevComponents.DotNetBar.ExpandablePanel TitleCauHoi = new DevComponents.DotNetBar.ExpandablePanel();
@@ -59,13 +59,46 @@ namespace MainForm
             xoa.Click += Xoa_Click;
             TitleCauHoi.TitlePanel.Controls.Add(xoa);
 
-           
+            ///Loại câu hỏi
+            ///
+            LoaiCauHoi loaiCauHoi = new LoaiCauHoi();
+            
+            loaiCauHoi.ShowDialog();
 
 
 
 
             //Tạo câu hỏi & thêm vào expandable panel câu hỏi
-            CauHoi temp = new CauHoi();
+            UserControl temp;
+
+            switch (LoaiCauHoi.typeCauHoi)
+            {
+                case 1:
+                    temp = new CauHoi();
+                    break;
+                case 2:
+                    temp = new CauHoi();
+                    break;
+                case 3:
+                    temp = new CauHoi();
+                    break;
+                case 4:
+                    temp = new CauHoi_4();
+                    break;
+                case 5:
+                    temp = new CauHoi_5();
+                    break;
+                case 6:
+                    temp = new CauHoi_6();
+                    break;
+                case 7:
+                    temp = new CauHoi();
+                    break;
+                default:
+                    temp = new CauHoi();
+                    break;
+            }
+            
             temp.Location = new Point(0, TitleCauHoi.TitleHeight);
             temp.Dock = DockStyle.Bottom;
             TitleCauHoi.AutoSize = true;
@@ -84,6 +117,14 @@ namespace MainForm
 
             //Thêm câu hỏi vào list để dễ quản lý
             listCauHoi.Add(TitleCauHoi);
+            //foreach (var item in listCauHoi)
+            //{
+            //    MessageBox.Show(((DevComponents.DotNetBar.ExpandablePanel)item).TitleText);
+            //    MessageBox.Show((((DevComponents.DotNetBar.ExpandablePanel)item).Controls[0]).GetType().ToString());
+              
+               
+            //}
+          
         }
 
         //Chèn symbol
@@ -114,9 +155,15 @@ namespace MainForm
             listCauHoi.Remove(((DevComponents.DotNetBar.ButtonX)sender).Parent.Parent);
             //Xóa giao diện câu hỏi
             panelSoanCauHoi.Controls.Remove(((DevComponents.DotNetBar.ButtonX)sender).Parent.Parent);
+            for (int i= 0; i < listCauHoi.Count;i++)
+            {
+                ((DevComponents.DotNetBar.ExpandablePanel)listCauHoi.ElementAt(i)).TitleText = "Câu Hỏi " + (i+1);
+                //messagebox.show((((devcomponents.dotnetbar.expandablepanel)item).controls[0]).gettype().tostring());
+
+
+            }
+
         }
-       
-       
 
 
     }

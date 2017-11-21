@@ -80,7 +80,7 @@
             this.txtCauHoi.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtCauHoi.Location = new System.Drawing.Point(0, 0);
             this.txtCauHoi.Name = "txtCauHoi";
-            this.txtCauHoi.Size = new System.Drawing.Size(560, 95);
+            this.txtCauHoi.Size = new System.Drawing.Size(563, 95);
             this.txtCauHoi.TabIndex = 9;
             this.txtCauHoi.Text = "";
             // 
@@ -89,7 +89,6 @@
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel1.Controls.Add(this.tableLayoutPanel1);
-            this.groupPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupPanel1.Location = new System.Drawing.Point(0, 95);
             this.groupPanel1.Name = "groupPanel1";
             this.groupPanel1.Size = new System.Drawing.Size(560, 182);
@@ -235,7 +234,7 @@
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.txtCauHoi);
             this.Name = "CauHoi";
-            this.Size = new System.Drawing.Size(560, 282);
+            this.Size = new System.Drawing.Size(563, 282);
             this.MenuCon.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
