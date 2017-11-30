@@ -60,9 +60,7 @@ namespace MainForm
             TitleCauHoi.TitlePanel.Controls.Add(xoa);
 
             ///Loại câu hỏi
-            ///
             LoaiCauHoi loaiCauHoi = new LoaiCauHoi();
-            
             loaiCauHoi.ShowDialog();
 
 
@@ -74,13 +72,13 @@ namespace MainForm
             switch (LoaiCauHoi.typeCauHoi)
             {
                 case 1:
-                    temp = new CauHoi();
+                    temp = new CauHoi_1();
                     break;
                 case 2:
-                    temp = new CauHoi();
+                    temp = new CauHoi_1();
                     break;
                 case 3:
-                    temp = new CauHoi();
+                    temp = new CauHoi_3();
                     break;
                 case 4:
                     temp = new CauHoi_4();
@@ -92,10 +90,10 @@ namespace MainForm
                     temp = new CauHoi_6();
                     break;
                 case 7:
-                    temp = new CauHoi();
+                    temp = new CauHoi_1();
                     break;
                 default:
-                    temp = new CauHoi();
+                    temp = new CauHoi_1();
                     break;
             }
             
@@ -127,26 +125,7 @@ namespace MainForm
           
         }
 
-        //Chèn symbol
-        private void Symbol_Click(object sender, EventArgs e)
-        {
-            Control panel = ((Control)sender).Parent.Parent;
-            foreach (Control item in panel.Controls)
-            {
-                foreach (Control _item in item.Controls)
-                {
-                    MessageBox.Show(_item.Name);
-                }
-            }
-           
-            //richTextBoxEx1.SelectedRtf = Properties.Resources.Document;
-        }
-
-        //Định dạng font
-        private void Font_Click(object sender, EventArgs e)
-        {
-            
-        }
+    
 
         //Xóa câu hỏi
         private void Xoa_Click(object sender, EventArgs e)

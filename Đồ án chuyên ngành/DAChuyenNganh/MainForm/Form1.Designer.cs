@@ -93,6 +93,7 @@
             this.buttonItem22 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem23 = new DevComponents.DotNetBar.ButtonItem();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.switchButton1 = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.expandablePanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,7 +148,7 @@
             this.metroStatusBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.buttonItem1,
             this.controlContainerItem1});
-            this.metroStatusBar1.Location = new System.Drawing.Point(5, 347);
+            this.metroStatusBar1.Location = new System.Drawing.Point(5, 345);
             this.metroStatusBar1.Name = "metroStatusBar1";
             this.metroStatusBar1.Size = new System.Drawing.Size(588, 22);
             this.metroStatusBar1.TabIndex = 1;
@@ -643,11 +644,25 @@
             this.groupPanel1.TabIndex = 2;
             this.groupPanel1.Text = "đán áp";
             // 
+            // switchButton1
+            // 
+            // 
+            // 
+            // 
+            this.switchButton1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.switchButton1.Location = new System.Drawing.Point(238, 300);
+            this.switchButton1.Name = "switchButton1";
+            this.switchButton1.OffText = "Đáp án đúng";
+            this.switchButton1.Size = new System.Drawing.Size(100, 22);
+            this.switchButton1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.switchButton1.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 371);
+            this.ClientSize = new System.Drawing.Size(598, 369);
+            this.Controls.Add(this.switchButton1);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.metroStatusBar1);
             this.Controls.Add(this.expandablePanel1);
@@ -723,5 +738,6 @@
         private DevComponents.DotNetBar.Command commandBold;
         private DevComponents.DotNetBar.ButtonX buttonX1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
+        private DevComponents.DotNetBar.Controls.SwitchButton switchButton1;
     }
 }
