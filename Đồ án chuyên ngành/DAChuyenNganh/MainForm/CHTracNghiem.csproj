@@ -163,6 +163,12 @@
     <Compile Include="LoaiCauHoi.Designer.cs">
       <DependentUpon>LoaiCauHoi.cs</DependentUpon>
     </Compile>
+    <Compile Include="LuuDeThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LuuDeThi.Designer.cs">
+      <DependentUpon>LuuDeThi.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,12 @@
     <Compile Include="SplashScreenForm.Designer.cs">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="XuatDeThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XuatDeThi.Designer.cs">
+      <DependentUpon>XuatDeThi.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CauHoi_1.resx">
       <DependentUpon>CauHoi_1.cs</DependentUpon>
     </EmbeddedResource>
@@ -209,6 +221,9 @@
     <EmbeddedResource Include="LoaiCauHoi.resx">
       <DependentUpon>LoaiCauHoi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LuuDeThi.resx">
+      <DependentUpon>LuuDeThi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SplashScreenForm.resx">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XuatDeThi.resx">
+      <DependentUpon>XuatDeThi.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -138,6 +138,7 @@ namespace MainForm
             {
                 MainPanel.Controls.Clear();
                 MainPanel.Controls.Add(_panel);
+                _panel.SoanCauHoiInit();
             }
             
         }
@@ -146,10 +147,15 @@ namespace MainForm
         private void btnSoanDeThi_Click(object sender, EventArgs e)
         {
             MainPanel.Controls.Clear();
-           
-           
+            if (!MainPanel.Controls.Contains(_panel))
+            {
+                MainPanel.Controls.Clear();
+                MainPanel.Controls.Add(_panel);
+                //_panel.SoanDeInit();
+            }
 
-            
+
+
 
 
         }

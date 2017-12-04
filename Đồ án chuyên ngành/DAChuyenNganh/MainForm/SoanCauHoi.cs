@@ -63,7 +63,7 @@ namespace MainForm
             LoaiCauHoi loaiCauHoi = new LoaiCauHoi();
             loaiCauHoi.ShowDialog();
 
-
+            
 
 
             //Tạo câu hỏi & thêm vào expandable panel câu hỏi
@@ -110,8 +110,13 @@ namespace MainForm
 
             TitleCauHoi.Dock = DockStyle.Top;
             TitleCauHoi.BringToFront();
+
+            buttonX1.BringToFront();
+            panelSoanCauHoi.ScrollControlIntoView(buttonX1);
             buttonX2.BringToFront();
             panelSoanCauHoi.ScrollControlIntoView(buttonX2);
+            buttonX3.BringToFront();
+            panelSoanCauHoi.ScrollControlIntoView(buttonX3);
 
             //Thêm câu hỏi vào list để dễ quản lý
             listCauHoi.Add(TitleCauHoi);
@@ -144,6 +149,28 @@ namespace MainForm
 
         }
 
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            LuuDeThi luude = new LuuDeThi();
+            luude.ShowDialog();
+        }
 
+        private void buttonX3_Click(object sender, EventArgs e)
+        {
+            XuatDeThi xuatDe = new XuatDeThi();
+            xuatDe.ShowDialog();
+        }
+
+        public void SoanDeInit()
+        {
+            buttonX1.Show();
+            buttonX3.Show();
+        }
+
+        public void SoanCauHoiInit()
+        {
+            buttonX1.Hide();
+            buttonX3.Hide();
+        }
     }
 }
