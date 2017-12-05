@@ -14,10 +14,18 @@ namespace MainForm
     public partial class CauHoi_3 : UserControl
     {
         public static int SoDapAn = 0;
+        public int loaiCauHoi;
         public CauHoi_3()
         {
             InitializeComponent();
             this.Name = "CauHoi_3";
+        }
+
+        public CauHoi_3(int loaicauhoi)
+        {
+            InitializeComponent();
+            this.Name = "CauHoi_3";
+            loaiCauHoi = loaicauhoi;
         }
 
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)

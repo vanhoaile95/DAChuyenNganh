@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.panelSoanCauHoi = new System.Windows.Forms.Panel();
+            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem2 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX4 = new DevComponents.DotNetBar.ButtonX();
             this.panelSoanCauHoi.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,6 +42,7 @@
             // 
             this.panelSoanCauHoi.AutoScroll = true;
             this.panelSoanCauHoi.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panelSoanCauHoi.Controls.Add(this.buttonX4);
             this.panelSoanCauHoi.Controls.Add(this.buttonX3);
             this.panelSoanCauHoi.Controls.Add(this.buttonX1);
             this.panelSoanCauHoi.Controls.Add(this.buttonX2);
@@ -49,6 +51,23 @@
             this.panelSoanCauHoi.Name = "panelSoanCauHoi";
             this.panelSoanCauHoi.Size = new System.Drawing.Size(613, 417);
             this.panelSoanCauHoi.TabIndex = 3;
+            // 
+            // buttonX3
+            // 
+            this.buttonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX3.AutoExpandOnClick = true;
+            this.buttonX3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.buttonX3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonX3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonX3.Location = new System.Drawing.Point(0, 60);
+            this.buttonX3.Name = "buttonX3";
+            this.buttonX3.Size = new System.Drawing.Size(613, 30);
+            this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX3.TabIndex = 5;
+            this.buttonX3.Text = "Xuất đề thi";
+            this.buttonX3.TextColor = System.Drawing.Color.White;
+            this.buttonX3.Click += new System.EventHandler(this.buttonX3_Click);
             // 
             // buttonX1
             // 
@@ -89,22 +108,22 @@
             // 
             this.buttonItem2.Name = "buttonItem2";
             // 
-            // buttonX3
+            // buttonX4
             // 
-            this.buttonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX3.AutoExpandOnClick = true;
-            this.buttonX3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.buttonX3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonX3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.buttonX3.Location = new System.Drawing.Point(0, 60);
-            this.buttonX3.Name = "buttonX3";
-            this.buttonX3.Size = new System.Drawing.Size(613, 30);
-            this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX3.TabIndex = 5;
-            this.buttonX3.Text = "Xuất đề thi";
-            this.buttonX3.TextColor = System.Drawing.Color.White;
-            this.buttonX3.Click += new System.EventHandler(this.buttonX3_Click);
+            this.buttonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX4.AutoExpandOnClick = true;
+            this.buttonX4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.buttonX4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonX4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonX4.Location = new System.Drawing.Point(0, 90);
+            this.buttonX4.Name = "buttonX4";
+            this.buttonX4.Size = new System.Drawing.Size(613, 30);
+            this.buttonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX4.TabIndex = 6;
+            this.buttonX4.Text = "Lưu câu hoi";
+            this.buttonX4.TextColor = System.Drawing.Color.White;
+            this.buttonX4.Click += new System.EventHandler(this.buttonX4_Click);
             // 
             // SoanCauHoi
             // 
@@ -126,5 +145,6 @@
         private DevComponents.DotNetBar.ButtonItem buttonItem2;
         private DevComponents.DotNetBar.ButtonX buttonX1;
         private DevComponents.DotNetBar.ButtonX buttonX3;
+        private DevComponents.DotNetBar.ButtonX buttonX4;
     }
 }

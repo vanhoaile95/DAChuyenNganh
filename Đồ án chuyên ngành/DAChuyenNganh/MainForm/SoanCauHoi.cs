@@ -12,6 +12,7 @@ namespace MainForm
 {
     public partial class SoanCauHoi : UserControl
     {
+        int soanCauHoi = 0;
         public SoanCauHoi()
         {
             InitializeComponent();
@@ -24,6 +25,11 @@ namespace MainForm
         //Câu hỏi dạng 1
         private void buttonX2_Click(object sender, EventArgs e)
         {
+            if(soanCauHoi==1)
+            {
+                buttonX2.Hide();
+            }
+            
             //Tạo expandable panel câu hỏi
             DevComponents.DotNetBar.ExpandablePanel TitleCauHoi = new DevComponents.DotNetBar.ExpandablePanel();
 
@@ -72,28 +78,28 @@ namespace MainForm
             switch (LoaiCauHoi.typeCauHoi)
             {
                 case 1:
-                    temp = new CauHoi_1();
+                    temp = new CauHoi_1(1);
                     break;
                 case 2:
-                    temp = new CauHoi_1();
+                    temp = new CauHoi_1(2);
                     break;
                 case 3:
-                    temp = new CauHoi_3();
+                    temp = new CauHoi_3(3);
                     break;
                 case 4:
-                    temp = new CauHoi_4();
+                    temp = new CauHoi_4(4);
                     break;
                 case 5:
-                    temp = new CauHoi_5();
+                    temp = new CauHoi_5(5);
                     break;
                 case 6:
-                    temp = new CauHoi_6();
+                    temp = new CauHoi_6(6);
                     break;
                 case 7:
-                    temp = new CauHoi_1();
+                    temp = new CauHoi_1(7);
                     break;
                 default:
-                    temp = new CauHoi_1();
+                    temp = new CauHoi_1(8);
                     break;
             }
             
@@ -117,6 +123,8 @@ namespace MainForm
             panelSoanCauHoi.ScrollControlIntoView(buttonX2);
             buttonX3.BringToFront();
             panelSoanCauHoi.ScrollControlIntoView(buttonX3);
+            buttonX4.BringToFront();
+            panelSoanCauHoi.ScrollControlIntoView(buttonX4);
 
             //Thêm câu hỏi vào list để dễ quản lý
             listCauHoi.Add(TitleCauHoi);
@@ -135,6 +143,10 @@ namespace MainForm
         //Xóa câu hỏi
         private void Xoa_Click(object sender, EventArgs e)
         {
+            if(soanCauHoi==1)
+            {
+                buttonX2.Show();
+            }
            //Xóa câu hỏi khỏi listCauHoi
             listCauHoi.Remove(((DevComponents.DotNetBar.ButtonX)sender).Parent.Parent);
             //Xóa giao diện câu hỏi
@@ -163,14 +175,22 @@ namespace MainForm
 
         public void SoanDeInit()
         {
-            buttonX1.Show();
-            buttonX3.Show();
+            //buttonX1.Show();
+            //buttonX3.Show();
+            buttonX4.Hide();
         }
 
         public void SoanCauHoiInit()
         {
+            soanCauHoi = 1;
             buttonX1.Hide();
             buttonX3.Hide();
+        }
+
+        private void buttonX4_Click(object sender, EventArgs e)
+        {
+            LuuCauHoi luuCauHoi = new LuuCauHoi();
+            luuCauHoi.ShowDialog();
         }
     }
 }

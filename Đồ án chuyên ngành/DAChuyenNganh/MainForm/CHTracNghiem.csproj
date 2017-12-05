@@ -163,6 +163,12 @@
     <Compile Include="LoaiCauHoi.Designer.cs">
       <DependentUpon>LoaiCauHoi.cs</DependentUpon>
     </Compile>
+    <Compile Include="LuuCauHoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LuuCauHoi.Designer.cs">
+      <DependentUpon>LuuCauHoi.cs</DependentUpon>
+    </Compile>
     <Compile Include="LuuDeThi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoaiCauHoi.resx">
       <DependentUpon>LoaiCauHoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LuuCauHoi.resx">
+      <DependentUpon>LuuCauHoi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LuuDeThi.resx">
       <DependentUpon>LuuDeThi.cs</DependentUpon>

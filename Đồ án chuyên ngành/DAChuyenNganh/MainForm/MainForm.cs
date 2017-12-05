@@ -133,7 +133,7 @@ namespace MainForm
         SoanCauHoi _panel = new SoanCauHoi();
         private void btnSoanCauHoi_Click(object sender, EventArgs e)
         {
-
+            _panel = new SoanCauHoi();
             if (!MainPanel.Controls.Contains(_panel))
             {
                 MainPanel.Controls.Clear();
@@ -146,12 +146,13 @@ namespace MainForm
         //Menu Soạn đề thi
         private void btnSoanDeThi_Click(object sender, EventArgs e)
         {
+            _panel = new SoanCauHoi();
             MainPanel.Controls.Clear();
             if (!MainPanel.Controls.Contains(_panel))
             {
                 MainPanel.Controls.Clear();
                 MainPanel.Controls.Add(_panel);
-                //_panel.SoanDeInit();
+                _panel.SoanDeInit();
             }
 
 

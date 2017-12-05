@@ -13,10 +13,18 @@ namespace MainForm
     public partial class CauHoi_1 : UserControl
     {
         private String[] strThuTu = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+        public int loaiCauHoi;
         public CauHoi_1()
         {
             InitializeComponent();
             this.Name = "CauHoi_1";
+        }
+
+        public CauHoi_1(int loaicauhoi)
+        {
+            InitializeComponent();
+            this.Name = "CauHoi_1";
+            loaiCauHoi = loaicauhoi;
         }
 
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)
