@@ -12,10 +12,18 @@ namespace Common
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class DoKho
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DoKho()
+        {
+            this.CauHois = new HashSet<CauHoi>();
+        }
+    
         public int ID { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string MoTa { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CauHoi> CauHois { get; set; }
     }
 }

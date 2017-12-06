@@ -4,45 +4,463 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CHTracNghiemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="User">
+    <Schema Namespace="SoanThaoDeThiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CauHoi">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Username" Type="varchar" MaxLength="50" />
-          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="NoiDung" Type="nvarchar" MaxLength="100" />
+          <Property Name="ID_DoKho" Type="int" />
+          <Property Name="ID_MonHoc" Type="int" />
+          <Property Name="ID_LoaiCauHoi" Type="int" />
         </EntityType>
-        <EntityContainer Name="CHTracNghiemModelStoreContainer">
-          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+        <EntityType Name="ChiTietDeThi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_DeThi" Type="int" Nullable="false" />
+          <Property Name="ID_CauHoi" Type="int" />
+        </EntityType>
+        <EntityType Name="DapAn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CauHoi" Type="int" />
+          <Property Name="TenDapAn" Type="nvarchar" MaxLength="100" />
+          <Property Name="NoiDungDapAn" Type="nvarchar" MaxLength="100" />
+          <Property Name="DapAnDung" Type="bit" />
+        </EntityType>
+        <EntityType Name="DeThi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaDeThi" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenDeThi" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayDeThi" Type="smalldatetime" />
+          <Property Name="ThoiGian_Phut" Type="int" />
+          <Property Name="ID_MonHoc" Type="int" />
+        </EntityType>
+        <EntityType Name="DoKho">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LoaiCauHoi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLoaiCauHoi" Type="nvarchar" MaxLength="100" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenMonHoc" Type="nvarchar" MaxLength="100" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_CauHoi_DoKho">
+          <End Role="DoKho" Type="Self.DoKho" Multiplicity="0..1" />
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoKho">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CauHoi">
+              <PropertyRef Name="ID_DoKho" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CauHoi_LoaiCauHoi">
+          <End Role="LoaiCauHoi" Type="Self.LoaiCauHoi" Multiplicity="0..1" />
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiCauHoi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CauHoi">
+              <PropertyRef Name="ID_LoaiCauHoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CauHoi_MonHoc">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="0..1" />
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CauHoi">
+              <PropertyRef Name="ID_MonHoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChiTietDeThi_CauHoi">
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="0..1" />
+          <End Role="ChiTietDeThi" Type="Self.ChiTietDeThi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CauHoi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChiTietDeThi">
+              <PropertyRef Name="ID_CauHoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChiTietDeThi_DeThi">
+          <End Role="DeThi" Type="Self.DeThi" Multiplicity="1" />
+          <End Role="ChiTietDeThi" Type="Self.ChiTietDeThi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeThi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChiTietDeThi">
+              <PropertyRef Name="ID_DeThi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DapAn_CauHoi">
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="0..1" />
+          <End Role="DapAn" Type="Self.DapAn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CauHoi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DapAn">
+              <PropertyRef Name="ID_CauHoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeThi_MonHoc">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="0..1" />
+          <End Role="DeThi" Type="Self.DeThi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DeThi">
+              <PropertyRef Name="ID_MonHoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SoanThaoDeThiModelStoreContainer">
+          <EntitySet Name="CauHoi" EntityType="Self.CauHoi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietDeThi" EntityType="Self.ChiTietDeThi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DapAn" EntityType="Self.DapAn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeThi" EntityType="Self.DeThi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoKho" EntityType="Self.DoKho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiCauHoi" EntityType="Self.LoaiCauHoi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CauHoi_DoKho" Association="Self.FK_CauHoi_DoKho">
+            <End Role="DoKho" EntitySet="DoKho" />
+            <End Role="CauHoi" EntitySet="CauHoi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CauHoi_LoaiCauHoi" Association="Self.FK_CauHoi_LoaiCauHoi">
+            <End Role="LoaiCauHoi" EntitySet="LoaiCauHoi" />
+            <End Role="CauHoi" EntitySet="CauHoi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CauHoi_MonHoc" Association="Self.FK_CauHoi_MonHoc">
+            <End Role="MonHoc" EntitySet="MonHoc" />
+            <End Role="CauHoi" EntitySet="CauHoi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietDeThi_CauHoi" Association="Self.FK_ChiTietDeThi_CauHoi">
+            <End Role="CauHoi" EntitySet="CauHoi" />
+            <End Role="ChiTietDeThi" EntitySet="ChiTietDeThi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietDeThi_DeThi" Association="Self.FK_ChiTietDeThi_DeThi">
+            <End Role="DeThi" EntitySet="DeThi" />
+            <End Role="ChiTietDeThi" EntitySet="ChiTietDeThi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DapAn_CauHoi" Association="Self.FK_DapAn_CauHoi">
+            <End Role="CauHoi" EntitySet="CauHoi" />
+            <End Role="DapAn" EntitySet="DapAn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeThi_MonHoc" Association="Self.FK_DeThi_MonHoc">
+            <End Role="MonHoc" EntitySet="MonHoc" />
+            <End Role="DeThi" EntitySet="DeThi" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CHTracNghiemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="User">
+      <Schema Namespace="SoanThaoDeThiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CauHoi">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoiDung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ID_DoKho" Type="Int32" />
+          <Property Name="ID_MonHoc" Type="Int32" />
+          <Property Name="ID_LoaiCauHoi" Type="Int32" />
+          <NavigationProperty Name="DoKho" Relationship="Self.FK_CauHoi_DoKho" FromRole="CauHoi" ToRole="DoKho" />
+          <NavigationProperty Name="LoaiCauHoi" Relationship="Self.FK_CauHoi_LoaiCauHoi" FromRole="CauHoi" ToRole="LoaiCauHoi" />
+          <NavigationProperty Name="MonHoc" Relationship="Self.FK_CauHoi_MonHoc" FromRole="CauHoi" ToRole="MonHoc" />
+          <NavigationProperty Name="ChiTietDeThis" Relationship="Self.FK_ChiTietDeThi_CauHoi" FromRole="CauHoi" ToRole="ChiTietDeThi" />
+          <NavigationProperty Name="DapAns" Relationship="Self.FK_DapAn_CauHoi" FromRole="CauHoi" ToRole="DapAn" />
         </EntityType>
-        <EntityContainer Name="CHTracNghiemEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Users" EntityType="Self.User" />
+        <EntityType Name="ChiTietDeThi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_DeThi" Type="Int32" Nullable="false" />
+          <Property Name="ID_CauHoi" Type="Int32" />
+          <NavigationProperty Name="CauHoi" Relationship="Self.FK_ChiTietDeThi_CauHoi" FromRole="ChiTietDeThi" ToRole="CauHoi" />
+          <NavigationProperty Name="DeThi" Relationship="Self.FK_ChiTietDeThi_DeThi" FromRole="ChiTietDeThi" ToRole="DeThi" />
+        </EntityType>
+        <EntityType Name="DapAn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CauHoi" Type="Int32" />
+          <Property Name="TenDapAn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDungDapAn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CauHoi" Relationship="Self.FK_DapAn_CauHoi" FromRole="DapAn" ToRole="CauHoi" />
+          <Property Name="DapAnDung" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="DeThi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaDeThi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenDeThi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayDeThi" Type="DateTime" Precision="0" />
+          <Property Name="ThoiGian_Phut" Type="Int32" />
+          <Property Name="ID_MonHoc" Type="Int32" />
+          <NavigationProperty Name="ChiTietDeThis" Relationship="Self.FK_ChiTietDeThi_DeThi" FromRole="DeThi" ToRole="ChiTietDeThi" />
+          <NavigationProperty Name="MonHoc" Relationship="Self.FK_DeThi_MonHoc" FromRole="DeThi" ToRole="MonHoc" />
+        </EntityType>
+        <EntityType Name="DoKho">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MoTa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CauHois" Relationship="Self.FK_CauHoi_DoKho" FromRole="DoKho" ToRole="CauHoi" />
+        </EntityType>
+        <EntityType Name="LoaiCauHoi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLoaiCauHoi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CauHois" Relationship="Self.FK_CauHoi_LoaiCauHoi" FromRole="LoaiCauHoi" ToRole="CauHoi" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenMonHoc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CauHois" Relationship="Self.FK_CauHoi_MonHoc" FromRole="MonHoc" ToRole="CauHoi" />
+          <NavigationProperty Name="DeThis" Relationship="Self.FK_DeThi_MonHoc" FromRole="MonHoc" ToRole="DeThi" />
+        </EntityType>
+        <Association Name="FK_CauHoi_DoKho">
+          <End Role="DoKho" Type="Self.DoKho" Multiplicity="0..1" />
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoKho">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CauHoi">
+              <PropertyRef Name="ID_DoKho" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CauHoi_LoaiCauHoi">
+          <End Role="LoaiCauHoi" Type="Self.LoaiCauHoi" Multiplicity="0..1" />
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiCauHoi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CauHoi">
+              <PropertyRef Name="ID_LoaiCauHoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CauHoi_MonHoc">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="0..1" />
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CauHoi">
+              <PropertyRef Name="ID_MonHoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChiTietDeThi_CauHoi">
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="0..1" />
+          <End Role="ChiTietDeThi" Type="Self.ChiTietDeThi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CauHoi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChiTietDeThi">
+              <PropertyRef Name="ID_CauHoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DapAn_CauHoi">
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="0..1" />
+          <End Role="DapAn" Type="Self.DapAn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CauHoi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DapAn">
+              <PropertyRef Name="ID_CauHoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChiTietDeThi_DeThi">
+          <End Role="DeThi" Type="Self.DeThi" Multiplicity="1" />
+          <End Role="ChiTietDeThi" Type="Self.ChiTietDeThi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeThi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChiTietDeThi">
+              <PropertyRef Name="ID_DeThi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeThi_MonHoc">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="0..1" />
+          <End Role="DeThi" Type="Self.DeThi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DeThi">
+              <PropertyRef Name="ID_MonHoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SoanThaoDeThiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CauHois" EntityType="Self.CauHoi" />
+          <EntitySet Name="ChiTietDeThis" EntityType="Self.ChiTietDeThi" />
+          <EntitySet Name="DapAns" EntityType="Self.DapAn" />
+          <EntitySet Name="DeThis" EntityType="Self.DeThi" />
+          <EntitySet Name="DoKhoes" EntityType="Self.DoKho" />
+          <EntitySet Name="LoaiCauHois" EntityType="Self.LoaiCauHoi" />
+          <EntitySet Name="MonHocs" EntityType="Self.MonHoc" />
+          <AssociationSet Name="FK_CauHoi_DoKho" Association="Self.FK_CauHoi_DoKho">
+            <End Role="DoKho" EntitySet="DoKhoes" />
+            <End Role="CauHoi" EntitySet="CauHois" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CauHoi_LoaiCauHoi" Association="Self.FK_CauHoi_LoaiCauHoi">
+            <End Role="LoaiCauHoi" EntitySet="LoaiCauHois" />
+            <End Role="CauHoi" EntitySet="CauHois" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CauHoi_MonHoc" Association="Self.FK_CauHoi_MonHoc">
+            <End Role="MonHoc" EntitySet="MonHocs" />
+            <End Role="CauHoi" EntitySet="CauHois" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietDeThi_CauHoi" Association="Self.FK_ChiTietDeThi_CauHoi">
+            <End Role="CauHoi" EntitySet="CauHois" />
+            <End Role="ChiTietDeThi" EntitySet="ChiTietDeThis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DapAn_CauHoi" Association="Self.FK_DapAn_CauHoi">
+            <End Role="CauHoi" EntitySet="CauHois" />
+            <End Role="DapAn" EntitySet="DapAns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietDeThi_DeThi" Association="Self.FK_ChiTietDeThi_DeThi">
+            <End Role="DeThi" EntitySet="DeThis" />
+            <End Role="ChiTietDeThi" EntitySet="ChiTietDeThis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeThi_MonHoc" Association="Self.FK_DeThi_MonHoc">
+            <End Role="MonHoc" EntitySet="MonHocs" />
+            <End Role="DeThi" EntitySet="DeThis" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CHTracNghiemModelStoreContainer" CdmEntityContainer="CHTracNghiemEntities">
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="CHTracNghiemModel.User">
-              <MappingFragment StoreEntitySet="User">
+        <EntityContainerMapping StorageEntityContainer="SoanThaoDeThiModelStoreContainer" CdmEntityContainer="SoanThaoDeThiEntities">
+          <EntitySetMapping Name="CauHois">
+            <EntityTypeMapping TypeName="SoanThaoDeThiModel.CauHoi">
+              <MappingFragment StoreEntitySet="CauHoi">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="ID_DoKho" ColumnName="ID_DoKho" />
+                <ScalarProperty Name="ID_MonHoc" ColumnName="ID_MonHoc" />
+                <ScalarProperty Name="ID_LoaiCauHoi" ColumnName="ID_LoaiCauHoi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietDeThis">
+            <EntityTypeMapping TypeName="SoanThaoDeThiModel.ChiTietDeThi">
+              <MappingFragment StoreEntitySet="ChiTietDeThi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_DeThi" ColumnName="ID_DeThi" />
+                <ScalarProperty Name="ID_CauHoi" ColumnName="ID_CauHoi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DapAns">
+            <EntityTypeMapping TypeName="SoanThaoDeThiModel.DapAn">
+              <MappingFragment StoreEntitySet="DapAn">
+                <ScalarProperty Name="DapAnDung" ColumnName="DapAnDung" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_CauHoi" ColumnName="ID_CauHoi" />
+                <ScalarProperty Name="TenDapAn" ColumnName="TenDapAn" />
+                <ScalarProperty Name="NoiDungDapAn" ColumnName="NoiDungDapAn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeThis">
+            <EntityTypeMapping TypeName="SoanThaoDeThiModel.DeThi">
+              <MappingFragment StoreEntitySet="DeThi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MaDeThi" ColumnName="MaDeThi" />
+                <ScalarProperty Name="TenDeThi" ColumnName="TenDeThi" />
+                <ScalarProperty Name="NgayDeThi" ColumnName="NgayDeThi" />
+                <ScalarProperty Name="ThoiGian_Phut" ColumnName="ThoiGian_Phut" />
+                <ScalarProperty Name="ID_MonHoc" ColumnName="ID_MonHoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoKhoes">
+            <EntityTypeMapping TypeName="SoanThaoDeThiModel.DoKho">
+              <MappingFragment StoreEntitySet="DoKho">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiCauHois">
+            <EntityTypeMapping TypeName="SoanThaoDeThiModel.LoaiCauHoi">
+              <MappingFragment StoreEntitySet="LoaiCauHoi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TenLoaiCauHoi" ColumnName="TenLoaiCauHoi" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonHocs">
+            <EntityTypeMapping TypeName="SoanThaoDeThiModel.MonHoc">
+              <MappingFragment StoreEntitySet="MonHoc">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TenMonHoc" ColumnName="TenMonHoc" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

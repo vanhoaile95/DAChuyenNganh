@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Collection\Tai Lieu\Tự Học\ASP.NET\ASP.NET MVC\DAChuyenNganh\Common\CHTracNghiemDB.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\HOAI\Desktop\DAChuyenNganh\Đồ án chuyên ngành\DAChuyenNganh\Common\CHTracNghiemDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

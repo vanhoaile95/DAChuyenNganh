@@ -33,12 +33,12 @@
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chènSymbolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtCauHoi = new System.Windows.Forms.RichTextBox();
-            this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.groupPanelDapAn = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.panelListDapAn = new System.Windows.Forms.Panel();
+            this.btnThemDapAn = new DevComponents.DotNetBar.ButtonX();
             this.MenuCon.SuspendLayout();
-            this.groupPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.groupPanelDapAn.SuspendLayout();
+            this.panelListDapAn.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuCon
@@ -52,14 +52,14 @@
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.fontToolStripMenuItem.Text = "Font";
             this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
             // 
             // chènSymbolToolStripMenuItem
             // 
             this.chènSymbolToolStripMenuItem.Name = "chènSymbolToolStripMenuItem";
-            this.chènSymbolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.chènSymbolToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.chènSymbolToolStripMenuItem.Text = "Chèn symbol";
             this.chènSymbolToolStripMenuItem.Click += new System.EventHandler(this.chènSymbolToolStripMenuItem_Click);
             // 
@@ -73,68 +73,68 @@
             this.txtCauHoi.TabIndex = 9;
             this.txtCauHoi.Text = "";
             // 
-            // groupPanel1
+            // groupPanelDapAn
             // 
-            this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel1.Controls.Add(this.panel1);
-            this.groupPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupPanel1.Location = new System.Drawing.Point(0, 95);
-            this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(563, 167);
-            // 
-            // 
-            // 
-            this.groupPanel1.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.groupPanel1.Style.BackColorGradientAngle = 90;
-            this.groupPanel1.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.groupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel1.Style.BorderBottomWidth = 1;
-            this.groupPanel1.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.groupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel1.Style.BorderLeftWidth = 1;
-            this.groupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel1.Style.BorderRightWidth = 1;
-            this.groupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel1.Style.BorderTopWidth = 1;
-            this.groupPanel1.Style.CornerDiameter = 4;
-            this.groupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.groupPanel1.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.groupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.groupPanel1.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            this.groupPanelDapAn.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanelDapAn.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanelDapAn.Controls.Add(this.panelListDapAn);
+            this.groupPanelDapAn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupPanelDapAn.Location = new System.Drawing.Point(0, 95);
+            this.groupPanelDapAn.Name = "groupPanelDapAn";
+            this.groupPanelDapAn.Size = new System.Drawing.Size(563, 167);
             // 
             // 
             // 
-            this.groupPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanelDapAn.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.groupPanelDapAn.Style.BackColorGradientAngle = 90;
+            this.groupPanelDapAn.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.groupPanelDapAn.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanelDapAn.Style.BorderBottomWidth = 1;
+            this.groupPanelDapAn.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanelDapAn.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanelDapAn.Style.BorderLeftWidth = 1;
+            this.groupPanelDapAn.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanelDapAn.Style.BorderRightWidth = 1;
+            this.groupPanelDapAn.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanelDapAn.Style.BorderTopWidth = 1;
+            this.groupPanelDapAn.Style.CornerDiameter = 4;
+            this.groupPanelDapAn.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanelDapAn.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.groupPanelDapAn.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanelDapAn.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
             // 
             // 
             // 
-            this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel1.TabIndex = 10;
-            this.groupPanel1.Text = "Đáp án";
+            this.groupPanelDapAn.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // panel1
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.buttonX1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(557, 146);
-            this.panel1.TabIndex = 0;
             // 
-            // buttonX1
+            this.groupPanelDapAn.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanelDapAn.TabIndex = 10;
+            this.groupPanelDapAn.Text = "Đáp án";
             // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonX1.Location = new System.Drawing.Point(0, 115);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(557, 31);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 17;
-            this.buttonX1.Text = "Thêm đáp án";
-            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click_1);
+            // panelListDapAn
+            // 
+            this.panelListDapAn.AutoScroll = true;
+            this.panelListDapAn.Controls.Add(this.btnThemDapAn);
+            this.panelListDapAn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelListDapAn.Location = new System.Drawing.Point(0, 0);
+            this.panelListDapAn.Name = "panelListDapAn";
+            this.panelListDapAn.Size = new System.Drawing.Size(557, 146);
+            this.panelListDapAn.TabIndex = 0;
+            // 
+            // btnThemDapAn
+            // 
+            this.btnThemDapAn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnThemDapAn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnThemDapAn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnThemDapAn.Location = new System.Drawing.Point(0, 115);
+            this.btnThemDapAn.Name = "btnThemDapAn";
+            this.btnThemDapAn.Size = new System.Drawing.Size(557, 31);
+            this.btnThemDapAn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnThemDapAn.TabIndex = 17;
+            this.btnThemDapAn.Text = "Thêm đáp án";
+            this.btnThemDapAn.Click += new System.EventHandler(this.btnThemDapAn_Click);
             // 
             // CauHoi_1
             // 
@@ -142,13 +142,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.groupPanel1);
+            this.Controls.Add(this.groupPanelDapAn);
             this.Controls.Add(this.txtCauHoi);
             this.Name = "CauHoi_1";
             this.Size = new System.Drawing.Size(563, 270);
             this.MenuCon.ResumeLayout(false);
-            this.groupPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.groupPanelDapAn.ResumeLayout(false);
+            this.panelListDapAn.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -158,8 +158,8 @@
         private System.Windows.Forms.ContextMenuStrip MenuCon;
         private System.Windows.Forms.ToolStripMenuItem fontToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chènSymbolToolStripMenuItem;
-        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
-        private System.Windows.Forms.Panel panel1;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.Controls.GroupPanel groupPanelDapAn;
+        private System.Windows.Forms.Panel panelListDapAn;
+        private DevComponents.DotNetBar.ButtonX btnThemDapAn;
     }
 }

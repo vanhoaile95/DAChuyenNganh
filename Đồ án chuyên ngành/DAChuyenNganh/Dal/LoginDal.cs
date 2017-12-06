@@ -8,12 +8,14 @@ namespace Dal
 {
     public class LoginDal
     {
-        public static CHTracNghiemEntities Db = new CHTracNghiemEntities();
+        public static SoanThaoDeThiEntities Db = new SoanThaoDeThiEntities();
         public string Test()
         {
-            Db = new CHTracNghiemEntities();
-            User user = Db.Users.First();
-            return user.Username;
+            Db = new SoanThaoDeThiEntities();
+            //User user = Db.Users.First();
+            //return user.Username;
+            return "Ds";
         }
+        
     }
 }

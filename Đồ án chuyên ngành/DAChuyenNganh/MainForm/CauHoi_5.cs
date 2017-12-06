@@ -12,18 +12,12 @@ namespace MainForm
 {
     public partial class CauHoi_5 : UserControl
     {
-        int loaiCauHoi;
         public CauHoi_5()
         {
             InitializeComponent();
         }
-        public CauHoi_5(int loaicauhoi)
-        {
-            InitializeComponent();
-            loaiCauHoi = loaicauhoi;
-        }
 
-
+       
 
         private void CauHoi_5_SizeChanged(object sender, EventArgs e)
         {

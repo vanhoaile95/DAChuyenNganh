@@ -17,7 +17,7 @@ namespace MainForm
         public List<RichTextBox> DanhSachDapAn;
         public List<GroupBox> DanhSachDapAnGr;
         private String[] strThuTu = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-        public int loaiCauHoi;
+
         public CauHoi_6()
         {
             InitializeComponent();
@@ -25,17 +25,6 @@ namespace MainForm
             DanhSachYGr = new List<GroupBox>();
             DanhSachDapAn = new List<RichTextBox>();
             DanhSachDapAnGr = new List<GroupBox>();
-
-        }
-
-        public CauHoi_6(int loaicauhoi)
-        {
-            InitializeComponent();
-            DanhSachY = new List<RichTextBox>();
-            DanhSachYGr = new List<GroupBox>();
-            DanhSachDapAn = new List<RichTextBox>();
-            DanhSachDapAnGr = new List<GroupBox>();
-            loaiCauHoi = loaicauhoi;
         }
 
         private void CauHoi_6_SizeChanged(object sender, EventArgs e)

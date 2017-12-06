@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Common;
+using DevComponents.DotNetBar;
+using Bus;
+using DevComponents.DotNetBar.Controls;
 
 namespace MainForm
 {
     public partial class SoanCauHoi : UserControl
     {
-        int soanCauHoi = 0;
+        public string Style;
         public SoanCauHoi()
         {
             InitializeComponent();
@@ -22,13 +26,11 @@ namespace MainForm
 
         public List<Object> listCauHoi = new List<Object>();
 
-        //Câu hỏi dạng 1
+       
         private void buttonX2_Click(object sender, EventArgs e)
         {
-            if(soanCauHoi==1)
-            {
-                buttonX2.Hide();
-            }
+            if (Style == "CauHoi" && listCauHoi.Count > 0)
+                return;
             
             //Tạo expandable panel câu hỏi
             DevComponents.DotNetBar.ExpandablePanel TitleCauHoi = new DevComponents.DotNetBar.ExpandablePanel();
@@ -78,28 +80,28 @@ namespace MainForm
             switch (LoaiCauHoi.typeCauHoi)
             {
                 case 1:
-                    temp = new CauHoi_1(1);
+                    temp = new CauHoi_1();
                     break;
                 case 2:
-                    temp = new CauHoi_1(2);
+                    temp = new CauHoi_1();
                     break;
                 case 3:
-                    temp = new CauHoi_3(3);
+                    temp = new CauHoi_3();
                     break;
                 case 4:
-                    temp = new CauHoi_4(4);
+                    temp = new CauHoi_4();
                     break;
                 case 5:
-                    temp = new CauHoi_5(5);
+                    temp = new CauHoi_5();
                     break;
                 case 6:
-                    temp = new CauHoi_6(6);
+                    temp = new CauHoi_6();
                     break;
                 case 7:
-                    temp = new CauHoi_1(7);
+                    temp = new CauHoi_1();
                     break;
                 default:
-                    temp = new CauHoi_1(8);
+                    temp = new CauHoi_1();
                     break;
             }
             
@@ -117,24 +119,19 @@ namespace MainForm
             TitleCauHoi.Dock = DockStyle.Top;
             TitleCauHoi.BringToFront();
 
-            buttonX1.BringToFront();
-            panelSoanCauHoi.ScrollControlIntoView(buttonX1);
-            buttonX2.BringToFront();
-            panelSoanCauHoi.ScrollControlIntoView(buttonX2);
-            buttonX3.BringToFront();
-            panelSoanCauHoi.ScrollControlIntoView(buttonX3);
-            buttonX4.BringToFront();
-            panelSoanCauHoi.ScrollControlIntoView(buttonX4);
 
+            btnThemCauHoi.BringToFront();
+            btnLuuCauHoi.BringToFront();
+            btnLuuDe.BringToFront();
+            btnXuatDe.BringToFront();
+
+        
+            panelSoanCauHoi.ScrollControlIntoView(btnThemCauHoi);
+           
+           
             //Thêm câu hỏi vào list để dễ quản lý
             listCauHoi.Add(TitleCauHoi);
-            //foreach (var item in listCauHoi)
-            //{
-            //    MessageBox.Show(((DevComponents.DotNetBar.ExpandablePanel)item).TitleText);
-            //    MessageBox.Show((((DevComponents.DotNetBar.ExpandablePanel)item).Controls[0]).GetType().ToString());
-              
-               
-            //}
+          
           
         }
 
@@ -143,10 +140,6 @@ namespace MainForm
         //Xóa câu hỏi
         private void Xoa_Click(object sender, EventArgs e)
         {
-            if(soanCauHoi==1)
-            {
-                buttonX2.Show();
-            }
            //Xóa câu hỏi khỏi listCauHoi
             listCauHoi.Remove(((DevComponents.DotNetBar.ButtonX)sender).Parent.Parent);
             //Xóa giao diện câu hỏi
@@ -154,9 +147,6 @@ namespace MainForm
             for (int i= 0; i < listCauHoi.Count;i++)
             {
                 ((DevComponents.DotNetBar.ExpandablePanel)listCauHoi.ElementAt(i)).TitleText = "Câu Hỏi " + (i+1);
-                //messagebox.show((((devcomponents.dotnetbar.expandablepanel)item).controls[0]).gettype().tostring());
-
-
             }
 
         }
@@ -175,22 +165,185 @@ namespace MainForm
 
         public void SoanDeInit()
         {
-            //buttonX1.Show();
-            //buttonX3.Show();
-            buttonX4.Hide();
+            Style = "DeThi";
+            btnLuuDe.Show();
+            btnXuatDe.Show();
+            btnLuuCauHoi.Hide();
         }
 
         public void SoanCauHoiInit()
         {
-            soanCauHoi = 1;
-            buttonX1.Hide();
-            buttonX3.Hide();
+            Style = "CauHoi";
+            btnLuuDe.Hide();
+            btnXuatDe.Hide();
+            btnLuuCauHoi.Show();
+        }
+        public void ThuVienCauHoiInit()
+        {
+            
+            Cursor.Current = Cursors.WaitCursor;
+            listCauHoi.Clear();
+            panelSoanCauHoi.Controls.Clear();
+            panelSoanCauHoi.Visible = false;
+            btnLuuCauHoi.Hide();
+            btnLuuDe.Hide();
+            btnXuatDe.Hide();
+            btnThemCauHoi.Hide();
+            var List = new CauHoiBus().GetListCauHoi();
+            for (int i = 0; i < List.Count; i++)
+            {
+                //Tạo expandable panel câu hỏi
+                DevComponents.DotNetBar.ExpandablePanel TitleCauHoi = new DevComponents.DotNetBar.ExpandablePanel();
+                TitleCauHoi.CanvasColor = System.Drawing.SystemColors.Control;
+                TitleCauHoi.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+                TitleCauHoi.HideControlsWhenCollapsed = true;
+                TitleCauHoi.ExpandButtonAlignment = DevComponents.DotNetBar.eTitleButtonAlignment.Left;
+                TitleCauHoi.ExpandOnTitleClick = true;
+                TitleCauHoi.AnimationTime = 0;
+
+                TitleCauHoi.TitleStyle.Alignment = System.Drawing.StringAlignment.Center;
+                TitleCauHoi.TitleStyle.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+                TitleCauHoi.TitleStyle.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+                TitleCauHoi.TitleStyle.Border = DevComponents.DotNetBar.eBorderType.RaisedInner;
+                TitleCauHoi.TitleStyle.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+                TitleCauHoi.TitleStyle.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+                TitleCauHoi.TitleStyle.GradientAngle = 90;
+                TitleCauHoi.TitleText = "Câu hỏi " + (listCauHoi.Count + 1);
+                TitleCauHoi.Name = "CH" + (listCauHoi.Count + 1);
+
+                //Nút xóa câu hỏi
+                DevComponents.DotNetBar.ButtonX xoa = new DevComponents.DotNetBar.ButtonX();
+                xoa.BackColor = Color.Transparent;
+                xoa.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+                xoa.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+                xoa.Dock = DockStyle.Right;
+                xoa.Image = Properties.Resources.buttonExit_Image;
+
+                xoa.Size = new System.Drawing.Size(20, 20);
+                xoa.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+                xoa.Click += Xoa_Click;
+                TitleCauHoi.TitlePanel.Controls.Add(xoa);
+
+                UserControl temp;
+                switch (List[i].ID_LoaiCauHoi)
+                {
+                    case 1:
+                       
+                        temp = new CauHoi_1();
+                        var listDapAn = new CauHoiBus().GetListDapAn(List[i].ID);
+                        ((CauHoi_1)temp).Init(List[i].NoiDung,listDapAn);
+                       
+                        break;
+                    case 2:
+                        temp = new CauHoi_1();
+                        break;
+                    case 3:
+                        temp = new CauHoi_3();
+                        break;
+                    case 4:
+                        temp = new CauHoi_4();
+                        break;
+                    case 5:
+                        temp = new CauHoi_5();
+                        break;
+                    case 6:
+                        temp = new CauHoi_6();
+                        break;
+                    case 7:
+                        temp = new CauHoi_1();
+                        break;
+                    default:
+                        temp = new CauHoi_1();
+                        break;
+                }
+
+                
+
+                temp.Location = new Point(0, TitleCauHoi.TitleHeight);
+                temp.Dock = DockStyle.Bottom;
+                TitleCauHoi.AutoSize = true;
+                TitleCauHoi.Controls.Add(temp);
+
+
+
+
+                //Add expandable câu hỏi vào panel SoanCauHoi
+                panelSoanCauHoi.Controls.Add(TitleCauHoi);
+                TitleCauHoi.Dock = DockStyle.Top;
+                TitleCauHoi.BringToFront();
+
+                
+                //Thêm câu hỏi vào list để dễ quản lý
+                listCauHoi.Add(TitleCauHoi);
+
+
+            }
+            Cursor.Current = Cursors.Default;
+            panelSoanCauHoi.Visible = true;
         }
 
-        private void buttonX4_Click(object sender, EventArgs e)
+        private void btnLuu_Click(object sender, EventArgs e)
         {
-            LuuCauHoi luuCauHoi = new LuuCauHoi();
-            luuCauHoi.ShowDialog();
+            if (listCauHoi.Count > 0)
+            {
+                string LoaiCauHoi = ((ExpandablePanel)listCauHoi[0]).Controls[0].GetType().ToString();
+                if (LoaiCauHoi.Contains("CauHoi_1"))
+                {
+                    CauHoi_1 ch1 = (CauHoi_1)((ExpandablePanel)listCauHoi[0]).Controls[0];
+
+                    try
+                    {
+                        if (ch1.Controls["txtCauHoi"].Text.Length == 0)
+                        {
+                            MessageBox.Show("Chưa nhập nội dung");
+                            return;
+                        }
+                        //Thêm câu hỏi
+                        CauHoi ch = new CauHoi();
+                        ch.NoiDung = ch1.Controls["txtCauHoi"].Text;
+                        ch.ID_DoKho = 1;
+                        ch.ID_MonHoc = 1;
+                        ch.ID_LoaiCauHoi = 1;
+
+                        if (new CauHoiBus().AddCauHoi(ch))
+                        {
+                            //Thêm đáp án
+                            var listDapAn = ch1.Controls.Find("groupDapAn", true);
+                            if (listDapAn.Count() == 0)
+                            {
+                                MessageBox.Show("Chưa có đáp án");
+                                return;
+                            }
+                            for (int i = 0; i < listDapAn.Count(); i++)
+                            {
+                                DapAn da = new DapAn();
+                                da.ID_CauHoi = ch.ID;
+                                da.TenDapAn = listDapAn[i].Text;
+                                da.NoiDungDapAn = listDapAn[i].Controls.Find("richDapAn", true)[0].Text;
+                                da.DapAnDung = ((SwitchButton)listDapAn[i].Controls.Find("switchDapAn", true)[0]).Value;
+
+                                new CauHoiBus().AddDapAn(da);
+                            }
+                            MessageBox.Show("Lưu thành công !");
+
+                            //Reset Add câu hỏi
+                            string CauHoiName = "CH" + (listCauHoi.Count);
+                            panelSoanCauHoi.Controls[CauHoiName].Dispose();
+                            listCauHoi.Clear();
+
+
+                        }
+                        else
+                            MessageBox.Show("Lưu thất bại !");
+
+                        
+                    }
+                    catch (Exception ex)
+                    { MessageBox.Show("Lưu thất bại !"); }
+
+                }
+
+            }
         }
     }
 }

@@ -13,10 +13,10 @@ namespace Common
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CHTracNghiemEntities : DbContext
+    public partial class SoanThaoDeThiEntities : DbContext
     {
-        public CHTracNghiemEntities()
-            : base("name=CHTracNghiemEntities")
+        public SoanThaoDeThiEntities()
+            : base("name=SoanThaoDeThiEntities")
         {
         }
     
@@ -25,6 +25,12 @@ namespace Common
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<CauHoi> CauHois { get; set; }
+        public virtual DbSet<ChiTietDeThi> ChiTietDeThis { get; set; }
+        public virtual DbSet<DapAn> DapAns { get; set; }
+        public virtual DbSet<DeThi> DeThis { get; set; }
+        public virtual DbSet<DoKho> DoKhoes { get; set; }
+        public virtual DbSet<LoaiCauHoi> LoaiCauHois { get; set; }
+        public virtual DbSet<MonHoc> MonHocs { get; set; }
     }
 }

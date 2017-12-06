@@ -47,10 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CauHoiBus.cs" />
     <Compile Include="LoginBus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{6f817f41-130f-4153-b50b-35f649e0e1db}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dal\Dal.csproj">
       <Project>{07db3397-35a7-463a-8119-e24c9acb913e}</Project>
       <Name>Dal</Name>

@@ -130,29 +130,29 @@ namespace MainForm
 
 
         //Menu Soạn Câu Hỏi
-        SoanCauHoi _panel = new SoanCauHoi();
+        SoanCauHoi _panelCauHoi = new SoanCauHoi();
         private void btnSoanCauHoi_Click(object sender, EventArgs e)
         {
-            _panel = new SoanCauHoi();
-            if (!MainPanel.Controls.Contains(_panel))
+
+            if (!MainPanel.Controls.Contains(_panelCauHoi))
             {
                 MainPanel.Controls.Clear();
-                MainPanel.Controls.Add(_panel);
-                _panel.SoanCauHoiInit();
+                MainPanel.Controls.Add(_panelCauHoi);
+                _panelCauHoi.SoanCauHoiInit();
             }
             
         }
 
         //Menu Soạn đề thi
+        SoanCauHoi _panelDeThi = new SoanCauHoi();
         private void btnSoanDeThi_Click(object sender, EventArgs e)
         {
-            _panel = new SoanCauHoi();
-            MainPanel.Controls.Clear();
-            if (!MainPanel.Controls.Contains(_panel))
+            
+            if (!MainPanel.Controls.Contains(_panelDeThi))
             {
                 MainPanel.Controls.Clear();
-                MainPanel.Controls.Add(_panel);
-                _panel.SoanDeInit();
+                MainPanel.Controls.Add(_panelDeThi);
+                _panelDeThi.SoanDeInit();
             }
 
 
@@ -168,12 +168,19 @@ namespace MainForm
         }
 
         //Menu Thư viện câu hỏi
+        SoanCauHoi _panelThuVienCauHoi = new SoanCauHoi();
         private void btnThuVienCauHoi_Click(object sender, EventArgs e)
         {
-            MainPanel.Controls.Clear();
-            Form1 f = new Form1();
-                f.Show();
-           
+            
+            if (!MainPanel.Controls.Contains(_panelThuVienCauHoi))
+            {
+                MainPanel.Controls.Clear();
+                MainPanel.Controls.Add(_panelThuVienCauHoi);
+                _panelThuVienCauHoi.ThuVienCauHoiInit();
+            }
+
+
+
         }
 
       
