@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
+using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Controls;
 namespace MainForm
 {
     public partial class CauHoi_1 : UserControl
@@ -24,31 +26,31 @@ namespace MainForm
             txtCauHoi.Text = NoiDung;
 
             //Đáp án
-            for (int i = 0; i < listDapAn.Count(); i++)
+            for (int i = listDapAn.Count - 1; i >= 0; i--)
             {
                 RichTextBox richTextBox = new RichTextBox();
                 richTextBox.ContextMenuStrip = this.MenuCon;
-                richTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-                richTextBox.Size = new System.Drawing.Size(548, 40);
+                richTextBox.Dock = DockStyle.Top;
+                richTextBox.Size = new Size(548, 40);
                 richTextBox.Text = listDapAn[i].NoiDungDapAn;
                 richTextBox.Name = "richDapAn";
 
-                DevComponents.DotNetBar.Controls.SwitchButton switchButton = new DevComponents.DotNetBar.Controls.SwitchButton();
-                switchButton.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-                switchButton.Dock = System.Windows.Forms.DockStyle.Top;
-                switchButton.Location = new System.Drawing.Point(3, 16);
+                SwitchButton switchButton = new SwitchButton();
+                switchButton.BackgroundStyle.CornerType = eCornerType.Square;
+                switchButton.Dock = DockStyle.Top;
+                switchButton.Location = new Point(3, 16);
                 switchButton.OffText = "Đáp án sai";
                 switchButton.OnText = "Đáp án đúng";
-                switchButton.Size = new System.Drawing.Size(548, 22);
-                switchButton.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+                switchButton.Size = new Size(548, 22);
+                switchButton.Style = eDotNetBarStyle.StyleManagerControlled;
                 switchButton.Name = "switchDapAn";
                 switchButton.Value = Convert.ToBoolean(listDapAn[i].DapAnDung);
 
                 GroupBox groupBox = new GroupBox();
                 groupBox.Controls.Add(richTextBox);
                 groupBox.Controls.Add(switchButton);
-                groupBox.Dock = System.Windows.Forms.DockStyle.Top;
-                groupBox.Location = new System.Drawing.Point(0, 0);
+                groupBox.Dock = DockStyle.Top;
+                groupBox.Location = new Point(0, 0);
                 groupBox.TabStop = false;
                 groupBox.Text = listDapAn[i].TenDapAn;
                 groupBox.AutoSize = true;
@@ -101,28 +103,31 @@ namespace MainForm
       
         public void btnThemDapAn_Click(object sender, EventArgs e)
         {
-            DevComponents.DotNetBar.Controls.SwitchButton switchButton = new DevComponents.DotNetBar.Controls.SwitchButton();
-            switchButton.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            switchButton.Dock = System.Windows.Forms.DockStyle.Top;
-            switchButton.Location = new System.Drawing.Point(3, 16);
+            //Nút đúng sai
+            SwitchButton switchButton = new SwitchButton();
+            switchButton.BackgroundStyle.CornerType = eCornerType.Square;
+            switchButton.Dock = DockStyle.Top;
+            switchButton.Location = new Point(3, 16);
             switchButton.OffText = "Đáp án sai";
             switchButton.OnText = "Đáp án đúng";
-            switchButton.Size = new System.Drawing.Size(548, 22);
-            switchButton.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            switchButton.Size = new Size(548, 22);
+            switchButton.Style = eDotNetBarStyle.StyleManagerControlled;
             switchButton.Name = "switchDapAn";
 
+            //Nội dung đáp án
             RichTextBox richTextBox = new RichTextBox();
-            richTextBox.ContextMenuStrip = this.MenuCon;
-            richTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-            richTextBox.Size = new System.Drawing.Size(548, 40);
+            richTextBox.ContextMenuStrip = MenuCon;
+            richTextBox.Dock = DockStyle.Top;
+            richTextBox.Size = new Size(548, 40);
             richTextBox.Text = "";
             richTextBox.Name = "richDapAn";
 
+            //Groupbox đáp án
             GroupBox groupBox = new GroupBox();
             groupBox.Controls.Add(richTextBox);
             groupBox.Controls.Add(switchButton);
-            groupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            groupBox.Location = new System.Drawing.Point(0, 0);
+            groupBox.Dock = DockStyle.Top;
+            groupBox.Location = new Point(0, 0);
             groupBox.TabStop = false;
             groupBox.Text = strThuTu[panelListDapAn.Controls.Count - 1];
             groupBox.AutoSize = true;

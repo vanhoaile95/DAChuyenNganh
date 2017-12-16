@@ -7,17 +7,242 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Common;
 
 namespace MainForm
 {
-    
     public partial class CauHoi_3 : UserControl
     {
-        public static int SoDapAn = 0;
+        private int mousePanel;
+        public List<RichTextBox> DanhSachY1;
+        public List<GroupBox> DanhSachYGr1;
+        public List<RichTextBox> DanhSachY2;
+        public List<GroupBox> DanhSachYGr2;
+        public List<RichTextBox> DanhSachDapAn;
+        public List<GroupBox> DanhSachDapAnGr;
+        private String[] strThuTu = { "A", "B", "C", "D", "E", "F", "G", "H","I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S","T","U","V","W","X","Y","Z" };
         public CauHoi_3()
         {
             InitializeComponent();
+            DanhSachY1 = new List<RichTextBox>();
+            DanhSachYGr1 = new List<GroupBox>();
+            DanhSachY2 = new List<RichTextBox>();
+            DanhSachYGr2 = new List<GroupBox>();
+            DanhSachDapAn = new List<RichTextBox>();
+            DanhSachDapAnGr = new List<GroupBox>();
             this.Name = "CauHoi_3";
+
+        }
+        public void Init(string NoiDung, List<DapAn> listDapAn)
+        {
+
+            txtCauHoi.Text = NoiDung;
+            for (int i = listDapAn.Count - 1; i >= 0; i--)
+            {
+                if (listDapAn[i].TenDapAn.All(char.IsDigit))
+                {
+                    if (listDapAn[i].DapAnDung == false)
+                    {
+                        //ThemY1
+
+                        //Nội dung đáp án
+                        RichTextBox richTemt = new RichTextBox();
+                        richTemt.Dock = DockStyle.Fill;
+                        richTemt.BorderStyle = BorderStyle.None;
+                        richTemt.BackColor = SystemColors.Control;
+                        richTemt.Font = new Font("Times New Roman", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(163)));
+                        richTemt.ContextMenuStrip = this.contextMenuStrip1;
+                        richTemt.Text = listDapAn[i].NoiDungDapAn;
+                        richTemt.Name = "richDapAn";
+                        richTemt.MouseEnter += new EventHandler(this.splitContainer1_Panel1_MouseEnter);
+                        DanhSachY1.Add(richTemt);
+
+
+                        //Groupbox đáp án
+                        GroupBox groupTemt = new GroupBox();
+                        groupTemt.Size = new Size(563, 70);
+                        groupTemt.Dock = DockStyle.Top;
+                        groupTemt.Text = listDapAn[i].TenDapAn;
+                        groupTemt.Name = "groupDapAn";
+                        groupTemt.Controls.Add(richTemt);
+
+                        DanhSachYGr1.Add(groupTemt);
+                        this.splitContainer1.Panel1.Controls.Clear();
+                        for (int j = DanhSachY1.Count - 1; j >= 0; j--)
+                        {
+                            this.splitContainer1.Panel1.Controls.Add(DanhSachYGr1.ElementAt(j));
+                        }
+                        this.splitContainer1.Panel1.Controls.Add(this.btnThemY1);
+                        this.groupPanelDapAn.Height += groupTemt.Height * (DanhSachYGr1.Count > DanhSachYGr2.Count ? 1 : 0);
+
+
+                        //Them Dap An Đúng
+                        for (int jj = 0; jj < listDapAn.Count; jj++)
+                        {
+                            if (listDapAn[jj].TenDapAn == listDapAn[i].TenDapAn && listDapAn[jj].DapAnDung == true)
+                            {
+                                RichTextBox richTemtDa = new RichTextBox();
+                                richTemtDa.Dock = DockStyle.Fill;
+                                richTemtDa.BorderStyle = BorderStyle.None;
+                                richTemtDa.BackColor = SystemColors.Control;
+                                richTemtDa.Font = new Font("Times New Roman", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(163)));
+                                richTemtDa.Name = "richDapAnCorrect";
+                                richTemtDa.Text = listDapAn[jj].NoiDungDapAn;
+                                DanhSachDapAn.Add(richTemtDa);
+
+                                GroupBox groupTemtDa = new GroupBox();
+                                groupTemtDa.Size = new Size(563, 50);
+                                groupTemtDa.Dock = DockStyle.Top;
+                                groupTemtDa.Text = listDapAn[jj].TenDapAn;
+                                groupTemtDa.Name = "groupDapAnCorrect";
+                                groupTemtDa.Controls.Add(richTemtDa);
+                                DanhSachDapAnGr.Add(groupTemtDa);
+
+                                this.groupPanel2.Controls.Clear();
+                                for (int j = DanhSachY1.Count - 1; j >= 0; j--)
+                                {
+                                    this.groupPanel2.Controls.Add(DanhSachDapAnGr.ElementAt(j));
+                                }
+
+                                this.groupPanelDapAn.Height += groupTemtDa.Height;
+                                this.groupPanel2.Height += groupTemtDa.Height;
+                                break;
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+                    //Thêm Y2
+
+                    RichTextBox richTemt = new RichTextBox();
+                    richTemt.Dock = DockStyle.Fill;
+                    richTemt.BorderStyle = BorderStyle.None;
+                    richTemt.BackColor = SystemColors.Control;
+                    richTemt.Font = new Font("Times New Roman", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(163)));
+                    richTemt.ContextMenuStrip = this.contextMenuStrip1;
+                    richTemt.Text = listDapAn[i].NoiDungDapAn;
+                    richTemt.Name = "richDapAn";
+                    richTemt.MouseEnter += new EventHandler(this.splitContainer1_Panel2_MouseEnter);
+                    DanhSachY2.Add(richTemt);
+
+
+
+                    GroupBox groupTemt = new GroupBox();
+                    groupTemt.Size = new Size(563, 70);
+                    groupTemt.Dock = DockStyle.Top;
+                    groupTemt.Text = listDapAn[i].TenDapAn;
+                    groupTemt.Name = "groupDapAn";
+                    groupTemt.Controls.Add(richTemt);
+
+                    DanhSachYGr2.Add(groupTemt);
+                    this.splitContainer1.Panel2.Controls.Clear();
+                    for (int j = DanhSachY2.Count - 1; j >= 0; j--)
+                    {
+                        this.splitContainer1.Panel2.Controls.Add(DanhSachYGr2.ElementAt(j));
+                    }
+                    this.splitContainer1.Panel2.Controls.Add(this.btnThemY2);
+                    this.groupPanelDapAn.Height += groupTemt.Height * (DanhSachYGr1.Count >= DanhSachYGr2.Count ? 0 : 1);
+                }
+            }
+
+        }
+     
+
+        private void btnThemY1_Click(object sender, EventArgs e)
+        {
+            //Nội dung đáp án
+            RichTextBox richTemt = new RichTextBox();
+            richTemt.Dock = DockStyle.Fill;
+            richTemt.BorderStyle = BorderStyle.None;
+            richTemt.BackColor = SystemColors.Control;
+            richTemt.Font = new Font("Times New Roman", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(163)));
+            richTemt.ContextMenuStrip = this.contextMenuStrip1;
+            richTemt.Text = "";
+            richTemt.Name = "richDapAn";
+            richTemt.MouseEnter+= new EventHandler(this.splitContainer1_Panel1_MouseEnter);
+            DanhSachY1.Add(richTemt);
+
+
+            //Groupbox đáp án
+            GroupBox groupTemt = new GroupBox();
+            groupTemt.Size = new Size(563, 70);
+            groupTemt.Dock = DockStyle.Top;
+            groupTemt.Text = DanhSachY1.Count.ToString();
+            groupTemt.Name = "groupDapAn";
+            groupTemt.Controls.Add(richTemt);
+
+            DanhSachYGr1.Add(groupTemt);
+            this.splitContainer1.Panel1.Controls.Clear();
+            for (int i = DanhSachY1.Count - 1; i >= 0; i--)
+            {
+                this.splitContainer1.Panel1.Controls.Add(DanhSachYGr1.ElementAt(i));
+            }
+            this.splitContainer1.Panel1.Controls.Add(this.btnThemY1);
+            this.groupPanelDapAn.Height += groupTemt.Height*(DanhSachYGr1.Count>DanhSachYGr2.Count? 1: 0);
+
+            //Đáp án đúng
+            RichTextBox richTemtDa = new RichTextBox();
+            richTemtDa.Dock = DockStyle.Fill;
+            richTemtDa.BorderStyle = BorderStyle.None;
+            richTemtDa.BackColor = SystemColors.Control;
+            richTemtDa.Font = new Font("Times New Roman", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(163)));
+            richTemtDa.Name = "richDapAnCorrect";
+            DanhSachDapAn.Add(richTemtDa);
+
+            GroupBox groupTemtDa = new GroupBox();
+            groupTemtDa.Size = new Size(563, 50);
+            groupTemtDa.Dock = DockStyle.Top;
+            groupTemtDa.Text = DanhSachY1.Count.ToString();
+            groupTemtDa.Name = "groupDapAnCorrect";
+            groupTemtDa.Controls.Add(richTemtDa);
+            DanhSachDapAnGr.Add(groupTemtDa);
+
+            this.groupPanel2.Controls.Clear();
+            for (int i = DanhSachY1.Count - 1; i >= 0; i--)
+            {
+                this.groupPanel2.Controls.Add(DanhSachDapAnGr.ElementAt(i));
+            }
+            
+            this.groupPanelDapAn.Height += groupTemtDa.Height;
+            this.groupPanel2.Height += groupTemtDa.Height;
+
+           
+        }
+
+        private void btnThemY2_Click(object sender, EventArgs e)
+        {
+            RichTextBox richTemt = new RichTextBox();
+            richTemt.Dock = DockStyle.Fill;
+            richTemt.BorderStyle = BorderStyle.None;
+            richTemt.BackColor = SystemColors.Control;
+            richTemt.Font = new Font("Times New Roman", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(163)));
+            richTemt.ContextMenuStrip = this.contextMenuStrip1;
+            richTemt.Text = "";
+            richTemt.Name = "richDapAn";
+            richTemt.MouseEnter+= new EventHandler(this.splitContainer1_Panel2_MouseEnter);
+            DanhSachY2.Add(richTemt);
+
+
+
+            GroupBox groupTemt = new GroupBox();
+            groupTemt.Size = new Size(563, 70);
+            groupTemt.Dock = DockStyle.Top;
+            groupTemt.Text = this.strThuTu[DanhSachY2.Count-1];
+            groupTemt.Name = "groupDapAn";
+            groupTemt.Controls.Add(richTemt);
+
+            DanhSachYGr2.Add(groupTemt);
+            this.splitContainer1.Panel2.Controls.Clear();
+            for (int i = DanhSachY2.Count - 1; i >= 0; i--)
+            {
+                this.splitContainer1.Panel2.Controls.Add(DanhSachYGr2.ElementAt(i));
+            }
+            this.splitContainer1.Panel2.Controls.Add(this.btnThemY2);
+            this.groupPanelDapAn.Height += groupTemt.Height * (DanhSachYGr1.Count >= DanhSachYGr2.Count ? 0 : 1);
+
+            
         }
 
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)
@@ -36,8 +261,6 @@ namespace MainForm
                     }
                 }
             }
-
-
         }
 
         private void chènSymbolToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,92 +275,108 @@ namespace MainForm
                     ((RichTextBox)sourceControl).SelectedRtf = Properties.Resources.Document;
                 }
             }
+        }
+
+        private void xóaÝToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripItem menuItem = sender as ToolStripItem;
+            RichTextBox rtbTempt;
+            if (menuItem != null)
+            {
+                ContextMenuStrip owner = menuItem.Owner as ContextMenuStrip;
+                if (owner != null)
+                {
+                    Control sourceControl = owner.SourceControl;
+                    rtbTempt = (RichTextBox)sourceControl;
+                    try
+                    {
+                        if (this.mousePanel == 1)
+                        {
+                            XoaY1(rtbTempt.Text);
+                        }
+                        else
+                        {
+                            XoaY2(rtbTempt.Text);
+                        }
+                    }
+                    catch
+                    {
+
+                    }
+                    
+                }
+            }
 
         }
 
-       
-        private void buttonX1_Click(object sender, EventArgs e)
+        private void splitContainer1_Panel1_MouseEnter(object sender, EventArgs e)
         {
-            SoDapAn++;
-            txtCauHoi.Text += " ... ";
-        
-            
-
-            RichTextBox richTextBox = new RichTextBox();
-            richTextBox.ContextMenuStrip = this.MenuCon;
-            richTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-            richTextBox.Size = new System.Drawing.Size(548, 40);
-            richTextBox.Text = "";
-
-            GroupBox groupBox = new GroupBox();
-            groupBox.Controls.Add(richTextBox);
-            groupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            groupBox.Location = new System.Drawing.Point(0, 0);
-            groupBox.TabStop = false;
-            
-            groupBox.Text = "Chỗ trống " + SoDapAn;
-            groupBox.AutoSize = true;
-
-            panel1.Controls.Add(groupBox);
-            groupBox.BringToFront();
-            panel1.ScrollControlIntoView(buttonX1);
-
-
+            this.mousePanel = 1;
         }
 
-        private void txtCauHoi_TextChanged(object sender, EventArgs e)
+        private void splitContainer1_Panel2_MouseEnter(object sender, EventArgs e)
         {
-            int DemSoChoTrong = 0;
-            string[] ChoTrong = txtCauHoi.Text.Trim().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-            foreach(string temp in ChoTrong)
+            this.mousePanel = 2;
+        }
+
+        private void XoaY1(string noidung)
+        {
+            
+            GroupBox grbTempt = DanhSachYGr1.ElementAt(0);
+            this.groupPanelDapAn.Height -= grbTempt.Height * (DanhSachYGr1.Count > DanhSachYGr2.Count ? 1 : 0);
+            for (int i=0; i<DanhSachY1.Count;i++)
             {
-                if (temp.Contains("..."))
-                    DemSoChoTrong++;
-            }
-            if (DemSoChoTrong < SoDapAn)
-            {
-                int temp = SoDapAn - DemSoChoTrong;
-                SoDapAn -= temp;
-                for (int i = 0; i < temp; i++)
+                if(DanhSachY1.ElementAt(i).Text.Equals(noidung))
                 {
-                    panel1.Controls.Remove(panel1.Controls[0]);
+                    DanhSachY1.RemoveAt(i);
+                    DanhSachYGr1.RemoveAt(i);
+                    break;
                 }
-               
             }
-            else if (DemSoChoTrong > SoDapAn)
+            
+            this.splitContainer1.Panel1.Controls.Clear();
+            for (int i = DanhSachY1.Count - 1; i >= 0; i--)
             {
-                int temp = DemSoChoTrong - SoDapAn;
-                SoDapAn+= temp;
-
-                for (int i = 0; i < temp; i++)
-                {
-                    RichTextBox richTextBox = new RichTextBox();
-                    richTextBox.ContextMenuStrip = this.MenuCon;
-                    richTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-                    richTextBox.Size = new System.Drawing.Size(548, 40);
-                    richTextBox.Text = "";
-
-                    GroupBox groupBox = new GroupBox();
-                    groupBox.Controls.Add(richTextBox);
-                    groupBox.Dock = System.Windows.Forms.DockStyle.Top;
-                    groupBox.Location = new System.Drawing.Point(0, 0);
-                    groupBox.TabStop = false;
-
-                    groupBox.Text = "Chỗ trống " + SoDapAn;
-                    groupBox.AutoSize = true;
-                    panel1.Controls.Add(groupBox);
-                    groupBox.BringToFront();
-                }
-                
-
-              
-                panel1.ScrollControlIntoView(buttonX1);
-               
+                this.splitContainer1.Panel1.Controls.Add(DanhSachYGr1.ElementAt(i));
+                DanhSachYGr1.ElementAt(i).Text = (i+1).ToString();
+            }
+            this.splitContainer1.Panel1.Controls.Add(this.btnThemY1);
+            
+            ///xóa ý đáp án
+            grbTempt = DanhSachDapAnGr.ElementAt(0);
+            DanhSachDapAnGr.RemoveAt(DanhSachDapAnGr.Count - 1);
+            this.groupPanel2.Controls.Clear();
+            for (int i = DanhSachY1.Count - 1; i >= 0; i--)
+            {
+                this.groupPanel2.Controls.Add(DanhSachDapAnGr.ElementAt(i));
             }
 
-          
+            this.groupPanelDapAn.Height -= grbTempt.Height;
+            this.groupPanel2.Height -= grbTempt.Height;
 
-           
+        }
+        private void XoaY2(string noidung)
+        {
+            
+            GroupBox grbTempt = DanhSachYGr2.ElementAt(0);
+            this.groupPanelDapAn.Height -= grbTempt.Height * (DanhSachYGr2.Count > DanhSachYGr1.Count ? 1 : 0);
+            for (int i = 0; i < DanhSachY2.Count; i++)
+            {
+                if (DanhSachY2.ElementAt(i).Text.Equals(noidung))
+                {
+                    DanhSachY2.RemoveAt(i);
+                    DanhSachYGr2.RemoveAt(i);
+                    break;
+                }
+            }
+
+            this.splitContainer1.Panel2.Controls.Clear();
+            for (int i = DanhSachY2.Count - 1; i >= 0; i--)
+            {
+                this.splitContainer1.Panel2.Controls.Add(DanhSachYGr2.ElementAt(i));
+                DanhSachYGr2.ElementAt(i).Text = strThuTu[i];
+            }
+            this.splitContainer1.Panel2.Controls.Add(this.btnThemY2);
             
         }
     }

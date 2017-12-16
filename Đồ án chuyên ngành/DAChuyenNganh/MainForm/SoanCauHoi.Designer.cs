@@ -84,7 +84,7 @@
             this.btnXuatDe.TabIndex = 5;
             this.btnXuatDe.Text = "Xuất đề thi";
             this.btnXuatDe.TextColor = System.Drawing.Color.White;
-            this.btnXuatDe.Click += new System.EventHandler(this.buttonX3_Click);
+            this.btnXuatDe.Click += new System.EventHandler(this.btnXuatDe_Click);
             // 
             // btnLuuDe
             // 
@@ -101,7 +101,7 @@
             this.btnLuuDe.TabIndex = 4;
             this.btnLuuDe.Text = "Lưu đề thi";
             this.btnLuuDe.TextColor = System.Drawing.Color.White;
-            this.btnLuuDe.Click += new System.EventHandler(this.buttonX1_Click);
+            this.btnLuuDe.Click += new System.EventHandler(this.btnLuuDe_Click);
             // 
             // btnThemCauHoi
             // 
@@ -115,7 +115,7 @@
             this.btnThemCauHoi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnThemCauHoi.TabIndex = 3;
             this.btnThemCauHoi.Text = "Thêm câu hỏi";
-            this.btnThemCauHoi.Click += new System.EventHandler(this.buttonX2_Click);
+            this.btnThemCauHoi.Click += new System.EventHandler(this.btnThemCauHoi_Click);
             // 
             // buttonItem1
             // 
