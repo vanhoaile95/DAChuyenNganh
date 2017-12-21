@@ -32,14 +32,14 @@
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.txtTenDeThi = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.cbMonHoc = new System.Windows.Forms.ComboBox();
-            this.NgayThi = new System.Windows.Forms.DateTimePicker();
+            this.DatePickerNgayThi = new System.Windows.Forms.DateTimePicker();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.cbThoiGianLamBai = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnHuy = new System.Windows.Forms.Button();
+            this.btnLuu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bunifuFlatButton1
@@ -99,12 +99,12 @@
             this.cbMonHoc.Size = new System.Drawing.Size(121, 21);
             this.cbMonHoc.TabIndex = 1;
             // 
-            // NgayThi
+            // DatePickerNgayThi
             // 
-            this.NgayThi.Location = new System.Drawing.Point(183, 145);
-            this.NgayThi.Name = "NgayThi";
-            this.NgayThi.Size = new System.Drawing.Size(200, 20);
-            this.NgayThi.TabIndex = 3;
+            this.DatePickerNgayThi.Location = new System.Drawing.Point(183, 145);
+            this.DatePickerNgayThi.Name = "DatePickerNgayThi";
+            this.DatePickerNgayThi.Size = new System.Drawing.Size(200, 20);
+            this.DatePickerNgayThi.TabIndex = 3;
             // 
             // labelX1
             // 
@@ -116,7 +116,7 @@
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(75, 23);
             this.labelX1.TabIndex = 15;
-            this.labelX1.Text = "Tên Đế Thi";
+            this.labelX1.Text = "Tên Đề Thi";
             // 
             // labelX2
             // 
@@ -156,6 +156,7 @@
             // 
             // cbThoiGianLamBai
             // 
+            this.cbThoiGianLamBai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbThoiGianLamBai.FormattingEnabled = true;
             this.cbThoiGianLamBai.Items.AddRange(new object[] {
             "15 phút",
@@ -172,26 +173,27 @@
             this.cbThoiGianLamBai.Size = new System.Drawing.Size(121, 21);
             this.cbThoiGianLamBai.TabIndex = 3;
             // 
-            // button1
+            // btnHuy
             // 
-            this.button1.BackColor = System.Drawing.Color.SeaGreen;
-            this.button1.Location = new System.Drawing.Point(86, 192);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 31);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Hủy";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnHuy.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnHuy.Location = new System.Drawing.Point(12, 192);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(109, 31);
+            this.btnHuy.TabIndex = 19;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseVisualStyleBackColor = false;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
-            // button2
+            // btnLuu
             // 
-            this.button2.BackColor = System.Drawing.Color.SeaGreen;
-            this.button2.Location = new System.Drawing.Point(201, 192);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 31);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Lưu";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnLuu.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnLuu.Location = new System.Drawing.Point(274, 192);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(109, 31);
+            this.btnLuu.TabIndex = 20;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.UseVisualStyleBackColor = false;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // LuuDeThi
             // 
@@ -199,14 +201,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(397, 235);
             this.ControlBox = false;
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnLuu);
+            this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.cbThoiGianLamBai);
             this.Controls.Add(this.labelX4);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.labelX1);
-            this.Controls.Add(this.NgayThi);
+            this.Controls.Add(this.DatePickerNgayThi);
             this.Controls.Add(this.cbMonHoc);
             this.Controls.Add(this.txtTenDeThi);
             this.Controls.Add(this.bunifuFlatButton1);
@@ -225,13 +227,13 @@
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private DevComponents.DotNetBar.Controls.TextBoxX txtTenDeThi;
         private System.Windows.Forms.ComboBox cbMonHoc;
-        private System.Windows.Forms.DateTimePicker NgayThi;
+        private System.Windows.Forms.DateTimePicker DatePickerNgayThi;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX4;
         private System.Windows.Forms.ComboBox cbThoiGianLamBai;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnHuy;
+        private System.Windows.Forms.Button btnLuu;
     }
 }

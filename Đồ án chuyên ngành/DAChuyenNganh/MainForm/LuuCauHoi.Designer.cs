@@ -29,33 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LuuCauHoi));
-            this.cbSoDe = new System.Windows.Forms.ComboBox();
+            this.cboxDoKho = new System.Windows.Forms.ComboBox();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnHuy = new System.Windows.Forms.Button();
+            this.lblDoKho = new DevComponents.DotNetBar.LabelX();
+            this.lblMonHoc = new DevComponents.DotNetBar.LabelX();
+            this.cboxMonHoc = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // cbSoDe
+            // cboxDoKho
             // 
-            this.cbSoDe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSoDe.FormattingEnabled = true;
-            this.cbSoDe.Items.AddRange(new object[] {
-            "1 Đề",
-            "2 Đề",
-            "3 Đề",
-            "3 Đề",
-            "4 Đề",
-            "5 Đề",
-            "6 Đề",
-            "7 Đề",
-            "8 Đề",
-            "9 Đề",
-            "10 Đề"});
-            this.cbSoDe.Location = new System.Drawing.Point(113, 70);
-            this.cbSoDe.Name = "cbSoDe";
-            this.cbSoDe.Size = new System.Drawing.Size(178, 21);
-            this.cbSoDe.TabIndex = 24;
+            this.cboxDoKho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxDoKho.FormattingEnabled = true;
+            this.cboxDoKho.Location = new System.Drawing.Point(113, 70);
+            this.cboxDoKho.Name = "cboxDoKho";
+            this.cboxDoKho.Size = new System.Drawing.Size(178, 21);
+            this.cboxDoKho.TabIndex = 24;
             // 
             // bunifuFlatButton1
             // 
@@ -92,38 +82,60 @@
             this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // button2
+            // btnLuu
             // 
-            this.button2.BackColor = System.Drawing.Color.SeaGreen;
-            this.button2.Location = new System.Drawing.Point(158, 149);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 31);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "Xuất";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnLuu.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnLuu.Location = new System.Drawing.Point(182, 149);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(109, 31);
+            this.btnLuu.TabIndex = 30;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.UseVisualStyleBackColor = false;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // button3
+            // btnHuy
             // 
-            this.button3.BackColor = System.Drawing.Color.SeaGreen;
-            this.button3.Location = new System.Drawing.Point(43, 149);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 31);
-            this.button3.TabIndex = 29;
-            this.button3.Text = "Hủy";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnHuy.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnHuy.Location = new System.Drawing.Point(21, 149);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(109, 31);
+            this.btnHuy.TabIndex = 29;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseVisualStyleBackColor = false;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
-            // labelX1
-            // 
-            // 
+            // lblDoKho
             // 
             // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(21, 68);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(75, 23);
-            this.labelX1.TabIndex = 31;
-            this.labelX1.Text = "Độ khó";
+            // 
+            // 
+            this.lblDoKho.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblDoKho.Location = new System.Drawing.Point(21, 68);
+            this.lblDoKho.Name = "lblDoKho";
+            this.lblDoKho.Size = new System.Drawing.Size(75, 23);
+            this.lblDoKho.TabIndex = 31;
+            this.lblDoKho.Text = "Độ khó";
+            // 
+            // lblMonHoc
+            // 
+            // 
+            // 
+            // 
+            this.lblMonHoc.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblMonHoc.Location = new System.Drawing.Point(21, 104);
+            this.lblMonHoc.Name = "lblMonHoc";
+            this.lblMonHoc.Size = new System.Drawing.Size(75, 23);
+            this.lblMonHoc.TabIndex = 33;
+            this.lblMonHoc.Text = "Môn học";
+            // 
+            // cboxMonHoc
+            // 
+            this.cboxMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxMonHoc.FormattingEnabled = true;
+            this.cboxMonHoc.Location = new System.Drawing.Point(113, 106);
+            this.cboxMonHoc.Name = "cboxMonHoc";
+            this.cboxMonHoc.Size = new System.Drawing.Size(178, 21);
+            this.cboxMonHoc.TabIndex = 32;
             // 
             // LuuCauHoi
             // 
@@ -131,23 +143,28 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(322, 193);
             this.ControlBox = false;
-            this.Controls.Add(this.labelX1);
-            this.Controls.Add(this.cbSoDe);
+            this.Controls.Add(this.lblMonHoc);
+            this.Controls.Add(this.cboxMonHoc);
+            this.Controls.Add(this.lblDoKho);
+            this.Controls.Add(this.cboxDoKho);
             this.Controls.Add(this.bunifuFlatButton1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnLuu);
+            this.Controls.Add(this.btnHuy);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "LuuCauHoi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.LuuCauHoi_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox cbSoDe;
+        private System.Windows.Forms.ComboBox cboxDoKho;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private DevComponents.DotNetBar.LabelX labelX1;
+        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Button btnHuy;
+        private DevComponents.DotNetBar.LabelX lblDoKho;
+        private DevComponents.DotNetBar.LabelX lblMonHoc;
+        private System.Windows.Forms.ComboBox cboxMonHoc;
     }
 }

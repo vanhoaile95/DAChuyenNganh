@@ -48,7 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CauHoiBus.cs" />
+    <Compile Include="DeThiBus.cs" />
+    <Compile Include="DoKhoBus.cs" />
     <Compile Include="LoginBus.cs" />
+    <Compile Include="MonHocBus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

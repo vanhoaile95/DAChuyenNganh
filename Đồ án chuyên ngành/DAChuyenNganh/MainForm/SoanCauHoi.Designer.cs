@@ -30,8 +30,8 @@
         {
             this.panelSoanCauHoi = new System.Windows.Forms.Panel();
             this.btnLuuCauHoi = new DevComponents.DotNetBar.ButtonX();
-            this.btnXuatDe = new DevComponents.DotNetBar.ButtonX();
-            this.btnLuuDe = new DevComponents.DotNetBar.ButtonX();
+            this.btnXuatDeThi = new DevComponents.DotNetBar.ButtonX();
+            this.btnLuuDeThi = new DevComponents.DotNetBar.ButtonX();
             this.btnThemCauHoi = new DevComponents.DotNetBar.ButtonX();
             this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem2 = new DevComponents.DotNetBar.ButtonItem();
@@ -43,8 +43,8 @@
             this.panelSoanCauHoi.AutoScroll = true;
             this.panelSoanCauHoi.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panelSoanCauHoi.Controls.Add(this.btnLuuCauHoi);
-            this.panelSoanCauHoi.Controls.Add(this.btnXuatDe);
-            this.panelSoanCauHoi.Controls.Add(this.btnLuuDe);
+            this.panelSoanCauHoi.Controls.Add(this.btnXuatDeThi);
+            this.panelSoanCauHoi.Controls.Add(this.btnLuuDeThi);
             this.panelSoanCauHoi.Controls.Add(this.btnThemCauHoi);
             this.panelSoanCauHoi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSoanCauHoi.Location = new System.Drawing.Point(0, 0);
@@ -64,44 +64,44 @@
             this.btnLuuCauHoi.Name = "btnLuuCauHoi";
             this.btnLuuCauHoi.Size = new System.Drawing.Size(613, 30);
             this.btnLuuCauHoi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnLuuCauHoi.TabIndex = 7;
+            this.btnLuuCauHoi.TabIndex = 6;
             this.btnLuuCauHoi.Text = "Lưu câu hỏi";
             this.btnLuuCauHoi.TextColor = System.Drawing.Color.White;
             this.btnLuuCauHoi.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // btnXuatDe
+            // btnXuatDeThi
             // 
-            this.btnXuatDe.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnXuatDe.AutoExpandOnClick = true;
-            this.btnXuatDe.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnXuatDe.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.btnXuatDe.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnXuatDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnXuatDe.Location = new System.Drawing.Point(0, 60);
-            this.btnXuatDe.Name = "btnXuatDe";
-            this.btnXuatDe.Size = new System.Drawing.Size(613, 30);
-            this.btnXuatDe.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnXuatDe.TabIndex = 5;
-            this.btnXuatDe.Text = "Xuất đề thi";
-            this.btnXuatDe.TextColor = System.Drawing.Color.White;
-            this.btnXuatDe.Click += new System.EventHandler(this.btnXuatDe_Click);
+            this.btnXuatDeThi.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnXuatDeThi.AutoExpandOnClick = true;
+            this.btnXuatDeThi.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnXuatDeThi.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.btnXuatDeThi.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnXuatDeThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnXuatDeThi.Location = new System.Drawing.Point(0, 60);
+            this.btnXuatDeThi.Name = "btnXuatDeThi";
+            this.btnXuatDeThi.Size = new System.Drawing.Size(613, 30);
+            this.btnXuatDeThi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnXuatDeThi.TabIndex = 5;
+            this.btnXuatDeThi.Text = "Xuất đề thi";
+            this.btnXuatDeThi.TextColor = System.Drawing.Color.White;
+            this.btnXuatDeThi.Click += new System.EventHandler(this.btnXuatDe_Click);
             // 
-            // btnLuuDe
+            // btnLuuDeThi
             // 
-            this.btnLuuDe.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnLuuDe.AutoExpandOnClick = true;
-            this.btnLuuDe.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnLuuDe.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.btnLuuDe.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLuuDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnLuuDe.Location = new System.Drawing.Point(0, 30);
-            this.btnLuuDe.Name = "btnLuuDe";
-            this.btnLuuDe.Size = new System.Drawing.Size(613, 30);
-            this.btnLuuDe.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnLuuDe.TabIndex = 4;
-            this.btnLuuDe.Text = "Lưu đề thi";
-            this.btnLuuDe.TextColor = System.Drawing.Color.White;
-            this.btnLuuDe.Click += new System.EventHandler(this.btnLuuDe_Click);
+            this.btnLuuDeThi.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnLuuDeThi.AutoExpandOnClick = true;
+            this.btnLuuDeThi.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnLuuDeThi.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.btnLuuDeThi.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLuuDeThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnLuuDeThi.Location = new System.Drawing.Point(0, 30);
+            this.btnLuuDeThi.Name = "btnLuuDeThi";
+            this.btnLuuDeThi.Size = new System.Drawing.Size(613, 30);
+            this.btnLuuDeThi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnLuuDeThi.TabIndex = 4;
+            this.btnLuuDeThi.Text = "Lưu đề thi";
+            this.btnLuuDeThi.TextColor = System.Drawing.Color.White;
+            this.btnLuuDeThi.Click += new System.EventHandler(this.btnLuuDe_Click);
             // 
             // btnThemCauHoi
             // 
@@ -143,8 +143,8 @@
         private DevComponents.DotNetBar.ButtonX btnThemCauHoi;
         private DevComponents.DotNetBar.ButtonItem buttonItem1;
         private DevComponents.DotNetBar.ButtonItem buttonItem2;
-        private DevComponents.DotNetBar.ButtonX btnLuuDe;
-        private DevComponents.DotNetBar.ButtonX btnXuatDe;
+        private DevComponents.DotNetBar.ButtonX btnLuuDeThi;
+        private DevComponents.DotNetBar.ButtonX btnXuatDeThi;
         private DevComponents.DotNetBar.ButtonX btnLuuCauHoi;
     }
 }

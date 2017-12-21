@@ -26,6 +26,7 @@ namespace Common
         public Nullable<int> ID_DoKho { get; set; }
         public Nullable<int> ID_MonHoc { get; set; }
         public Nullable<int> ID_LoaiCauHoi { get; set; }
+        public string MaCauHoi { get; set; }
     
         public virtual DoKho DoKho { get; set; }
         public virtual LoaiCauHoi LoaiCauHoi { get; set; }

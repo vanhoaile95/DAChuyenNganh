@@ -1,31 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.Data;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Common;
 using DevComponents.DotNetBar;
 using Bus;
+using Common;
 using DevComponents.DotNetBar.Controls;
 
 namespace MainForm
 {
     public partial class SoanCauHoi : UserControl
     {
-        public string Style;
+        int soanCauHoi = 0;
         public SoanCauHoi()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
+           
         }
 
-        public List<Object> listCauHoi = new List<Object>();
+        public static List<Object> listCauHoi = new List<Object>();
+
 
         private void btnThemCauHoi_Click(object sender, EventArgs e)
         {
-            //Chỉ cho soạn 1 câu hỏi
-            if (Style == "CauHoi" && listCauHoi.Count > 0)
-                return;
+           
+            if (soanCauHoi == 1)
+            {
+                btnThemCauHoi.Hide();
+            }
 
             //Tạo expandable panel câu hỏi
             ExpandablePanel TitleCauHoi = new ExpandablePanel();
@@ -47,6 +55,55 @@ namespace MainForm
             TitleCauHoi.TitleText = "Câu hỏi " + (listCauHoi.Count + 1);
             TitleCauHoi.Name = "CH" + (listCauHoi.Count + 1);
 
+            //Nút độ khó
+            ButtonX dokho = new ButtonX();
+            dokho.AutoExpandOnClick = true;
+            dokho.BackColor = Color.Transparent;
+            dokho.AccessibleRole = AccessibleRole.PushButton;
+            dokho.ColorTable = eButtonColor.Blue;
+            dokho.Dock = DockStyle.Right;
+            dokho.Name = "dokho";
+            dokho.ShowSubItems = true;
+
+            var dokhoList = new DoKhoBus().GetList();
+            for (int i = 0; i < dokhoList.Count; i++)
+            {
+                ButtonItem item = new ButtonItem();
+                item.Text = dokhoList[i].MoTa;
+                item.Click += Item_Click;
+                dokho.SubItems.Add(item);
+            }
+            dokho.Text = dokho.SubItems[0].Text;
+            dokho.Size = new Size(100, 20);
+            dokho.Style = eDotNetBarStyle.StyleManagerControlled;
+            TitleCauHoi.TitlePanel.Controls.Add(dokho);
+
+
+            //Nút môn học
+            ButtonX monhoc = new ButtonX();
+            monhoc.BackColor = Color.Transparent;
+            monhoc.AutoExpandOnClick = true;
+            monhoc.AccessibleRole = AccessibleRole.PushButton;
+            monhoc.ColorTable = eButtonColor.Blue;
+            monhoc.Dock = DockStyle.Right;
+            
+            monhoc.Name = "monhoc";
+            monhoc.ShowSubItems = true;
+
+            var monhocList = new MonHocBus().GetList();
+            for (int i = 0; i < monhocList.Count; i++)
+            {
+                ButtonItem item = new ButtonItem();
+                item.Text = monhocList[i].TenMonHoc;
+                item.Click += Item_Click;
+                monhoc.SubItems.Add(item);
+            }
+            monhoc.Text = monhoc.SubItems[0].Text;
+
+
+            monhoc.Size = new Size(100, 20);
+            monhoc.Style = eDotNetBarStyle.StyleManagerControlled;
+            TitleCauHoi.TitlePanel.Controls.Add(monhoc);
 
 
             //Nút xóa câu hỏi
@@ -62,10 +119,11 @@ namespace MainForm
             xoa.Click += Xoa_Click;
             TitleCauHoi.TitlePanel.Controls.Add(xoa);
 
+           
+
             ///Loại câu hỏi
             LoaiCauHoi loaiCauHoi = new LoaiCauHoi();
             loaiCauHoi.ShowDialog();
-
 
 
 
@@ -75,21 +133,26 @@ namespace MainForm
             switch (LoaiCauHoi.typeCauHoi)
             {
                 case 1:
-                    temp = new CauHoi_1();
+                    temp = new CauHoi_1(1);
                     break;
                 case 2:
-                    temp = new CauHoi_2();
+                    temp = new CauHoi_2(2);
                     break;
                 case 3:
-                    temp = new CauHoi_3();
+                    temp = new CauHoi_3(3);
                     break;
                 case 4:
-                    temp = new CauHoi_4();
+                    temp = new CauHoi_4(4);
                     break;
                 case 5:
-                    temp = new CauHoi_5();
+                    temp = new CauHoi_5(5);
                     break;
-
+                case 6:
+                    temp = new CauHoi_6(6);
+                    break;
+                case 7:
+                    temp = new CauHoi_7(7);
+                    break;
             }
 
             temp.Location = new Point(0, TitleCauHoi.TitleHeight);
@@ -106,481 +169,248 @@ namespace MainForm
             TitleCauHoi.Dock = DockStyle.Top;
             TitleCauHoi.BringToFront();
 
-
+            btnLuuDeThi.BringToFront();
             btnThemCauHoi.BringToFront();
+            btnXuatDeThi.BringToFront();
             btnLuuCauHoi.BringToFront();
-            btnLuuDe.BringToFront();
-            btnXuatDe.BringToFront();
-
-
             panelSoanCauHoi.ScrollControlIntoView(btnThemCauHoi);
-
 
             //Thêm câu hỏi vào list để dễ quản lý
             listCauHoi.Add(TitleCauHoi);
         }
-      
 
-    
-
+        private void Item_Click(object sender, EventArgs e)
+        {
+            ButtonX parent = (((ButtonItem)sender).Parent.ContainerControl) as ButtonX;
+            parent.Text = ((ButtonItem)sender).Text; ;
+        }
+        
         //Xóa câu hỏi
         private void Xoa_Click(object sender, EventArgs e)
         {
-           //Xóa câu hỏi khỏi listCauHoi
+            if(soanCauHoi == 1)
+            {
+                btnThemCauHoi.Show();
+            }
+
+            //Xóa câu hỏi khỏi listCauHoi
             listCauHoi.Remove(((ButtonX)sender).Parent.Parent);
             //Xóa giao diện câu hỏi
             panelSoanCauHoi.Controls.Remove(((ButtonX)sender).Parent.Parent);
-            for (int i= 0; i < listCauHoi.Count;i++)
+            for (int i = 0; i < listCauHoi.Count; i++)
             {
-                ((ExpandablePanel)listCauHoi.ElementAt(i)).TitleText = "Câu Hỏi " + (i+1);
+                //Sắp xếp lại title câu hỏi
+                ((ExpandablePanel)listCauHoi.ElementAt(i)).TitleText = "Câu Hỏi " + (i + 1);
             }
 
         }
-
-       
         private void btnLuuDe_Click(object sender, EventArgs e)
         {
-            LuuDeThi luude = new LuuDeThi();
-            luude.ShowDialog();
+            if (listCauHoi.Count > 0)
+            {
+                using (var form = new LuuDeThi())
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+
+                        DeThi de = new DeThi();
+                        de.TenDeThi = form.TenDe;
+                        de.MaDeThi = "MA" + DateTime.Now.Millisecond;
+                        de.ID_MonHoc = form.MonHoc;
+                        de.ThoiGian_Phut = form.ThoiGian;
+                        de.NgayDeThi = Convert.ToDateTime(form.NgayThi);
+                        if (new DeThiBus().LuuDeThi(de))
+                        {
+                            for (int i = 0; i < listCauHoi.Count; i++)
+                            {
+                                int DoKho = new DoKhoBus().GetIDByName(((ExpandablePanel)listCauHoi[0]).TitlePanel.Controls.Find("dokho", true)[0].Text);
+                                int MonHoc = new MonHocBus().GetIdByName(((ExpandablePanel)listCauHoi[0]).TitlePanel.Controls.Find("monhoc", true)[0].Text);
+                                string LoaiCauHoi = ((ExpandablePanel)listCauHoi[i]).Controls[0].GetType().ToString();
+                                int IDCauHoi = LuuDanhSachCauHoi(LoaiCauHoi,DoKho,MonHoc,((ExpandablePanel)listCauHoi[i]).Controls[0]);
+                                if (IDCauHoi > 0)
+                                {
+                                    ChiTietDeThi detail = new ChiTietDeThi();
+                                    detail.ID_CauHoi = IDCauHoi;
+                                    detail.ID_DeThi = de.ID;
+                                    new DeThiBus().LuuChiTietDe(detail);
+                                }
+                                else
+                                { MessageBox.Show("Lưu thất bại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+                                
+                            }
+                            MessageBox.Show("Lưu thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                            MessageBox.Show("Lưu thất bại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không có dữ liệu để lưu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
+           
         }
         private void btnXuatDe_Click(object sender, EventArgs e)
         {
-            LuuDeThi luude = new LuuDeThi();
-            luude.ShowDialog();
+            if (listCauHoi.Count > 0)
+            {
+                for (int i = 0; i < listCauHoi.Count; i++)
+                {
+                    if (!CheckCoNoiDung(((ExpandablePanel)listCauHoi[i]).Controls[0]))
+                    {
+                        MessageBox.Show("Chưa nhập nội dung câu hỏi");
+                        return;
+                    }
+                    if (!CheckCoDapAn(((ExpandablePanel)listCauHoi[i]).Controls[0]))
+                    {
+                        MessageBox.Show("Chưa nhập nội dung đáp án");
+                        return;
+                    }
+
+                }
+                XuatDeThi xuatde = new XuatDeThi();
+                xuatde.ShowDialog();
+                MessageBox.Show("Xuất đề thi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Không có dữ liệu để xuất đề", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
         }
-       
 
         public void SoanDeInit()
         {
-            Style = "DeThi";
-            btnLuuDe.Show();
-            btnXuatDe.Show();
             btnLuuCauHoi.Hide();
         }
-
         public void SoanCauHoiInit()
         {
-            Style = "CauHoi";
-            btnLuuDe.Hide();
-            btnXuatDe.Hide();
-            btnLuuCauHoi.Show();
+            soanCauHoi = 1;
+            btnLuuDeThi.Hide();
+            btnXuatDeThi.Hide();
         }
-        public void ThuVienCauHoiInit()
-        {
-            
-            Cursor.Current = Cursors.WaitCursor;
-            listCauHoi.Clear();
-            panelSoanCauHoi.Controls.Clear();
-            panelSoanCauHoi.Visible = false;
-            btnLuuCauHoi.Hide();
-            btnLuuDe.Hide();
-            btnXuatDe.Hide();
-            btnThemCauHoi.Hide();
-
-            //Get list câu hỏi
-            var List = new CauHoiBus().GetListCauHoi();
-            for (int i = 0; i < List.Count; i++)
-            {
-                //Tạo expandable panel câu hỏi
-                ExpandablePanel TitleCauHoi = new ExpandablePanel();
-                TitleCauHoi.CanvasColor = SystemColors.Control;
-                TitleCauHoi.ColorSchemeStyle = eDotNetBarStyle.StyleManagerControlled;
-                TitleCauHoi.HideControlsWhenCollapsed = true;
-                TitleCauHoi.ExpandButtonAlignment = eTitleButtonAlignment.Left;
-                TitleCauHoi.ExpandOnTitleClick = true;
-                TitleCauHoi.AnimationTime = 0;
-
-                TitleCauHoi.TitleStyle.Alignment = StringAlignment.Center;
-                TitleCauHoi.TitleStyle.BackColor1.ColorSchemePart = eColorSchemePart.PanelBackground;
-                TitleCauHoi.TitleStyle.BackColor2.ColorSchemePart = eColorSchemePart.PanelBackground2;
-                TitleCauHoi.TitleStyle.Border = eBorderType.RaisedInner;
-                TitleCauHoi.TitleStyle.BorderColor.ColorSchemePart = eColorSchemePart.PanelBorder;
-                TitleCauHoi.TitleStyle.ForeColor.ColorSchemePart = eColorSchemePart.PanelText;
-                TitleCauHoi.TitleStyle.GradientAngle = 90;
-                TitleCauHoi.TitleText = "Câu hỏi " + (listCauHoi.Count + 1);
-                TitleCauHoi.Name = "CH" + (listCauHoi.Count + 1);
-
-                //Nút xóa câu hỏi
-                ButtonX xoa = new ButtonX();
-                xoa.BackColor = Color.Transparent;
-                xoa.AccessibleRole = AccessibleRole.PushButton;
-                xoa.ColorTable = eButtonColor.Blue;
-                xoa.Dock = DockStyle.Right;
-                xoa.Image = Properties.Resources.buttonExit_Image;
-
-                xoa.Size = new Size(20, 20);
-                xoa.Style = eDotNetBarStyle.StyleManagerControlled;
-                xoa.Click += Xoa_Click;
-                TitleCauHoi.TitlePanel.Controls.Add(xoa);
-
-                UserControl _temp = null;
-                object listDapAn;
-                switch (List[i].ID_LoaiCauHoi)
-                {
-                    case 1:
-
-                        _temp = new CauHoi_1();
-                        listDapAn = new CauHoiBus().GetListDapAn(List[i].ID);
-                        ((CauHoi_1)_temp).Init(List[i].NoiDung,(List<DapAn>)listDapAn);
-                       
-                        break;
-                    case 2:
-                        _temp = new CauHoi_2();
-                        listDapAn = new CauHoiBus().GetListDapAn(List[i].ID);
-                        ((CauHoi_2)_temp).Init(List[i].NoiDung, (List<DapAn>)listDapAn);
-                        break;
-                    case 3:
-                        _temp = new CauHoi_3();
-                        listDapAn = new CauHoiBus().GetListDapAn(List[i].ID);
-                        ((CauHoi_3)_temp).Init(List[i].NoiDung, (List<DapAn>)listDapAn);
-                        break;
-                    case 4:
-                        _temp = new CauHoi_4();
-                        listDapAn = new CauHoiBus().GetListDapAn(List[i].ID);
-                        ((CauHoi_4)_temp).Init(List[i].NoiDung, (List<DapAn>)listDapAn);
-                        break;
-                    case 5:
-                        _temp = new CauHoi_5();
-                        listDapAn = new CauHoiBus().GetListDapAn(List[i].ID);
-                        ((CauHoi_5)_temp).Init(List[i].NoiDung, (List<DapAn>)listDapAn);
-                        break;
-                 
-                }
-
-
-
-                _temp.Location = new Point(0, TitleCauHoi.TitleHeight);
-                _temp.Dock = DockStyle.Bottom;
-                TitleCauHoi.AutoSize = true;
-                TitleCauHoi.Controls.Add(_temp);
-
-
-
-
-                //Add expandable câu hỏi vào panel SoanCauHoi
-                panelSoanCauHoi.Controls.Add(TitleCauHoi);
-                TitleCauHoi.Dock = DockStyle.Top;
-                TitleCauHoi.BringToFront();
-
-                
-                //Thêm câu hỏi vào list để dễ quản lý
-                listCauHoi.Add(TitleCauHoi);
-
-
-            }
-            Cursor.Current = Cursors.Default;
-            panelSoanCauHoi.Visible = true;
-        }
-
+ 
+        //Lưu câu hỏi
         private void btnLuu_Click(object sender, EventArgs e)
         {
             //Lưu câu hỏi 
             if (listCauHoi.Count > 0)
             {
+                int DoKho = new DoKhoBus().GetIDByName(((ExpandablePanel)listCauHoi[0]).TitlePanel.Controls.Find("dokho", true)[0].Text);
+                int MonHoc = new MonHocBus().GetIdByName(((ExpandablePanel)listCauHoi[0]).TitlePanel.Controls.Find("monhoc", true)[0].Text);
                 string LoaiCauHoi = ((ExpandablePanel)listCauHoi[0]).Controls[0].GetType().ToString();
-                #region CauHoi1
-                if (LoaiCauHoi.Contains("CauHoi_1"))
+                switch (LuuDanhSachCauHoi(LoaiCauHoi, DoKho, MonHoc, ((ExpandablePanel)listCauHoi[0]).Controls[0]))
                 {
-                    CauHoi_1 ch1 = (CauHoi_1)((ExpandablePanel)listCauHoi[0]).Controls[0];
+                    case 0:
+                        MessageBox.Show("Lưu thất bại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case -1:
+                        MessageBox.Show("Chưa nhập nội dung câu hỏi");
+                        break;
+                    case -2:
+                        MessageBox.Show("Chưa nhập nội dung đáp án");
+                        break;
+                    default:
+                        MessageBox.Show("Lưu thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    try
+                        //Reset Add câu hỏi
+                        string CauHoiName = "CH" + (listCauHoi.Count);
+                        panelSoanCauHoi.Controls[CauHoiName].Dispose();
+                        listCauHoi.Clear();
+                        btnThemCauHoi.Show();
+                        break;
+                }
+                  
+            }
+            else
+            {
+                MessageBox.Show("Không có dữ liệu để lưu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
+        }
+
+        public bool CheckCoNoiDung(Control _Control)
+        {
+            if (_Control.Controls["txtCauHoi"].Text.Length == 0)
+                return false;
+            return true;
+        }
+        public bool CheckCoDapAn(Control _Control)
+        {
+            if (_Control.Controls.Find("groupDapAn", true).Count() == 0)
+                return false;
+            else
+                if (_Control.GetType().ToString().Contains("CauHoi_4"))
+            {
+                if (_Control.Controls.Find("groupDapAn", true).Count() % 2 != 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public int LuuDanhSachCauHoi(string LoaiCauHoi,int DoKho,int MonHoc,Control _ConTrol = null)
+        {
+            
+
+            if (!CheckCoNoiDung(_ConTrol)) return -1;
+            if (!CheckCoDapAn(_ConTrol)) return -2;
+            
+            //Thêm câu hỏi
+            CauHoi ch = new CauHoi();
+            ch.NoiDung = _ConTrol.Controls["txtCauHoi"].Text;
+            ch.ID_DoKho = DoKho;
+            ch.ID_MonHoc = MonHoc;
+            ch.MaCauHoi = "MA" + new CauHoiBus().GetList().Count;
+            ch.ID_LoaiCauHoi = Convert.ToInt32(LoaiCauHoi.Substring(LoaiCauHoi.Length - 1, 1));
+
+            if (new CauHoiBus().AddCauHoi(ch))
+            {
+                //Thêm đáp án
+                var listDapAn = _ConTrol.Controls.Find("groupDapAn", true);
+                for (int i = 0; i < listDapAn.Count(); i++)
+                {
+                    DapAn da = new DapAn();
+                    da.ID_CauHoi = ch.ID;
+                    da.TenDapAn = listDapAn[i].Text;
+                    da.NoiDungDapAn = listDapAn[i].Controls.Find("richDapAn", true)[0].Text;
+                    if (LoaiCauHoi.Contains("CauHoi_1") || LoaiCauHoi.Contains("CauHoi_2") || LoaiCauHoi.Contains("CauHoi_7"))
+                        da.DapAnDung = ((SwitchButton)listDapAn[i].Controls.Find("switchDapAn", true)[0]).Value;
+                    else
+                         if (LoaiCauHoi.Contains("CauHoi_3") || LoaiCauHoi.Contains("CauHoi_5"))
+                        da.DapAnDung = true;
+                    else
+                        if (LoaiCauHoi.Contains("CauHoi_4") || LoaiCauHoi.Contains("CauHoi_6"))
                     {
-                        if (ch1.Controls["txtCauHoi"].Text.Length == 0)
-                        {
-                            MessageBox.Show("Chưa nhập nội dung");
-                            return;
-                        }
-                        //Thêm câu hỏi
-                        CauHoi ch = new CauHoi();
-                        ch.NoiDung = ch1.Controls["txtCauHoi"].Text;
-                        ch.ID_DoKho = 1;
-                        ch.ID_MonHoc = 1;
-                        ch.ID_LoaiCauHoi = 1;
-
-                        //Check đáp án có ko
-                        var listDapAn = ch1.Controls.Find("groupDapAn", true);
-                        if (listDapAn.Count() == 0)
-                        {
-                            MessageBox.Show("Chưa có đáp án");
-                            return;
-                        }
-
-                        if (new CauHoiBus().AddCauHoi(ch))
-                        {
-                            //Thêm đáp án
-                            for (int i = 0; i < listDapAn.Count(); i++)
-                            {
-                                DapAn da = new DapAn();
-                                da.ID_CauHoi = ch.ID;
-                                da.TenDapAn = listDapAn[i].Text;
-                                da.NoiDungDapAn = listDapAn[i].Controls.Find("richDapAn", true)[0].Text;
-                                da.DapAnDung = ((SwitchButton)listDapAn[i].Controls.Find("switchDapAn", true)[0]).Value;
-
-                                new CauHoiBus().AddDapAn(da);
-                            }
-                            MessageBox.Show("Lưu thành công !");
-
-                            //Reset Add câu hỏi
-                            string CauHoiName = "CH" + (listCauHoi.Count);
-                            panelSoanCauHoi.Controls[CauHoiName].Dispose();
-                            listCauHoi.Clear();
-
-
-                        }
-                        else
-                            MessageBox.Show("Lưu thất bại !");
-
-
+                        da.DapAnDung = false;
                     }
-                    catch (Exception ex)
-                    { MessageBox.Show("Lưu thất bại !"); }
+                        new CauHoiBus().AddDapAn(da);
+                }
+
+                if (LoaiCauHoi.Contains("CauHoi_4") || LoaiCauHoi.Contains("CauHoi_6"))
+                {
+                    var listDapAnCorrect = _ConTrol.Controls.Find("groupDapAnCorrect", true);
+
+                    //Lưu đáp án đúng
+                    for (int i = 0; i < listDapAnCorrect.Count(); i++)
+                    {
+                        DapAn da = new DapAn();
+                        da.ID_CauHoi = ch.ID;
+                        da.TenDapAn = listDapAnCorrect[i].Text;
+                        da.NoiDungDapAn = listDapAnCorrect[i].Controls.Find("richDapAnCorrect", true)[0].Text;
+                        da.DapAnDung = true;
+                        new CauHoiBus().AddDapAn(da);
+                    }
 
                 }
-                #endregion
-                #region CauHoi2
-                if (LoaiCauHoi.Contains("CauHoi_2"))
-                {
-                    CauHoi_2 ch2 = (CauHoi_2)((ExpandablePanel)listCauHoi[0]).Controls[0];
-                    try
-                    {
-                        if (ch2.Controls["txtCauHoi"].Text.Length == 0)
-                        {
-                            MessageBox.Show("Chưa nhập nội dung");
-                            return;
-                        }
-                        //Thêm câu hỏi
-                        CauHoi ch = new CauHoi();
-                        ch.NoiDung = ch2.Controls["txtCauHoi"].Text;
-                        ch.ID_DoKho = 1;
-                        ch.ID_MonHoc = 1;
-                        ch.ID_LoaiCauHoi = 2;
-                        
-
-                        //Check đáp án có ko
-                        var listDapAn = ch2.Controls.Find("groupDapAn", true);
-                        if (listDapAn.Count() == 0)
-                        {
-                            MessageBox.Show("Chưa có đáp án");
-                            return;
-                        }
-                        if (new CauHoiBus().AddCauHoi(ch))
-                        {
-                        
-                            for (int i = 0; i < listDapAn.Count(); i++)
-                            {
-                                DapAn da = new DapAn();
-                                da.ID_CauHoi = ch.ID;
-                                da.TenDapAn = listDapAn[i].Text;
-                                da.NoiDungDapAn = listDapAn[i].Controls.Find("richDapAn", true)[0].Text;
-                                da.DapAnDung = true;
-                                new CauHoiBus().AddDapAn(da);
-                            }
-                            MessageBox.Show("Lưu thành công !");
-
-
-                            //Reset Add câu hỏi
-                            string CauHoiName = "CH" + (listCauHoi.Count);
-                            panelSoanCauHoi.Controls[CauHoiName].Dispose();
-                            listCauHoi.Clear();
-                        }
-                        else
-                            MessageBox.Show("Lưu thất bại !");
-                    }
-                    catch (Exception ex)
-                    { MessageBox.Show("Lưu thất bại !"); }
-                }
-                #endregion
-                #region CauHoi3
-                if (LoaiCauHoi.Contains("CauHoi_3"))
-                {
-                    CauHoi_3 ch3 = (CauHoi_3)((ExpandablePanel)listCauHoi[0]).Controls[0];
-                    try
-                    {
-                        if (ch3.Controls["txtCauHoi"].Text.Length == 0)
-                        {
-                            MessageBox.Show("Chưa nhập nội dung");
-                            return;
-                        }
-                        //Thêm câu hỏi
-                        CauHoi ch = new CauHoi();
-                        ch.NoiDung = ch3.Controls["txtCauHoi"].Text;
-                        ch.ID_DoKho = 1;
-                        ch.ID_MonHoc = 1;
-                        ch.ID_LoaiCauHoi = 3;
-
-                        //Check đáp án có ko
-                        var listDapAnCorrect = ch3.Controls.Find("groupDapAnCorrect", true);
-                        var listDapAn = ch3.Controls.Find("groupDapAn", true);
-                        if (listDapAn.Count() % 2 != 0)
-                        {
-                            MessageBox.Show("Đáp án 2 cột chưa đồng đều");
-                            return;
-                        }
-                        if (listDapAnCorrect.Count() == 0)
-                        {
-                            MessageBox.Show("Chưa có đáp án");
-                            return;
-                        }
-                        if (new CauHoiBus().AddCauHoi(ch))
-                        {
-                            //Lưu đáp án
-                            for (int i = 0; i < listDapAnCorrect.Count(); i++)
-                            {
-                                DapAn da = new DapAn();
-                                da.ID_CauHoi = ch.ID;
-                                da.TenDapAn = listDapAnCorrect[i].Text;
-                                da.NoiDungDapAn = listDapAnCorrect[i].Controls.Find("richDapAnCorrect", true)[0].Text;
-                                da.DapAnDung = true;
-                                new CauHoiBus().AddDapAn(da);
-                            }
-                            //Lưu đáp án đúng
-                            for (int i = 0; i < listDapAn.Count(); i++)
-                            {
-                                DapAn da = new DapAn();
-                                da.ID_CauHoi = ch.ID;
-                                da.TenDapAn = listDapAn[i].Text;
-                                da.NoiDungDapAn = listDapAn[i].Controls.Find("richDapAn", true)[0].Text;
-                                da.DapAnDung = false;
-                                new CauHoiBus().AddDapAn(da);
-                            }
-                            MessageBox.Show("Lưu thành công !");
-
-
-                            //Reset Add câu hỏi
-                            string CauHoiName = "CH" + (listCauHoi.Count);
-                            panelSoanCauHoi.Controls[CauHoiName].Dispose();
-                            listCauHoi.Clear();
-                        }
-                        else
-                            MessageBox.Show("Lưu thất bại !");
-                    }
-                    catch (Exception ex)
-                    { MessageBox.Show("Lưu thất bại !"); }
-                }
-                #endregion
-                #region CauHoi4
-                if (LoaiCauHoi.Contains("CauHoi_4"))
-                {
-                    CauHoi_4 ch4 = (CauHoi_4)((ExpandablePanel)listCauHoi[0]).Controls[0];
-                    try
-                    {
-                        if (ch4.Controls["txtCauHoi"].Text.Length == 0)
-                        {
-                            MessageBox.Show("Chưa nhập nội dung");
-                            return;
-                        }
-                        //Thêm câu hỏi
-                        CauHoi ch = new CauHoi();
-                        ch.NoiDung = ch4.Controls["txtCauHoi"].Text;
-                        ch.ID_DoKho = 1;
-                        ch.ID_MonHoc = 1;
-                        ch.ID_LoaiCauHoi = 4;
-
-                        //Check đáp án có ko
-                 
-                        var listDapAn = ch4.Controls.Find("richDapAn", true);
-                        if (listDapAn.Count() == 0)
-                        {
-                            MessageBox.Show("Chưa nhập đáp án");
-                            return;
-                        }
-                        
-                        if (new CauHoiBus().AddCauHoi(ch))
-                        {
-                            //Lưu đáp án
-                            for (int i = 0; i < listDapAn.Count(); i++)
-                            {
-                                DapAn da = new DapAn();
-                                da.ID_CauHoi = ch.ID;
-                                da.TenDapAn = "Đáp án";
-                                da.NoiDungDapAn = listDapAn[i].Text;
-                                da.DapAnDung = true;
-                                new CauHoiBus().AddDapAn(da);
-                            }
-                            MessageBox.Show("Lưu thành công !");
-
-
-                            //Reset Add câu hỏi
-                            string CauHoiName = "CH" + (listCauHoi.Count);
-                            panelSoanCauHoi.Controls[CauHoiName].Dispose();
-                            listCauHoi.Clear();
-                        }
-                        else
-                            MessageBox.Show("Lưu thất bại !");
-                    }
-                    catch (Exception ex)
-                    { MessageBox.Show("Lưu thất bại !"); }
-                }
-                #endregion
-                #region CauHoi5
-                if (LoaiCauHoi.Contains("CauHoi_5"))
-                {
-                    CauHoi_5 ch5 = (CauHoi_5)((ExpandablePanel)listCauHoi[0]).Controls[0];
-                    try
-                    {
-                        if (ch5.Controls["txtCauHoi"].Text.Length == 0)
-                        {
-                            MessageBox.Show("Chưa nhập nội dung");
-                            return;
-                        }
-                        //Thêm câu hỏi
-                        CauHoi ch = new CauHoi();
-                        ch.NoiDung = ch5.Controls["txtCauHoi"].Text;
-                        ch.ID_DoKho = 1;
-                        ch.ID_MonHoc = 1;
-                        ch.ID_LoaiCauHoi = 5;
-
-                        //Check đáp án có ko
-                        var listDapAnCorrect = ch5.Controls.Find("groupDapAnCorrect", true);
-                        var listDapAn = ch5.Controls.Find("groupDapAn", true);
-                        
-                        if (listDapAnCorrect.Count() == 0)
-                        {
-                            MessageBox.Show("Chưa có đáp án");
-                            return;
-                        }
-                        if (new CauHoiBus().AddCauHoi(ch))
-                        {
-                            //Lưu đáp án
-                            for (int i = 0; i < listDapAnCorrect.Count(); i++)
-                            {
-                                DapAn da = new DapAn();
-                                da.ID_CauHoi = ch.ID;
-                                da.TenDapAn = listDapAnCorrect[i].Text;
-                                da.NoiDungDapAn = listDapAnCorrect[i].Controls.Find("richDapAnCorrect", true)[0].Text;
-                                da.DapAnDung = true;
-                                new CauHoiBus().AddDapAn(da);
-                            }
-                            //Lưu đáp án đúng
-                            for (int i = 0; i < listDapAn.Count(); i++)
-                            {
-                                DapAn da = new DapAn();
-                                da.ID_CauHoi = ch.ID;
-                                da.TenDapAn = listDapAn[i].Text;
-                                da.NoiDungDapAn = listDapAn[i].Controls.Find("richDapAn", true)[0].Text;
-                                da.DapAnDung = false;
-                                new CauHoiBus().AddDapAn(da);
-                            }
-                            MessageBox.Show("Lưu thành công !");
-
-
-                            //Reset Add câu hỏi
-                            string CauHoiName = "CH" + (listCauHoi.Count);
-                            panelSoanCauHoi.Controls[CauHoiName].Dispose();
-                            listCauHoi.Clear();
-                        }
-                        else
-                            MessageBox.Show("Lưu thất bại !");
-                    }
-                    catch (Exception ex)
-                    { MessageBox.Show("Lưu thất bại !"); }
-                }
-                #endregion
 
             }
 
+            
+
+            return ch.ID;
         }
-
-
     }
 }

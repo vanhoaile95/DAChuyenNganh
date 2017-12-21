@@ -49,7 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CauHoiDal.cs" />
+    <Compile Include="DeThiDal.cs" />
+    <Compile Include="DoKhoDal.cs" />
     <Compile Include="LoginDal.cs" />
+    <Compile Include="MonHocDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

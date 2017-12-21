@@ -18,33 +18,46 @@ namespace MainForm
             InitializeComponent();
         }
 
-     
-
-        private void btnCauHoi1_Click(object sender, EventArgs e)
+        private void bunifuTileButton1_Click(object sender, EventArgs e)
         {
             LoaiCauHoi.typeCauHoi = 1;
             this.Dispose();
         }
-        private void btnCauHoi2_Click(object sender, EventArgs e)
+
+        private void bunifuTileButton2_Click(object sender, EventArgs e)
         {
             LoaiCauHoi.typeCauHoi = 2;
             this.Dispose();
         }
-        private void btnCauHoi3_Click(object sender, EventArgs e)
+
+        private void bunifuTileButton3_Click(object sender, EventArgs e)
         {
             LoaiCauHoi.typeCauHoi = 3;
             this.Dispose();
         }
-        private void btnCauHoi4_Click(object sender, EventArgs e)
+
+        private void bunifuTileButton4_Click(object sender, EventArgs e)
         {
             LoaiCauHoi.typeCauHoi = 4;
             this.Dispose();
         }
-        private void btnCauHoi5_Click(object sender, EventArgs e)
-        { 
+
+        private void bunifuTileButton5_Click(object sender, EventArgs e)
+        {
             LoaiCauHoi.typeCauHoi = 5;
             this.Dispose();
         }
-        
+
+        private void bunifuTileButton6_Click(object sender, EventArgs e)
+        {
+            LoaiCauHoi.typeCauHoi = 6;
+            this.Dispose();
+        }
+
+        private void bunifuTileButton7_Click(object sender, EventArgs e)
+        {
+            LoaiCauHoi.typeCauHoi = 7;
+            this.Dispose();
+        }
     }
 }

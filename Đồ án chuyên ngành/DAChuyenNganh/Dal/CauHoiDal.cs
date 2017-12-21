@@ -8,38 +8,95 @@ namespace Dal
 {
     public class CauHoiDal
     {
-        public static SoanThaoDeThiEntities Db = new SoanThaoDeThiEntities();
+      
         public bool AddCauHoi(CauHoi ch)
         {
-            try
+            using (SoanThaoDeThiEntities Db = new SoanThaoDeThiEntities())
             {
-                Db.CauHois.Add(ch);
-                Db.SaveChanges();
-                return true;
+                try
+                {
+                    Db.CauHois.Add(ch);
+                    Db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                { return false; }
             }
-            catch(Exception ex)
-            { return false; }
             
 
         }
+        public bool DeleteCauHoi(int Id)
+        {
+            using (SoanThaoDeThiEntities Db = new SoanThaoDeThiEntities())
+            {
+                try
+                {
+                    CauHoi ch = Db.CauHois.Find(Id);
+                    Db.CauHois.Remove(ch);
+
+                    List<DapAn> da = Db.DapAns.Where(x => x.ID_CauHoi == Id).ToList();
+                    for (int i = 0; i < da.Count; i++)
+                    {
+                        Db.DapAns.Remove(da[i]);
+                    }
+                    Db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
         public bool AddDapAn(DapAn da)
         {
-            try
+            using (SoanThaoDeThiEntities Db = new SoanThaoDeThiEntities())
             {
-                Db.DapAns.Add(da);
-                Db.SaveChanges();
-                return true;
+                try
+                {
+                    Db.DapAns.Add(da);
+                    Db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                { return false; }
             }
-            catch (Exception ex)
-            { return false; }
         }
-        public List<CauHoi> GetListCauHoi()
+       
+        public List<CauHoi> GetListCauHoiByMonHoc(int MonHoc)
         {
-            return Db.CauHois.ToList();
+            using (SoanThaoDeThiEntities Db = new SoanThaoDeThiEntities())
+            {
+                return Db.CauHois.Where(x=>x.ID_MonHoc == MonHoc).OrderBy(x=>x.MaCauHoi).ToList();
+            }
+        }
+        public CauHoi GetListCauHoiByID(int ID)
+        {
+            using (SoanThaoDeThiEntities Db = new SoanThaoDeThiEntities())
+            {
+                return Db.CauHois.Find(ID);
+            }
         }
         public List<DapAn> GetListDapAn(int CauHoiID)
         {
-            return Db.DapAns.Where(x => x.ID_CauHoi == CauHoiID).ToList();
+            using (SoanThaoDeThiEntities Db = new SoanThaoDeThiEntities())
+            {
+                return Db.DapAns.Where(x => x.ID_CauHoi == CauHoiID).ToList();
+            }
+        }
+        public List<CauHoi> GetList()
+        {
+            using (SoanThaoDeThiEntities Db = new SoanThaoDeThiEntities())
+            {
+                return Db.CauHois.OrderByDescending(x => x.MaCauHoi).ToList();
+            }
+        }
+        public int GetIDByMa(string MA)
+        {
+            using (SoanThaoDeThiEntities Db = new SoanThaoDeThiEntities())
+            {
+                return Db.CauHois.Where(x => x.MaCauHoi == MA.Trim()).FirstOrDefault().ID;
+            }
         }
     }
 }

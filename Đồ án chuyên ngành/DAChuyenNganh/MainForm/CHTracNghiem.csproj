@@ -41,9 +41,8 @@
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=11.0.0.0, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\DAChuyenNganh\Đồ án chuyên ngành\DAChuyenNganh\packages\DevComponents.DotNetBar2.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DotNetBar for Windows Forms\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
@@ -78,6 +77,15 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.Doc">
+      <HintPath>..\packages\Spire.Doc.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License">
+      <HintPath>..\packages\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf">
+      <HintPath>..\packages\Spire.Pdf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -152,17 +160,41 @@
     <Compile Include="CauHoi_6.Designer.cs">
       <DependentUpon>CauHoi_6.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="CauHoi_7.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CauHoi_7.Designer.cs">
+      <DependentUpon>CauHoi_7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DanhSachCauHoi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DanhSachCauHoi.Designer.cs">
+      <DependentUpon>DanhSachCauHoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DanhSachDeThi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DanhSachDeThi.Designer.cs">
+      <DependentUpon>DanhSachDeThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="EditForm.Designer.cs">
+      <DependentUpon>EditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoaiCauHoi.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoaiCauHoi.Designer.cs">
       <DependentUpon>LoaiCauHoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LuuCauHoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LuuCauHoi.Designer.cs">
+      <DependentUpon>LuuCauHoi.cs</DependentUpon>
     </Compile>
     <Compile Include="LuuDeThi.cs">
       <SubType>Form</SubType>
@@ -216,11 +248,20 @@
     <EmbeddedResource Include="CauHoi_6.resx">
       <DependentUpon>CauHoi_6.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="DanhSachCauHoi.resx">
+      <DependentUpon>DanhSachCauHoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DanhSachDeThi.resx">
+      <DependentUpon>DanhSachDeThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm.resx">
+      <DependentUpon>EditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoaiCauHoi.resx">
       <DependentUpon>LoaiCauHoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LuuCauHoi.resx">
+      <DependentUpon>LuuCauHoi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LuuDeThi.resx">
       <DependentUpon>LuuDeThi.cs</DependentUpon>

@@ -63,15 +63,6 @@ namespace MainForm
             #endregion
         }
 
-
-
-        private  void MainForm_Load(object sender, EventArgs e)
-        {
-
-            //MessageBox.Show(new LoginBus().Test());
-
-        }
-
         #region   Controlbox
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -133,53 +124,51 @@ namespace MainForm
         SoanCauHoi _panelCauHoi = new SoanCauHoi();
         private void btnSoanCauHoi_Click(object sender, EventArgs e)
         {
-
+           
             if (!MainPanel.Controls.Contains(_panelCauHoi))
             {
                 MainPanel.Controls.Clear();
                 MainPanel.Controls.Add(_panelCauHoi);
                 _panelCauHoi.SoanCauHoiInit();
             }
-            
+
         }
 
         //Menu Soạn đề thi
         SoanCauHoi _panelDeThi = new SoanCauHoi();
         private void btnSoanDeThi_Click(object sender, EventArgs e)
         {
-            
             if (!MainPanel.Controls.Contains(_panelDeThi))
             {
                 MainPanel.Controls.Clear();
                 MainPanel.Controls.Add(_panelDeThi);
                 _panelDeThi.SoanDeInit();
             }
-
-
-
-
-
+            
         }
 
         //Menu Thư viện đề thi
+        DanhSachDeThi _panelListDeThi = new DanhSachDeThi();
         private void btnThuVienDeThi_Click(object sender, EventArgs e)
         {
-            MainPanel.Controls.Clear();
+            if (!MainPanel.Controls.Contains(_panelListDeThi))
+            {
+                MainPanel.Controls.Clear();
+                MainPanel.Controls.Add(_panelListDeThi);
+
+            }
         }
 
         //Menu Thư viện câu hỏi
-        SoanCauHoi _panelThuVienCauHoi = new SoanCauHoi();
+        DanhSachCauHoi _panelListCauHoi = new DanhSachCauHoi();
         private void btnThuVienCauHoi_Click(object sender, EventArgs e)
         {
-            
-            if (!MainPanel.Controls.Contains(_panelThuVienCauHoi))
+            if (!MainPanel.Controls.Contains(_panelListCauHoi))
             {
                 MainPanel.Controls.Clear();
-                MainPanel.Controls.Add(_panelThuVienCauHoi);
-                _panelThuVienCauHoi.ThuVienCauHoiInit();
+                MainPanel.Controls.Add(_panelListCauHoi);
+       
             }
-
-
 
         }
 
