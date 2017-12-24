@@ -39,5 +39,11 @@ namespace Dal
         {
             return Db.DeThis.Where(x=>x.MonHoc.TenMonHoc == MonHoc.Trim()).ToList();
         }
+
+        public List<CauHoi> GetListCauHoi(string dethi)
+        {
+                        
+            return Db.Database.SqlQuery<CauHoi>("select ch.* from ChiTietDeThi ct, CauHoi ch, DeThi dt where dt.MaDeThi=N'"+dethi+"' and ct.ID_DeThi=dt.ID and ch.ID=ct.ID_CauHoi").ToList(); ;
+        }
     }
 }

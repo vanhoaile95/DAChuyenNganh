@@ -22,6 +22,11 @@ namespace Bus
         {
             return new DeThiDal().GetListDeByMonHoc(MonHoc);
         }
+        public List<CauHoi> GetListCauHoi(string Made)
+        {
+            return (new DeThiDal()).GetListCauHoi(Made);
 
+            
+        }
     }
 }

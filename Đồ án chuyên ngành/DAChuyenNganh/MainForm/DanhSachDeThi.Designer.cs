@@ -28,16 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.listDeThi = new System.Windows.Forms.ListView();
             this.maDe = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tenDe = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.monHoc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.thoiGian = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ngayThi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.cBoxMonHoc = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.contextMenuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -53,13 +58,14 @@
             this.monHoc,
             this.thoiGian,
             this.ngayThi});
+            this.listDeThi.ContextMenuStrip = this.contextMenuStrip1;
             this.listDeThi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listDeThi.FullRowSelect = true;
             this.listDeThi.GridLines = true;
             this.listDeThi.Location = new System.Drawing.Point(0, 0);
             this.listDeThi.MultiSelect = false;
             this.listDeThi.Name = "listDeThi";
-            this.listDeThi.Size = new System.Drawing.Size(624, 387);
+            this.listDeThi.Size = new System.Drawing.Size(624, 358);
             this.listDeThi.TabIndex = 0;
             this.listDeThi.UseCompatibleStateImageBehavior = false;
             this.listDeThi.View = System.Windows.Forms.View.Details;
@@ -83,6 +89,28 @@
             // ngayThi
             // 
             this.ngayThi.Text = "Ngày thi";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xemToolStripMenuItem,
+            this.xóaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
+            // 
+            // xemToolStripMenuItem
+            // 
+            this.xemToolStripMenuItem.Name = "xemToolStripMenuItem";
+            this.xemToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.xemToolStripMenuItem.Text = "Xem";
+            this.xemToolStripMenuItem.Click += new System.EventHandler(this.xemToolStripMenuItem_Click);
+            // 
+            // xóaToolStripMenuItem
+            // 
+            this.xóaToolStripMenuItem.Enabled = false;
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.xóaToolStripMenuItem.Text = "Xóa";
             // 
             // labelX1
             // 
@@ -114,7 +142,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(624, 456);
+            this.panel2.Size = new System.Drawing.Size(624, 422);
             this.panel2.TabIndex = 3;
             // 
             // splitContainer1
@@ -133,8 +161,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listDeThi);
-            this.splitContainer1.Size = new System.Drawing.Size(624, 456);
-            this.splitContainer1.SplitterDistance = 65;
+            this.splitContainer1.Size = new System.Drawing.Size(624, 422);
+            this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 2;
             // 
             // DanhSachDeThi
@@ -144,8 +172,9 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.panel2);
             this.Name = "DanhSachDeThi";
-            this.Size = new System.Drawing.Size(624, 456);
+            this.Size = new System.Drawing.Size(624, 422);
             this.Load += new System.EventHandler(this.DanhSachDeThi_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -167,5 +196,8 @@
         private System.Windows.Forms.ComboBox cBoxMonHoc;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem xemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
     }
 }

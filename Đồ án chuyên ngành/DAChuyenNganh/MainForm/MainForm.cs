@@ -12,7 +12,9 @@ namespace MainForm
     
     public partial class MainForm : Form
     {
-
+        int soancauhoi = 0;
+        int soandethi = 0;
+        int danhsachcauhoi = 0;
         #region SplashScreen
         public void ShowSplashScreen(bool option)
         {
@@ -121,16 +123,36 @@ namespace MainForm
 
 
         //Menu Soạn Câu Hỏi
-        SoanCauHoi _panelCauHoi = new SoanCauHoi();
+        
         private void btnSoanCauHoi_Click(object sender, EventArgs e)
         {
-           
-            if (!MainPanel.Controls.Contains(_panelCauHoi))
+            soancauhoi = 1;
+            soandethi = 0;
+           if(SoanCauHoi.listCauHoi.Count>0)
             {
-                MainPanel.Controls.Clear();
-                MainPanel.Controls.Add(_panelCauHoi);
-                _panelCauHoi.SoanCauHoiInit();
+                if (MessageBox.Show("Dữ liệu các câu hỏi chưa được lưu sẽ bị mất, bạn đã chắc chắn chưa?","Cảnh báo",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    SoanCauHoi.listCauHoi.Clear();
+                    SoanCauHoi _panelCauHoi = new SoanCauHoi();
+                    if (!MainPanel.Controls.Contains(_panelCauHoi))
+                    {
+                        MainPanel.Controls.Clear();
+                        MainPanel.Controls.Add(_panelCauHoi);
+                        _panelCauHoi.SoanCauHoiInit();
+                    }
+                }
             }
+           else
+            {
+                SoanCauHoi _panelCauHoi = new SoanCauHoi();
+                if (!MainPanel.Controls.Contains(_panelCauHoi))
+                {
+                    MainPanel.Controls.Clear();
+                    MainPanel.Controls.Add(_panelCauHoi);
+                    _panelCauHoi.SoanCauHoiInit();
+                }
+            }
+            
 
         }
 
@@ -138,12 +160,50 @@ namespace MainForm
         SoanCauHoi _panelDeThi = new SoanCauHoi();
         private void btnSoanDeThi_Click(object sender, EventArgs e)
         {
-            if (!MainPanel.Controls.Contains(_panelDeThi))
+            if (soancauhoi==1)
             {
-                MainPanel.Controls.Clear();
-                MainPanel.Controls.Add(_panelDeThi);
-                _panelDeThi.SoanDeInit();
+                soancauhoi = 0;
+                if (SoanCauHoi.listCauHoi.Count > 0)
+                {
+                    if (MessageBox.Show("Dữ liệu các câu hỏi chưa được lưu sẽ bị mất, bạn đã chắc chắn chưa?", "Cảnh báo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        SoanCauHoi.listCauHoi.Clear();
+                        _panelDeThi = new SoanCauHoi();
+                        if (!MainPanel.Controls.Contains(_panelDeThi))
+                        {
+
+                            MainPanel.Controls.Clear();
+                            MainPanel.Controls.Add(_panelDeThi);
+                            _panelDeThi.SoanDeInit();
+                        }
+                    }
+                }
+                else
+                {
+                    SoanCauHoi.listCauHoi.Clear();
+                    _panelDeThi = new SoanCauHoi();
+                    if (!MainPanel.Controls.Contains(_panelDeThi))
+                    {
+
+                        MainPanel.Controls.Clear();
+                        MainPanel.Controls.Add(_panelDeThi);
+                        _panelDeThi.SoanDeInit();
+                    }
+                }
+                   
             }
+            else
+            {
+                
+                if (!MainPanel.Controls.Contains(_panelDeThi))
+                {
+
+                    MainPanel.Controls.Clear();
+                    MainPanel.Controls.Add(_panelDeThi);
+                    _panelDeThi.SoanDeInit();
+                }
+            }
+            
             
         }
 
@@ -151,11 +211,16 @@ namespace MainForm
         DanhSachDeThi _panelListDeThi = new DanhSachDeThi();
         private void btnThuVienDeThi_Click(object sender, EventArgs e)
         {
+            if(soancauhoi==1)
+            {
+                soancauhoi = 0;
+                SoanCauHoi.listCauHoi.Clear();
+            }
             if (!MainPanel.Controls.Contains(_panelListDeThi))
             {
                 MainPanel.Controls.Clear();
                 MainPanel.Controls.Add(_panelListDeThi);
-
+                _panelListDeThi.Showdethi = ShowDethi;
             }
         }
 
@@ -163,15 +228,45 @@ namespace MainForm
         DanhSachCauHoi _panelListCauHoi = new DanhSachCauHoi();
         private void btnThuVienCauHoi_Click(object sender, EventArgs e)
         {
+            if (soancauhoi == 1)
+            {
+                soancauhoi = 0;
+                SoanCauHoi.listCauHoi.Clear();
+            }
             if (!MainPanel.Controls.Contains(_panelListCauHoi))
             {
                 MainPanel.Controls.Clear();
                 MainPanel.Controls.Add(_panelListCauHoi);
-       
+                _panelListCauHoi.thamkhaoCauHoi = AddCauCauHoi;
             }
 
         }
 
+        private void ShowDethi(List<CauHoi> listCauHoi)
+        {
+            _panelDeThi = new SoanCauHoi();
+            SoanCauHoi.listCauHoi.Clear();
+            if (!MainPanel.Controls.Contains(_panelDeThi))
+            {
+
+                MainPanel.Controls.Clear();
+                MainPanel.Controls.Add(_panelDeThi);
+                _panelDeThi.SoanDeInit();
+                _panelDeThi.ShowDeThi(listCauHoi);
+            }
+        }
       
+        private void AddCauCauHoi(CauHoi cauhoi)
+        {
+            if (!MainPanel.Controls.Contains(_panelDeThi))
+            {
+
+                MainPanel.Controls.Clear();
+                MainPanel.Controls.Add(_panelDeThi);
+                _panelDeThi.SoanDeInit();
+                _panelDeThi.AddCauHoi(cauhoi);
+            }
+            
+        }
     }
 }

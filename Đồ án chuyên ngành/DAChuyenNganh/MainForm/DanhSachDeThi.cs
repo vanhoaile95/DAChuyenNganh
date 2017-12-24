@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using Bus;
+using Common;
+using System.Collections.Generic;
 
 namespace MainForm
 {
@@ -71,5 +73,22 @@ namespace MainForm
         {
             LoadListDe();
         }
+
+        private void xemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ListViewItem row = listDeThi.SelectedItems[0];
+                Showdethi(new DeThiBus().GetListCauHoi(row.SubItems[0].Text));
+            }
+            catch (Exception)
+            {
+
+                
+            }
+
+        }
+        public delegate void ShowDeThi(List<CauHoi> listCauHoi);
+        public ShowDeThi Showdethi;
     }
 }

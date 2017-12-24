@@ -179,6 +179,294 @@ namespace MainForm
             listCauHoi.Add(TitleCauHoi);
         }
 
+
+        public void ShowDeThi(List<CauHoi> listcauhoi)
+        {
+            
+            foreach(var itemCauHoi in listcauhoi)
+            {
+                List<DapAn> dapanList = new CauHoiBus().GetListDapAn(new CauHoiBus().GetIDByMa(itemCauHoi.MaCauHoi));
+                CauHoi cauhoi = itemCauHoi;
+
+                //Tạo expandable panel câu hỏi
+                ExpandablePanel TitleCauHoi = new ExpandablePanel();
+
+                TitleCauHoi.CanvasColor = SystemColors.Control;
+                TitleCauHoi.ColorSchemeStyle = eDotNetBarStyle.StyleManagerControlled;
+                TitleCauHoi.HideControlsWhenCollapsed = true;
+                TitleCauHoi.ExpandButtonAlignment = eTitleButtonAlignment.Left;
+                TitleCauHoi.ExpandOnTitleClick = true;
+                TitleCauHoi.AnimationTime = 0;
+
+                TitleCauHoi.TitleStyle.Alignment = StringAlignment.Center;
+                TitleCauHoi.TitleStyle.BackColor1.ColorSchemePart = eColorSchemePart.PanelBackground;
+                TitleCauHoi.TitleStyle.BackColor2.ColorSchemePart = eColorSchemePart.PanelBackground2;
+                TitleCauHoi.TitleStyle.Border = eBorderType.RaisedInner;
+                TitleCauHoi.TitleStyle.BorderColor.ColorSchemePart = eColorSchemePart.PanelBorder;
+                TitleCauHoi.TitleStyle.ForeColor.ColorSchemePart = eColorSchemePart.PanelText;
+                TitleCauHoi.TitleStyle.GradientAngle = 90;
+                TitleCauHoi.TitleText = "Câu hỏi "+ (++soanCauHoi).ToString();
+                TitleCauHoi.Name = "CH";
+
+                //Nút độ khó
+                ButtonX dokho = new ButtonX();
+                dokho.AutoExpandOnClick = true;
+                dokho.BackColor = Color.Transparent;
+                dokho.AccessibleRole = AccessibleRole.PushButton;
+                dokho.ColorTable = eButtonColor.Blue;
+                dokho.Dock = DockStyle.Right;
+                dokho.Name = "dokho";
+                dokho.ShowSubItems = true;
+
+                var dokhoList = new DoKhoBus().GetList();
+                for (int j = 0; j < dokhoList.Count; j++)
+                {
+                    ButtonItem item = new ButtonItem();
+                    item.Text = dokhoList[j].MoTa;
+                    item.Click += Item_Click;
+                    dokho.SubItems.Add(item);
+                }
+
+                dokho.Text = new DoKhoBus().GetNameById(cauhoi.ID_DoKho);
+                dokho.Size = new Size(100, 20);
+                dokho.Style = eDotNetBarStyle.StyleManagerControlled;
+                TitleCauHoi.TitlePanel.Controls.Add(dokho);
+
+
+                //Nút môn học
+                ButtonX monhoc = new ButtonX();
+                monhoc.BackColor = Color.Transparent;
+                monhoc.AutoExpandOnClick = true;
+                monhoc.AccessibleRole = AccessibleRole.PushButton;
+                monhoc.ColorTable = eButtonColor.Blue;
+                monhoc.Dock = DockStyle.Right;
+                monhoc.Name = "monhoc";
+                monhoc.ShowSubItems = true;
+
+                var monhocList = new MonHocBus().GetList();
+                for (int j = 0; j < monhocList.Count; j++)
+                {
+                    ButtonItem item = new ButtonItem();
+                    item.Text = monhocList[j].TenMonHoc;
+                    item.Click += Item_Click;
+                    monhoc.SubItems.Add(item);
+                }
+                monhoc.Text = new MonHocBus().GetNameByID(cauhoi.ID_MonHoc);
+
+
+                monhoc.Size = new Size(100, 20);
+                monhoc.Style = eDotNetBarStyle.StyleManagerControlled;
+                TitleCauHoi.TitlePanel.Controls.Add(monhoc);
+
+
+                //Tạo câu hỏi & thêm vào expandable panel câu hỏi
+                UserControl _temp = null;
+                object listDapAn;
+                switch (cauhoi.ID_LoaiCauHoi)
+                {
+                    case 1:
+                        _temp = new CauHoi_1();
+                        listDapAn = new CauHoiBus().GetListDapAn(cauhoi.ID);
+                        ((CauHoi_1)_temp).Init(cauhoi.NoiDung, (List<DapAn>)listDapAn);
+                        break;
+                    case 2:
+                        _temp = new CauHoi_2();
+                        listDapAn = new CauHoiBus().GetListDapAn(cauhoi.ID);
+                        ((CauHoi_2)_temp).Init(cauhoi.NoiDung, (List<DapAn>)listDapAn);
+                        break;
+                    case 3:
+                        _temp = new CauHoi_3();
+                        listDapAn = new CauHoiBus().GetListDapAn(cauhoi.ID);
+                        ((CauHoi_3)_temp).Init(cauhoi.NoiDung, (List<DapAn>)listDapAn);
+                        break;
+                    case 4:
+                        _temp = new CauHoi_4();
+                        listDapAn = new CauHoiBus().GetListDapAn(cauhoi.ID);
+                        ((CauHoi_4)_temp).Init(cauhoi.NoiDung, (List<DapAn>)listDapAn);
+                        break;
+                    case 5:
+                        _temp = new CauHoi_5();
+                        listDapAn = new CauHoiBus().GetListDapAn(cauhoi.ID);
+                        ((CauHoi_5)_temp).Init(cauhoi.NoiDung, (List<DapAn>)listDapAn);
+                        break;
+                    case 6:
+                        _temp = new CauHoi_6();
+                        listDapAn = new CauHoiBus().GetListDapAn(cauhoi.ID);
+                        ((CauHoi_6)_temp).Init(cauhoi.NoiDung, (List<DapAn>)listDapAn);
+                        break;
+                    case 7:
+                        _temp = new CauHoi_7();
+                        listDapAn = new CauHoiBus().GetListDapAn(cauhoi.ID);
+                        ((CauHoi_7)_temp).Init(cauhoi.NoiDung, (List<DapAn>)listDapAn);
+                        break;
+                }
+
+                _temp.Location = new Point(0, TitleCauHoi.TitleHeight);
+                _temp.Dock = DockStyle.Bottom;
+                TitleCauHoi.AutoSize = true;
+                TitleCauHoi.Controls.Add(_temp);
+                TitleCauHoi.Dock = DockStyle.Top;
+
+                //Add expandable câu hỏi vào panel SoanCauHoi
+                panelSoanCauHoi.Controls.Add(TitleCauHoi);
+
+                TitleCauHoi.Dock = DockStyle.Top;
+                TitleCauHoi.BringToFront();
+
+                btnLuuDeThi.BringToFront();
+                btnThemCauHoi.BringToFront();
+                btnXuatDeThi.BringToFront();
+                btnLuuCauHoi.BringToFront();
+                panelSoanCauHoi.ScrollControlIntoView(btnThemCauHoi);
+
+                //Thêm câu hỏi vào list để dễ quản lý
+                listCauHoi.Add(TitleCauHoi);
+
+            }
+
+        }
+
+        public void AddCauHoi(CauHoi cauhoi)
+        {
+            List<DapAn> dapanList = new CauHoiBus().GetListDapAn(new CauHoiBus().GetIDByMa(cauhoi.MaCauHoi));
+            
+
+            //Tạo expandable panel câu hỏi
+            ExpandablePanel TitleCauHoi = new ExpandablePanel();
+
+            TitleCauHoi.CanvasColor = SystemColors.Control;
+            TitleCauHoi.ColorSchemeStyle = eDotNetBarStyle.StyleManagerControlled;
+            TitleCauHoi.HideControlsWhenCollapsed = true;
+            TitleCauHoi.ExpandButtonAlignment = eTitleButtonAlignment.Left;
+            TitleCauHoi.ExpandOnTitleClick = true;
+            TitleCauHoi.AnimationTime = 0;
+
+            TitleCauHoi.TitleStyle.Alignment = StringAlignment.Center;
+            TitleCauHoi.TitleStyle.BackColor1.ColorSchemePart = eColorSchemePart.PanelBackground;
+            TitleCauHoi.TitleStyle.BackColor2.ColorSchemePart = eColorSchemePart.PanelBackground2;
+            TitleCauHoi.TitleStyle.Border = eBorderType.RaisedInner;
+            TitleCauHoi.TitleStyle.BorderColor.ColorSchemePart = eColorSchemePart.PanelBorder;
+            TitleCauHoi.TitleStyle.ForeColor.ColorSchemePart = eColorSchemePart.PanelText;
+            TitleCauHoi.TitleStyle.GradientAngle = 90;
+            TitleCauHoi.TitleText = "Câu hỏi " + (++soanCauHoi).ToString();
+            TitleCauHoi.Name = "CH";
+
+            //Nút độ khó
+            ButtonX dokho = new ButtonX();
+            dokho.AutoExpandOnClick = true;
+            dokho.BackColor = Color.Transparent;
+            dokho.AccessibleRole = AccessibleRole.PushButton;
+            dokho.ColorTable = eButtonColor.Blue;
+            dokho.Dock = DockStyle.Right;
+            dokho.Name = "dokho";
+            dokho.ShowSubItems = true;
+
+            var dokhoList = new DoKhoBus().GetList();
+            for (int j = 0; j < dokhoList.Count; j++)
+            {
+                ButtonItem item = new ButtonItem();
+                item.Text = dokhoList[j].MoTa;
+                item.Click += Item_Click;
+                dokho.SubItems.Add(item);
+            }
+
+            dokho.Text = new DoKhoBus().GetNameById(cauhoi.ID_DoKho);
+            dokho.Size = new Size(100, 20);
+            dokho.Style = eDotNetBarStyle.StyleManagerControlled;
+            TitleCauHoi.TitlePanel.Controls.Add(dokho);
+
+
+            //Nút môn học
+            ButtonX monhoc = new ButtonX();
+            monhoc.BackColor = Color.Transparent;
+            monhoc.AutoExpandOnClick = true;
+            monhoc.AccessibleRole = AccessibleRole.PushButton;
+            monhoc.ColorTable = eButtonColor.Blue;
+            monhoc.Dock = DockStyle.Right;
+            monhoc.Name = "monhoc";
+            monhoc.ShowSubItems = true;
+
+            var monhocList = new MonHocBus().GetList();
+            for (int j = 0; j < monhocList.Count; j++)
+            {
+                ButtonItem item = new ButtonItem();
+                item.Text = monhocList[j].TenMonHoc;
+                item.Click += Item_Click;
+                monhoc.SubItems.Add(item);
+            }
+            monhoc.Text = new MonHocBus().GetNameByID(cauhoi.ID_MonHoc);
+
+
+            monhoc.Size = new Size(100, 20);
+            monhoc.Style = eDotNetBarStyle.StyleManagerControlled;
+            TitleCauHoi.TitlePanel.Controls.Add(monhoc);
+
+
+            //Tạo câu hỏi & thêm vào expandable panel câu hỏi
+            UserControl _temp = null;
+            object listDapAn;
+            switch (cauhoi.ID_LoaiCauHoi)
+            {
+                case 1:
+                    _temp = new CauHoi_1();
+                    listDapAn = new CauHoiBus().GetListDapAn(cauhoi.ID);
+                    ((CauHoi_1)_temp).Init(cauhoi.NoiDung, (List<DapAn>)listDapAn);
+                    break;
+                case 2:
+                    _temp = new CauHoi_2();
+                    listDapAn = new CauHoiBus().GetListDapAn(cauhoi.ID);
+                    ((CauHoi_2)_temp).Init(cauhoi.NoiDung, (List<DapAn>)listDapAn);
+                    break;
+                case 3:
+                    _temp = new CauHoi_3();
+                    listDapAn = new CauHoiBus().GetListDapAn(cauhoi.ID);
+                    ((CauHoi_3)_temp).Init(cauhoi.NoiDung, (List<DapAn>)listDapAn);
+                    break;
+                case 4:
+                    _temp = new CauHoi_4();
+                    listDapAn = new CauHoiBus().GetListDapAn(cauhoi.ID);
+                    ((CauHoi_4)_temp).Init(cauhoi.NoiDung, (List<DapAn>)listDapAn);
+                    break;
+                case 5:
+                    _temp = new CauHoi_5();
+                    listDapAn = new CauHoiBus().GetListDapAn(cauhoi.ID);
+                    ((CauHoi_5)_temp).Init(cauhoi.NoiDung, (List<DapAn>)listDapAn);
+                    break;
+                case 6:
+                    _temp = new CauHoi_6();
+                    listDapAn = new CauHoiBus().GetListDapAn(cauhoi.ID);
+                    ((CauHoi_6)_temp).Init(cauhoi.NoiDung, (List<DapAn>)listDapAn);
+                    break;
+                case 7:
+                    _temp = new CauHoi_7();
+                    listDapAn = new CauHoiBus().GetListDapAn(cauhoi.ID);
+                    ((CauHoi_7)_temp).Init(cauhoi.NoiDung, (List<DapAn>)listDapAn);
+                    break;
+            }
+
+            _temp.Location = new Point(0, TitleCauHoi.TitleHeight);
+            _temp.Dock = DockStyle.Bottom;
+            TitleCauHoi.AutoSize = true;
+            TitleCauHoi.Controls.Add(_temp);
+            TitleCauHoi.Dock = DockStyle.Top;
+
+            //Add expandable câu hỏi vào panel SoanCauHoi
+            panelSoanCauHoi.Controls.Add(TitleCauHoi);
+
+            TitleCauHoi.Dock = DockStyle.Top;
+            TitleCauHoi.BringToFront();
+
+            btnLuuDeThi.BringToFront();
+            btnThemCauHoi.BringToFront();
+            btnXuatDeThi.BringToFront();
+            btnLuuCauHoi.BringToFront();
+            panelSoanCauHoi.ScrollControlIntoView(btnThemCauHoi);
+
+            //Thêm câu hỏi vào list để dễ quản lý
+            listCauHoi.Add(TitleCauHoi);
+        }
+
+
         private void Item_Click(object sender, EventArgs e)
         {
             ButtonX parent = (((ButtonItem)sender).Parent.ContainerControl) as ButtonX;

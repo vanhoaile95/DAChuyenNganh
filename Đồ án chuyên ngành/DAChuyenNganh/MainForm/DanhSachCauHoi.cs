@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Bus;
+using Common;
 
 namespace MainForm
 {
@@ -87,15 +88,42 @@ namespace MainForm
 
         private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ListViewItem row = listCauHoi.SelectedItems[0];
-            var cauhoi = new CauHoiBus().GetListCauHoiByID(new CauHoiBus().GetIDByMa(row.SubItems[0].Text));
-            var dapanList = new CauHoiBus().GetListDapAn(new CauHoiBus().GetIDByMa(row.SubItems[0].Text));
-            
-            EditForm form = new EditForm();
-            form.Init(cauhoi, dapanList);
-            if (form.ShowDialog() == DialogResult.OK)
+            try
+            {
+                ListViewItem row = listCauHoi.SelectedItems[0];
+                //MessageBox.Show(row.SubItems[0].Text);
+                var cauhoi = new CauHoiBus().GetListCauHoiByID(new CauHoiBus().GetIDByMa(row.SubItems[0].Text));
+                var dapanList = new CauHoiBus().GetListDapAn(new CauHoiBus().GetIDByMa(row.SubItems[0].Text));
+
+                EditForm form = new EditForm();
+                form.Init(cauhoi, dapanList);
+                if (form.ShowDialog() == DialogResult.OK)
                     LoadListCauHoi();
+            }
+            catch
+            {
+
+            }
+            
 
         }
+
+        private void thamKhảoĐềTHiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ListViewItem row = listCauHoi.SelectedItems[0];
+                //MessageBox.Show(row.SubItems[0].Text);
+                var cauhoi = new CauHoiBus().GetListCauHoiByID(new CauHoiBus().GetIDByMa(row.SubItems[0].Text));
+                thamkhaoCauHoi(cauhoi);
+            }
+            catch (Exception)
+            {
+
+                
+            }
+        }
+        public delegate void ThamKhao(CauHoi cauhoi);
+        public ThamKhao thamkhaoCauHoi;
     }
 }
